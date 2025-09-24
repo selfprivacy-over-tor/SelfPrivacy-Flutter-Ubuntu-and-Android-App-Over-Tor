@@ -1,0 +1,220 @@
+fragment basicMutationReturnFields on MutationReturnInterface{
+  code
+  message
+  success
+}
+
+fragment basicApiJobsFields on ApiJob{
+  createdAt
+  description
+  error
+  finishedAt
+  name
+  progress
+  result
+  status
+  statusText
+  uid
+  typeId
+  updatedAt
+}
+
+query GetApiVersion {
+  api {
+    version
+  }
+}
+
+query GetApiJobs {
+  jobs {
+    getJobs {
+      ...basicApiJobsFields
+    }
+  }
+}
+
+subscription JobUpdates {
+  jobUpdates {
+    ...basicApiJobsFields
+  }
+}
+
+mutation RemoveJob($jobId: String!) {
+  jobs {
+    removeJob(jobId: $jobId) {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation RunSystemRebuild {
+  system {
+    runSystemRebuild {
+      ...basicMutationReturnFields
+      job {
+        ...basicApiJobsFields
+      }
+    }
+  }
+}
+
+mutation RunSystemRebuildFallback {
+  system {
+    runSystemRebuild {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation RunSystemRollback {
+  system {
+    runSystemRollback {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation RunSystemUpgrade {
+  system {
+    runSystemUpgrade {
+      ...basicMutationReturnFields
+      job {
+        ...basicApiJobsFields
+      }
+    }
+  }
+}
+
+mutation NixCollectGarbage {
+  system {
+    nixCollectGarbage {
+      ...basicMutationReturnFields
+      job {
+        ...basicApiJobsFields
+      }
+    }
+  }
+}
+
+mutation RunSystemUpgradeFallback {
+  system {
+    runSystemUpgrade {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation PullRepositoryChanges {
+  system {
+    pullRepositoryChanges {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation RebootSystem {
+  system {
+    rebootSystem {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+query SystemServerProvider {
+  system {
+    provider {
+      provider
+    }
+  }
+}
+
+query SystemDnsProvider {
+  system {
+    domainInfo {
+      provider
+    }
+  }
+}
+
+query GetApiTokens {
+  api {
+    devices {
+      creationDate
+      isCaller
+      name
+    }
+  }
+}
+
+query RecoveryKey {
+  api {
+    recoveryKey {
+      creationDate
+      exists
+      expirationDate
+      usesLeft
+      valid
+    }
+  }
+}
+
+mutation GetNewRecoveryApiKey($limits: RecoveryKeyLimitsInput) {
+  api {
+    getNewRecoveryApiKey(limits: $limits) {
+      ...basicMutationReturnFields
+      key
+    }
+  }
+}
+
+mutation UseRecoveryApiKey($input: UseRecoveryKeyInput!) {
+  api {
+    useRecoveryApiKey(input: $input) {
+      ...basicMutationReturnFields
+      token
+    }
+  }
+}
+
+mutation RefreshDeviceApiToken {
+  api {
+    refreshDeviceApiToken {
+      ...basicMutationReturnFields
+      token
+    }
+  }
+}
+
+mutation DeleteDeviceApiToken($device: String!) {
+  api {
+    deleteDeviceApiToken(device: $device) {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation GetNewDeviceApiKey {
+  api {
+    getNewDeviceApiKey {
+      ...basicMutationReturnFields
+      key
+    }
+  }
+}
+
+mutation InvalidateNewDeviceApiKey {
+  api {
+    invalidateNewDeviceApiKey {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation AuthorizeWithNewDeviceApiKey($input: UseNewDeviceKeyInput!) {
+  api {
+    authorizeWithNewDeviceApiKey(input: $input) {
+      ...basicMutationReturnFields
+      token
+    }
+  }
+}

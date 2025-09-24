@@ -1,0 +1,124 @@
+query BackupConfiguration {
+  backup {
+    configuration {
+      autobackupPeriod
+      encryptionKey
+      isInitialized
+      locationId
+      locationName
+      provider
+      autobackupQuotas {
+        last
+        daily
+        weekly
+        monthly
+        yearly
+      }
+    }
+  }
+}
+
+query AllBackupSnapshots {
+  backup {
+    allSnapshots {
+      id
+      createdAt
+      service {
+        displayName
+        id
+      }
+      reason
+    }
+  }
+}
+
+fragment genericBackupConfigReturn on GenericBackupConfigReturn {
+  code
+  message
+  success
+  configuration {
+    provider
+    encryptionKey
+    isInitialized
+    autobackupPeriod
+    locationName
+    locationId
+    autobackupQuotas {
+      last
+      daily
+      weekly
+      monthly
+      yearly
+    }
+  }
+}
+
+mutation ForceSnapshotsReload {
+  backup {
+    forceSnapshotsReload {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation StartBackup($serviceId: String!) {
+  backup {
+    startBackup(serviceId: $serviceId) {
+      ...basicMutationReturnFields
+      job {
+        ...basicApiJobsFields
+      }
+    }
+  }
+}
+
+mutation SetAutobackupPeriod($period: Int = null) {
+  backup {
+    setAutobackupPeriod(period: $period) {
+      ...genericBackupConfigReturn
+    }
+  }
+}
+
+mutation setAutobackupQuotas($quotas: AutobackupQuotasInput!) {
+  backup {
+    setAutobackupQuotas(quotas: $quotas) {
+      ...genericBackupConfigReturn
+    }
+  }
+}
+
+mutation RemoveRepository {
+  backup {
+    removeRepository {
+      ...genericBackupConfigReturn
+    }
+  }
+}
+
+mutation InitializeRepository($repository: InitializeRepositoryInput!) {
+  backup {
+    initializeRepository(repository: $repository) {
+      ...genericBackupConfigReturn
+    }
+  }
+}
+
+mutation RestoreBackup($snapshotId: String!, $strategy: RestoreStrategy! = DOWNLOAD_VERIFY_OVERWRITE) {
+  backup {
+    restoreBackup(snapshotId: $snapshotId, strategy: $strategy) {
+      ...basicMutationReturnFields
+      job {
+        ...basicApiJobsFields
+      }
+    }
+  }
+}
+
+mutation ForgetSnapshot($snapshotId: String!) {
+  backup {
+    forgetSnapshot(snapshotId: $snapshotId) {
+      ...basicMutationReturnFields
+    }
+  }
+}

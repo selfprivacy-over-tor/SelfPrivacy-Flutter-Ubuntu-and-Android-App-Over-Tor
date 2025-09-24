@@ -1,0 +1,103 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+android {
+    namespace 'org.selfprivacy.app'
+    compileSdkVersion flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    compileOptions {
+      sourceCompatibility JavaVersion.VERSION_17
+      targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+      jvmTarget = JavaVersion.VERSION_17
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    defaultConfig {
+        applicationId "org.selfprivacy.app"
+        minSdkVersion 21
+        targetSdkVersion 35
+        compileSdkVersion 35
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+    buildTypes {
+        debug {
+
+        }
+        profile {
+
+        }
+        release {
+
+        }
+    }
+    buildFeatures {
+        flavorDimensions = ["default"]
+    }
+
+
+    productFlavors {
+        fdroid {
+            dimension 'default'
+            applicationId "pro.kherel.selfprivacy"
+        }
+        production {
+            dimension 'default'
+        }
+        nightly {
+            dimension 'default'
+            applicationIdSuffix ".nightly"
+            versionCode project.getVersionCode()
+            versionName "nightly-" + project.getVersionCode()
+        }
+    }
+}
+
+flutter {
+    source '../..'
+}
+
+dependencies {
+  implementation 'com.google.errorprone:error_prone_annotations:2.36.0' // required by flutter_secure_storage
+  implementation 'com.github.spotbugs:spotbugs-annotations:4.8.6' // required by flutter_secure_storage
+}
+

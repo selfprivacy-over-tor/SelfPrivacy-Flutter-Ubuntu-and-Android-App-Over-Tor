@@ -1,0 +1,116 @@
+fragment userFields on User{
+  username
+  userType
+  sshKeys
+  directmemberof
+  displayName
+  memberof
+  email
+  emailPasswordMetadata {
+    createdAt
+    displayName
+    expiresAt
+    lastUsed
+    uuid
+  }
+
+}
+
+query AllUsers {
+  users {
+    allUsers {
+      ...userFields
+    }
+    rootUser: getUser(username: "root") {
+      ...userFields
+    }
+  }
+}
+
+query AllGroups {
+  groups {
+    allGroups {
+      name
+    }
+  }
+}
+
+query GetUser($username: String!) {
+  users {
+    getUser(username: $username) {
+      ...userFields
+    }
+  }
+}
+
+mutation CreateUser($user: UserMutationInput!) {
+  users {
+    createUser(user: $user) {
+      ...basicMutationReturnFields
+      user {
+        ...userFields
+      }
+    }
+  }
+}
+
+mutation DeleteUser($username: String!) {
+  users {
+    deleteUser(username: $username) {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation UpdateUser($user: UserMutationInput!) {
+  users {
+    updateUser(user: $user) {
+      ...basicMutationReturnFields
+      user {
+        ...userFields
+      }
+    }
+  }
+}
+
+mutation AddSshKey($sshInput: SshMutationInput!) {
+  users {
+    addSshKey(sshInput: $sshInput) {
+      ...basicMutationReturnFields
+      user {
+        ...userFields
+      }
+    }
+  }
+}
+
+mutation RemoveSshKey($sshInput: SshMutationInput!) {
+  users {
+    removeSshKey(sshInput: $sshInput) {
+      ...basicMutationReturnFields
+      user {
+        ...userFields
+      }
+    }
+  }
+}
+
+mutation GeneratePasswordResetLink($username: String!) {
+  users {
+    generatePasswordResetLink(username: $username) {
+      ...basicMutationReturnFields
+      passwordResetLink
+    }
+  }
+}
+
+
+mutation DeleteEmailPassword($username: String!, $uuid: String!) {
+  emailPasswordMetadataMutations {
+    deleteEmailPassword(username: $username, uuid: $uuid) {
+      code
+      message
+      success
+    }
+  }
+}

@@ -1,0 +1,135 @@
+fragment BoolConfigItem on BoolConfigItem {
+  fieldId
+  description
+  type
+  boolValue: value
+  defaultBoolValue: defaultValue
+  widget
+}
+
+fragment EnumConfigItem on EnumConfigItem {
+  fieldId
+  description
+  type
+  stringValue: value
+  defaultStringValue: defaultValue
+  options
+  widget
+}
+
+fragment StringConfigItem on StringConfigItem {
+  fieldId
+  description
+  type
+  stringValue: value
+  defaultStringValue: defaultValue
+  regex
+  widget
+}
+
+query AllServices {
+  services {
+    allServices {
+      description
+      displayName
+      dnsRecords {
+        ...fragmentDnsRecords
+      }
+      id
+      isEnabled
+      isInstalled
+      isMovable
+      isRequired
+      isSystemService
+      canBeBackedUp
+      backupDescription
+      status
+      storageUsage {
+        title
+        usedSpace
+        volume {
+          name
+        }
+      }
+      svgIcon
+      url
+      homepage
+      sourcePage
+      license {
+        free
+        fullName
+        redistributable
+        shortName
+        url
+      }
+      supportLevel
+      configuration {
+        fieldId
+        description
+        type
+        ... BoolConfigItem
+        ... EnumConfigItem
+        ... StringConfigItem
+      }
+    }
+  }
+}
+
+mutation EnableService($serviceId: String!) {
+  services {
+    enableService(serviceId: $serviceId) {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation DisableService($serviceId: String!) {
+  services {
+    disableService(serviceId: $serviceId) {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation StopService($serviceId: String!) {
+  services {
+    stopService(serviceId: $serviceId) {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation StartService($serviceId: String!) {
+  services {
+    startService(serviceId: $serviceId) {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation RestartService($serviceId: String!) {
+  services {
+    restartService(serviceId: $serviceId) {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation MoveService($input: MoveServiceInput!) {
+  services {
+    moveService(input: $input) {
+      ...basicMutationReturnFields
+      job {
+        ...basicApiJobsFields
+      }
+    }
+  }
+}
+
+mutation SetServiceConfiguration($input: SetServiceConfigurationInput!) {
+  services {
+    setServiceConfiguration(input: $input) {
+      ...basicMutationReturnFields
+    }
+  }
+}

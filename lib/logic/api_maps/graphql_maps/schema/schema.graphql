@@ -1,0 +1,733 @@
+type Alert {
+  severity: Severity!
+  title: String!
+  message: String!
+  timestamp: DateTime
+}
+
+type Api {
+  version: String!
+  recoveryKey: ApiRecoveryKeyStatus!
+  devices: [ApiDevice!]!
+}
+
+type ApiDevice {
+  name: String!
+  creationDate: DateTime!
+  isCaller: Boolean!
+}
+
+type ApiJob {
+  uid: String!
+  typeId: String!
+  name: String!
+  description: String!
+  status: String!
+  statusText: String
+  progress: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  finishedAt: DateTime
+  error: String
+  result: String
+}
+
+type ApiKeyMutationReturn implements MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+  key: String
+}
+
+type ApiMutations {
+  getNewRecoveryApiKey(limits: RecoveryKeyLimitsInput = null): ApiKeyMutationReturn!
+  useRecoveryApiKey(input: UseRecoveryKeyInput!): DeviceApiTokenMutationReturn!
+  refreshDeviceApiToken: DeviceApiTokenMutationReturn!
+  deleteDeviceApiToken(device: String!): GenericMutationReturn!
+  getNewDeviceApiKey: ApiKeyMutationReturn!
+  invalidateNewDeviceApiKey: GenericMutationReturn!
+  authorizeWithNewDeviceApiKey(input: UseNewDeviceKeyInput!): DeviceApiTokenMutationReturn!
+}
+
+type ApiRecoveryKeyStatus {
+  exists: Boolean!
+  valid: Boolean!
+  creationDate: DateTime
+  expirationDate: DateTime
+  usesLeft: Int
+}
+
+type AutoUpgradeOptions {
+  enable: Boolean!
+  allowReboot: Boolean!
+}
+
+input AutoUpgradeSettingsInput {
+  enableAutoUpgrade: Boolean = null
+  allowReboot: Boolean = null
+}
+
+type AutoUpgradeSettingsMutationReturn implements MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+  enableAutoUpgrade: Boolean!
+  allowReboot: Boolean!
+}
+
+type AutobackupQuotas {
+  last: Int!
+  daily: Int!
+  weekly: Int!
+  monthly: Int!
+  yearly: Int!
+}
+
+input AutobackupQuotasInput {
+  last: Int!
+  daily: Int!
+  weekly: Int!
+  monthly: Int!
+  yearly: Int!
+}
+
+type Backup {
+  configuration: BackupConfiguration!
+  allSnapshots: [SnapshotInfo!]!
+  lastSlice: [SnapshotInfo!]!
+}
+
+type BackupConfiguration {
+  provider: BackupProvider!
+  encryptionKey: String!
+  isInitialized: Boolean!
+  autobackupPeriod: Int
+  autobackupQuotas: AutobackupQuotas!
+  locationName: String
+  locationId: String
+}
+
+type BackupMutations {
+  initializeRepository(repository: InitializeRepositoryInput!): GenericBackupConfigReturn!
+  removeRepository: GenericBackupConfigReturn!
+  setAutobackupPeriod(period: Int = null): GenericBackupConfigReturn!
+  setAutobackupQuotas(quotas: AutobackupQuotasInput!): GenericBackupConfigReturn!
+  startBackup(serviceId: String!): GenericJobMutationReturn!
+  totalBackup: GenericJobMutationReturn!
+  restoreAll: GenericJobMutationReturn!
+  restoreBackup(snapshotId: String!, strategy: RestoreStrategy! = DOWNLOAD_VERIFY_OVERWRITE): GenericJobMutationReturn!
+  forgetSnapshot(snapshotId: String!): GenericMutationReturn!
+  forceSnapshotsReload: GenericMutationReturn!
+}
+
+enum BackupProvider {
+  BACKBLAZE
+  NONE
+  MEMORY
+  FILE
+}
+
+enum BackupReason {
+  EXPLICIT
+  AUTO
+  PRE_RESTORE
+}
+
+type BoolConfigItem implements ConfigItem {
+  fieldId: String!
+  description: String!
+  widget: String!
+  type: String!
+  value: Boolean!
+  defaultValue: Boolean!
+}
+
+interface ConfigItem {
+  fieldId: String!
+  description: String!
+  widget: String!
+  type: String!
+}
+
+type CpuMonitoring {
+  start: DateTime
+  end: DateTime
+  step: Int!
+  overallUsage: MonitoringValuesResult!
+}
+
+"""Date with time (isoformat)"""
+scalar DateTime
+
+type DeviceApiTokenMutationReturn implements MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+  token: String
+}
+
+type DiskMonitoring {
+  start: DateTime
+  end: DateTime
+  step: Int!
+  overallUsage: MonitoringMetricsResult!
+}
+
+enum DnsProvider {
+  CLOUDFLARE
+  DIGITALOCEAN
+  DESEC
+}
+
+type DnsRecord {
+  recordType: String!
+  name: String!
+  content: String!
+  ttl: Int!
+  priority: Int
+  displayName: String!
+}
+
+type EmailPasswordMetadata {
+  uuid: String!
+  displayName: String!
+  createdAt: DateTime
+  expiresAt: DateTime
+  lastUsed: DateTime
+}
+
+type EmailPasswordsMetadataMutations {
+  deleteEmailPassword(username: String!, uuid: String!): GenericMutationReturn!
+}
+
+type EnumConfigItem implements ConfigItem {
+  fieldId: String!
+  description: String!
+  widget: String!
+  type: String!
+  value: String!
+  defaultValue: String!
+  options: [String!]!
+}
+
+type GenericBackupConfigReturn implements MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+  configuration: BackupConfiguration
+}
+
+type GenericJobMutationReturn implements MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+  job: ApiJob
+}
+
+type GenericMutationReturn implements MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+}
+
+type Group {
+  name: String!
+  groupClass: [String!]
+  member: [String!]
+  memberof: [String!]
+  directmemberof: [String!]
+  spn: String
+  description: String
+}
+
+type Groups {
+  allGroups: [Group!]!
+}
+
+input InitializeRepositoryInput {
+  provider: BackupProvider!
+  locationId: String!
+  locationName: String!
+  login: String!
+  password: String!
+  localSecret: String = null
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](https://ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf).
+"""
+scalar JSON @specifiedBy(url: "https://ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf")
+
+type Job {
+  getJobs: [ApiJob!]!
+  getJob(jobId: String!): ApiJob
+}
+
+type JobMutations {
+  removeJob(jobId: String!): GenericMutationReturn!
+}
+
+type LicenseType {
+  deprecated: Boolean!
+  free: Boolean!
+  fullName: String!
+  redistributable: Boolean!
+  shortName: String!
+  spdxId: String
+  url: String
+}
+
+type LogEntry {
+  message: String!
+  timestamp: DateTime!
+  priority: Int
+  systemdUnit: String
+  systemdSlice: String
+  cursor: String!
+}
+
+type Logs {
+  paginated(limit: Int! = 20, upCursor: String = null, downCursor: String = null, filterBySlice: String = null, filterByUnit: String = null): PaginatedEntries!
+}
+
+type LogsPageMeta {
+  upCursor: String
+  downCursor: String
+}
+
+type MemoryMonitoring {
+  start: DateTime
+  end: DateTime
+  step: Int!
+  overallUsage: MonitoringValuesResult!
+  swapUsageOverall: MonitoringValuesResult!
+  averageUsageByService: MonitoringMetricsResult!
+  maxUsageByService: MonitoringMetricsResult!
+}
+
+input MigrateToBindsInput {
+  emailBlockDevice: String!
+  bitwardenBlockDevice: String!
+  giteaBlockDevice: String!
+  nextcloudBlockDevice: String!
+  pleromaBlockDevice: String!
+}
+
+type Monitoring {
+  cpuUsage(start: DateTime = null, end: DateTime = null, step: Int! = 60): CpuMonitoring!
+  memoryUsage(start: DateTime = null, end: DateTime = null, step: Int! = 60): MemoryMonitoring!
+  diskUsage(start: DateTime = null, end: DateTime = null, step: Int! = 60): DiskMonitoring!
+  networkUsage(start: DateTime = null, end: DateTime = null, step: Int! = 60): NetworkMonitoring!
+}
+
+type MonitoringMetric {
+  metricId: String!
+  values: [MonitoringValue!]!
+}
+
+type MonitoringMetrics {
+  metrics: [MonitoringMetric!]!
+}
+
+union MonitoringMetricsResult = MonitoringMetrics | MonitoringQueryError
+
+type MonitoringQueryError {
+  error: String!
+}
+
+type MonitoringValue {
+  timestamp: DateTime!
+  value: String!
+}
+
+type MonitoringValues {
+  values: [MonitoringValue!]!
+}
+
+union MonitoringValuesResult = MonitoringValues | MonitoringQueryError
+
+input MoveServiceInput {
+  serviceId: String!
+  location: String!
+}
+
+type Mutation {
+  getNewRecoveryApiKey(limits: RecoveryKeyLimitsInput = null): ApiKeyMutationReturn! @deprecated(reason: "Use `api.get_new_recovery_api_key` instead")
+  useRecoveryApiKey(input: UseRecoveryKeyInput!): DeviceApiTokenMutationReturn! @deprecated(reason: "Use `api.use_recovery_api_key` instead")
+  refreshDeviceApiToken: DeviceApiTokenMutationReturn! @deprecated(reason: "Use `api.refresh_device_api_token` instead")
+  deleteDeviceApiToken(device: String!): GenericMutationReturn! @deprecated(reason: "Use `api.delete_device_api_token` instead")
+  getNewDeviceApiKey: ApiKeyMutationReturn! @deprecated(reason: "Use `api.get_new_device_api_key` instead")
+  invalidateNewDeviceApiKey: GenericMutationReturn! @deprecated(reason: "Use `api.invalidate_new_device_api_key` instead")
+  authorizeWithNewDeviceApiKey(input: UseNewDeviceKeyInput!): DeviceApiTokenMutationReturn! @deprecated(reason: "Use `api.authorize_with_new_device_api_key` instead")
+  changeTimezone(timezone: String!): TimezoneMutationReturn! @deprecated(reason: "Use `system.change_timezone` instead")
+  changeAutoUpgradeSettings(settings: AutoUpgradeSettingsInput!): AutoUpgradeSettingsMutationReturn! @deprecated(reason: "Use `system.change_auto_upgrade_settings` instead")
+  runSystemRebuild: GenericMutationReturn! @deprecated(reason: "Use `system.run_system_rebuild` instead")
+  runSystemRollback: GenericMutationReturn! @deprecated(reason: "Use `system.run_system_rollback` instead")
+  runSystemUpgrade: GenericMutationReturn! @deprecated(reason: "Use `system.run_system_upgrade` instead")
+  rebootSystem: GenericMutationReturn! @deprecated(reason: "Use `system.reboot_system` instead")
+  pullRepositoryChanges: GenericMutationReturn! @deprecated(reason: "Use `system.pull_repository_changes` instead")
+  setSshSettings(settings: SSHSettingsInput!): GenericMutationReturn! @deprecated(reason: "Use `system.change_ssh_settings` instead")
+  createUser(user: UserMutationInput!): UserMutationReturn! @deprecated(reason: "Use `users.create_user` instead")
+  deleteUser(username: String!): GenericMutationReturn! @deprecated(reason: "Use `users.delete_user` instead")
+  updateUser(user: UserMutationInput!): UserMutationReturn! @deprecated(reason: "Use `users.update_user` instead")
+  addSshKey(sshInput: SshMutationInput!): UserMutationReturn! @deprecated(reason: "Use `users.add_ssh_key` instead")
+  removeSshKey(sshInput: SshMutationInput!): UserMutationReturn! @deprecated(reason: "Use `users.remove_ssh_key` instead")
+  resizeVolume(name: String!): GenericMutationReturn! @deprecated(reason: "Use `storage.resize_volume` instead")
+  mountVolume(name: String!): GenericMutationReturn! @deprecated(reason: "Use `storage.mount_volume` instead")
+  unmountVolume(name: String!): GenericMutationReturn! @deprecated(reason: "Use `storage.unmount_volume` instead")
+  migrateToBinds(input: MigrateToBindsInput!): GenericJobMutationReturn! @deprecated(reason: "Use `storage.migrate_to_binds` instead")
+  enableService(serviceId: String!): ServiceMutationReturn! @deprecated(reason: "Use `services.enable_service` instead")
+  disableService(serviceId: String!): ServiceMutationReturn! @deprecated(reason: "Use `services.disable_service` instead")
+  stopService(serviceId: String!): ServiceMutationReturn! @deprecated(reason: "Use `services.stop_service` instead")
+  startService(serviceId: String!): ServiceMutationReturn! @deprecated(reason: "Use `services.start_service` instead")
+  restartService(serviceId: String!): ServiceMutationReturn! @deprecated(reason: "Use `services.restart_service` instead")
+  moveService(input: MoveServiceInput!): ServiceJobMutationReturn! @deprecated(reason: "Use `services.move_service` instead")
+  removeJob(jobId: String!): GenericMutationReturn! @deprecated(reason: "Use `jobs.remove_job` instead")
+  api: ApiMutations!
+  system: SystemMutations!
+  users: UsersMutations!
+  storage: StorageMutations!
+  emailPasswordMetadataMutations: EmailPasswordsMetadataMutations!
+  services: ServicesMutations!
+  jobs: JobMutations!
+  backup: BackupMutations!
+  testMutation: GenericMutationReturn!
+}
+
+interface MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+}
+
+type NetworkMonitoring {
+  start: DateTime
+  end: DateTime
+  step: Int!
+  overallUsage: MonitoringMetricsResult!
+}
+
+type PaginatedEntries {
+  """Metadata to aid in pagination."""
+  pageMeta: LogsPageMeta!
+
+  """The list of log entries."""
+  entries: [LogEntry!]!
+}
+
+type PasswordResetLinkReturn implements MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+  passwordResetLink: String
+}
+
+type Query {
+  api: Api!
+  system: System!
+  logs: Logs!
+  users: Users!
+  groups: Groups!
+  storage: Storage!
+  jobs: Job!
+  services: Services!
+  backup: Backup!
+  monitoring: Monitoring!
+}
+
+input RecoveryKeyLimitsInput {
+  expirationDate: DateTime = null
+  uses: Int = null
+}
+
+enum RestoreStrategy {
+  INPLACE
+  DOWNLOAD_VERIFY_OVERWRITE
+}
+
+input SSHSettingsInput {
+  enable: Boolean!
+  passwordAuthentication: Boolean = null
+}
+
+type SSHSettingsMutationReturn implements MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+  enable: Boolean!
+  passwordAuthentication: Boolean!
+}
+
+enum ServerProvider {
+  HETZNER
+  DIGITALOCEAN
+  OTHER
+}
+
+type Service {
+  id: String!
+  displayName: String!
+  description: String!
+  svgIcon: String!
+  isMovable: Boolean!
+  isRequired: Boolean!
+  isEnabled: Boolean!
+  isInstalled: Boolean!
+  isSystemService: Boolean!
+  canBeBackedUp: Boolean!
+  backupDescription: String!
+  status: ServiceStatusEnum!
+  url: String
+  license: [LicenseType!]!
+  homepage: String
+  sourcePage: String
+  supportLevel: SupportLevelEnum!
+  dnsRecords: [DnsRecord!]
+  storageUsage: ServiceStorageUsage!
+  configuration: [ConfigItem!]
+  backupSnapshots: [SnapshotInfo!]
+}
+
+type ServiceJobMutationReturn implements MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+  job: ApiJob
+  service: Service
+}
+
+type ServiceMutationReturn implements MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+  service: Service
+}
+
+enum ServiceStatusEnum {
+  ACTIVE
+  RELOADING
+  INACTIVE
+  FAILED
+  ACTIVATING
+  DEACTIVATING
+  OFF
+}
+
+type ServiceStorageUsage implements StorageUsageInterface {
+  usedSpace: String!
+  volume: StorageVolume
+  title: String!
+  service: Service
+}
+
+type Services {
+  allServices: [Service!]!
+}
+
+type ServicesMutations {
+  enableService(serviceId: String!): ServiceMutationReturn!
+  disableService(serviceId: String!): ServiceMutationReturn!
+  stopService(serviceId: String!): ServiceMutationReturn!
+  startService(serviceId: String!): ServiceMutationReturn!
+  restartService(serviceId: String!): ServiceMutationReturn!
+  setServiceConfiguration(input: SetServiceConfigurationInput!): ServiceMutationReturn!
+  moveService(input: MoveServiceInput!): ServiceJobMutationReturn!
+}
+
+input SetDnsProviderInput {
+  provider: DnsProvider!
+  apiToken: String!
+}
+
+input SetServiceConfigurationInput {
+  serviceId: String!
+  configuration: JSON!
+}
+
+enum Severity {
+  INFO
+  WARNING
+  ERROR
+  CRITICAL
+  SUCCESS
+}
+
+type SnapshotInfo {
+  id: String!
+  service: Service!
+  createdAt: DateTime!
+  reason: BackupReason!
+}
+
+input SshMutationInput {
+  username: String!
+  sshKey: String!
+}
+
+type SshSettings {
+  enable: Boolean!
+  passwordAuthentication: Boolean! @deprecated(reason: "For security reasons, password authentication is no longer supported. Please use SSH keys.")
+  rootSshKeys: [String!]!
+}
+
+type Storage {
+  volumes: [StorageVolume!]!
+}
+
+type StorageMutations {
+  resizeVolume(name: String!): GenericMutationReturn!
+  mountVolume(name: String!): GenericMutationReturn!
+  unmountVolume(name: String!): GenericMutationReturn!
+  migrateToBinds(input: MigrateToBindsInput!): GenericJobMutationReturn!
+}
+
+interface StorageUsageInterface {
+  usedSpace: String!
+  volume: StorageVolume
+  title: String!
+}
+
+type StorageVolume {
+  totalSpace: String!
+  freeSpace: String!
+  usedSpace: String!
+  root: Boolean!
+  name: String!
+  model: String
+  serial: String
+  type: String!
+  usages: [StorageUsageInterface!]!
+}
+
+type StringConfigItem implements ConfigItem {
+  fieldId: String!
+  description: String!
+  widget: String!
+  type: String!
+  value: String!
+  defaultValue: String!
+  regex: String
+}
+
+type Subscription {
+  jobUpdates: [ApiJob!]!
+  count: Int!
+  logEntries: LogEntry!
+}
+
+enum SupportLevelEnum {
+  NORMAL
+  EXPERIMENTAL
+  DEPRECATED
+  COMMUNITY
+  UNKNOWN
+}
+
+type System {
+  status: Alert!
+  domainInfo: SystemDomainInfo!
+  settings: SystemSettings!
+  info: SystemInfo!
+  provider: SystemProviderInfo!
+  busy: Boolean!
+  workingDirectory: String!
+}
+
+type SystemDomainInfo {
+  domain: String!
+  hostname: String!
+  provider: DnsProvider!
+  requiredDnsRecords: [DnsRecord!]!
+}
+
+type SystemInfo {
+  systemVersion: String!
+  pythonVersion: String!
+  usingBinds: Boolean!
+}
+
+type SystemMutations {
+  changeTimezone(timezone: String!): TimezoneMutationReturn!
+  changeAutoUpgradeSettings(settings: AutoUpgradeSettingsInput!): AutoUpgradeSettingsMutationReturn!
+  changeSshSettings(settings: SSHSettingsInput!): SSHSettingsMutationReturn!
+  runSystemRebuild: GenericJobMutationReturn!
+  runSystemRollback: GenericMutationReturn!
+  runSystemUpgrade: GenericJobMutationReturn!
+  rebootSystem: GenericMutationReturn!
+  pullRepositoryChanges: GenericMutationReturn!
+  nixCollectGarbage: GenericJobMutationReturn!
+  setDnsProvider(input: SetDnsProviderInput!): GenericMutationReturn!
+}
+
+type SystemProviderInfo {
+  provider: ServerProvider!
+  id: String!
+}
+
+type SystemSettings {
+  autoUpgrade: AutoUpgradeOptions!
+  ssh: SshSettings!
+  timezone: String!
+}
+
+type TimezoneMutationReturn implements MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+  timezone: String
+}
+
+input UseNewDeviceKeyInput {
+  key: String!
+  deviceName: String!
+}
+
+input UseRecoveryKeyInput {
+  key: String!
+  deviceName: String!
+}
+
+type User {
+  username: String!
+  userType: UserType!
+  sshKeys: [String!]
+  directmemberof: [String!]
+  memberof: [String!]
+  displayName: String
+  email: String
+  emailPasswordMetadata: [EmailPasswordMetadata!]
+}
+
+input UserMutationInput {
+  username: String!
+  directmemberof: [String!] = []
+  password: String = null
+  displayName: String = null
+}
+
+type UserMutationReturn implements MutationReturnInterface {
+  success: Boolean!
+  message: String!
+  code: Int!
+  user: User
+}
+
+enum UserType {
+  NORMAL
+  PRIMARY
+  ROOT
+}
+
+type Users {
+  allUsers: [User!]!
+  getUser(username: String!): User
+}
+
+type UsersMutations {
+  createUser(user: UserMutationInput!): UserMutationReturn!
+  deleteUser(username: String!): GenericMutationReturn!
+  updateUser(user: UserMutationInput!): UserMutationReturn!
+  addSshKey(sshInput: SshMutationInput!): UserMutationReturn!
+  removeSshKey(sshInput: SshMutationInput!): UserMutationReturn!
+  generatePasswordResetLink(username: String!): PasswordResetLinkReturn!
+}

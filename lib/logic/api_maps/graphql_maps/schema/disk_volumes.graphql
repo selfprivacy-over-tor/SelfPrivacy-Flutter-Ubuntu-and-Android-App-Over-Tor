@@ -1,0 +1,61 @@
+query GetServerDiskVolumes {
+  storage {
+    volumes {
+      freeSpace
+      model
+      name
+      root
+      serial
+      totalSpace
+      type
+      usages {
+        title
+        usedSpace
+        __typename
+        ... on ServiceStorageUsage {
+          service {
+            id
+            isMovable
+            displayName
+          }
+        }
+      }
+      usedSpace
+    }
+  }
+}
+
+mutation MountVolume($name: String!) {
+  storage {
+    mountVolume(name: $name) {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation ResizeVolume($name: String!) {
+  storage {
+    resizeVolume(name: $name) {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation UnmountVolume($name: String!) {
+  storage {
+    unmountVolume(name: $name) {
+      ...basicMutationReturnFields
+    }
+  }
+}
+
+mutation MigrateToBinds($input: MigrateToBindsInput!) {
+  storage {
+    migrateToBinds(input: $input) {
+      ...basicMutationReturnFields
+      job {
+        ...basicApiJobsFields
+      }
+    }
+  }
+}

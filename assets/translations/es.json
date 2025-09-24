@@ -1,0 +1,111 @@
+{
+    "basis": {
+        "providers_title": "Su Centro de Datos",
+        "select": "Seleccione",
+        "services": "Servicios",
+        "providers": "Proveedores",
+        "users": "Usuarios",
+        "more": "Más",
+        "next": "Próximo",
+        "got_it": "Entendido",
+        "settings": "Ajustes",
+        "password": "Contraseña",
+        "create": "Añadir nuevo",
+        "confirmation": "Confirmación",
+        "cancel": "Anular",
+        "delete": "Eliminar",
+        "services_title": "Tus servicios personales, privados e independientes.",
+        "connect": "Conecte",
+        "saving": "Ahorrar…",
+        "username": "Nombre de usuario",
+        "loading": "Cargando…",
+        "later": "Saltar a la configuración posterior",
+        "reset": "Restablecer",
+        "details": "Detalles",
+        "no_data": "Sin datos",
+        "wait": "Cargando",
+        "alert": "Alerta",
+        "continue": "Continuar",
+        "close": "Cerrar",
+        "domain": "Dominio",
+        "remove": "Eliminar",
+        "apply": "Solicitar",
+        "done": "Hecho",
+        "connect_to_existing": "¡Ya tengo un servidor de SelfPrivacy!",
+        "app_name": "SelfPrivacy",
+        "please_connect": "¡Conecta tu servidor y dominio para sumergirte!",
+        "copied_to_clipboard": "Copiado al portapapeles!",
+        "copy": "Copiar",
+        "network_error": "Error de conexión",
+        "feature_unsupported_on_api_version": "Esta funcionalidad solo esta soportada servidores versión {versionConstrain}. Tu servidor se encuentra en la versión {currentVersion}."
+    },
+    "test": "es-test",
+    "locale": "es",
+    "application_settings": {
+        "title": "Ajustes de la aplicación",
+        "system_theme_mode_title": "Tema del sistema",
+        "system_theme_mode_description": "Utiliza un tema claro u oscuro de la configuración del sistema",
+        "dark_theme_title": "Tema oscuro",
+        "change_application_theme": "Cambia el tema de tu aplicación",
+        "dangerous_settings": "Configuraciones peligrosas",
+        "reset_config_title": "Restablecer la configuración de la aplicación",
+        "reset_config_description": "Restablecer claves API y usuario root."
+    },
+    "ssh": {
+        "delete_confirm_question": "¿Está seguro de que desea eliminar la clave SSH?",
+        "root_subtitle": "Los propietarios de estas claves tienen acceso total al servidor y pueden hacer cualquier cosa en él. Añade sólo tus propias claves al servidor.",
+        "title": "SSH Claves",
+        "create": "Crear clave SSH",
+        "delete": "Eliminar clave SSH",
+        "no_key_name": "Clave sin nombre",
+        "root_title": "Estas son las claves de superusuario",
+        "input_label": "Clave pública ED25519, ECDSA o RSA"
+    },
+    "about_application_page": {
+        "application_version_text": "Versión de la aplicación",
+        "title": "Sobre",
+        "api_version_text": "Versión API del servidor",
+        "privacy_policy": "Política de privacidad"
+    },
+    "onboarding": {
+        "page2_text": "SelfPrivacy sólo trabaja con los proveedores que usted elija. Si no tiene cuentas obligatorias en ellos, le ayudaremos a crearlas.",
+        "page1_title": "La independencia digital, al alcance de todos",
+        "page1_text": "Correo, VPN, Messenger, red social y mucho más en tu servidor privado, bajo tu control.",
+        "page2_title": "SelfPrivacy no es una nube, es tu centro de datos personal",
+        "page2_server_provider_title": "Servidor proveedor",
+        "page2_server_provider_text": "Un proveedor de servidores mantiene su servidor en su propio centro de datos. SelfPrivacy se conectará automáticamente al proveedor y configurará todo lo necesario.",
+        "page2_dns_provider_title": "Proveedor de DNS",
+        "page2_backup_provider_title": "Proveedor de copias de seguridad",
+        "page2_dns_provider_text": "Necesitas un dominio para tener un lugar en Internet. Y también necesitas un proveedor de DNS fiable para que el dominio apunte a tu servidor. Le sugeriremos que elija un proveedor de DNS compatible para configurar automáticamente la red."
+    },
+    "more_page": {
+        "configuration_wizard": "Asistente de configuración",
+        "onboarding": "Incorporación",
+        "create_ssh_key": "Claves SSH de superusuario"
+    },
+    "console_page": {
+        "title": "Consola",
+        "copy": "Copiar"
+    },
+    "server": {
+        "reboot_after_upgrade_hint": "Reinicio sin aviso después de aplicar cambios en el servidor",
+        "card_title": "Servidor",
+        "description": "Todos sus servicios funcionan aquí",
+        "general_information": "Información general",
+        "resource_usage": "Uso de recursos",
+        "server_timezone": "Zona horaria del servidor",
+        "select_timezone": "Selecciona zona horaria",
+        "reboot_after_upgrade": "Reinicia después de actualizar",
+        "allow_autoupgrade": "Permite la autoactualización",
+        "allow_autoupgrade_hint": "Ppermite actualizaciones automáticas de paquetes en el servidor"
+    },
+    "resource_chart": {
+        "month": "Mes",
+        "out": "Fuera",
+        "day": "Día",
+        "hour": "Hora",
+        "cpu_title": "Uso de CPU",
+        "network_title": "Uso de la red",
+        "in": "En"
+    }
+}

@@ -1,0 +1,239 @@
+{
+    "test": "sl-test",
+    "locale": "sl",
+    "basis": {
+        "providers_title": "Vaš podatkovni center",
+        "select": "Izberite",
+        "services": "Storitve",
+        "users": "Uporabniki",
+        "more": "Več",
+        "next": "Naslednji",
+        "got_it": "Imam ga",
+        "settings": "Nastavitve",
+        "password": "Geslo",
+        "create": "Dodajte novo",
+        "confirmation": "Potrditev",
+        "cancel": "Prekliči",
+        "providers": "Ponudniki",
+        "services_title": "Vaše osebne, zasebne in neodvisne storitve.",
+        "app_name": "SelfPrivacy",
+        "delete": "Izbriši",
+        "close": "Zapri",
+        "connect": "Povežite",
+        "domain": "Domena",
+        "saving": "Varčevanje…",
+        "username": "Uporabniško ime",
+        "loading": "Nalaganje…",
+        "later": "Preskočite in prilagodite pozneje",
+        "connect_to_existing": "Že imam SelfPrivacy strežnik!",
+        "reset": "Ponastavitev",
+        "details": "Podrobne informacije",
+        "no_data": "Ni podatkov",
+        "wait": "Se prenaša",
+        "remove": "Izbriši",
+        "apply": "Uporabi",
+        "done": "Končano",
+        "continue": "Nadaljuj",
+        "alert": "Opozorilo",
+        "error": "Napaka",
+        "network_error": "Omrežna napaka"
+    },
+    "more_page": {
+        "onboarding": "Pozdravi",
+        "create_ssh_key": "Superuporabniški ključi SSH",
+        "configuration_wizard": "Pomočnik za nastavitev"
+    },
+    "console_page": {
+        "title": "Konzole",
+        "copy": "Kopiraj",
+        "request_data": "Zahtevaj podatke",
+        "error": "Napaka",
+        "data": "Podatki",
+        "errors": "Napake",
+        "context": "Kontekst",
+        "history_empty": "Ni še podatkov",
+        "graphql_request": "GraphQL zahteva",
+        "rest_api_request": "REST API zahteva"
+    },
+    "about_application_page": {
+        "title": "Več o aplikaciji in podpora",
+        "api_version_text": "Različica API strežnika",
+        "privacy_policy": "Pravilnik o zasebnosti",
+        "application_version_text": "Različica aplikacije",
+        "matrix_channel": "Matrix kanal",
+        "telegram_channel": "Telegram kanal",
+        "get_support": "Podpora",
+        "matrix_support_chat": "Matrix podporni kanal",
+        "telegram_support_chat": "Telegram podporni kanal",
+        "contribute": "Prispevaj",
+        "email_support": "Podpora preko elektronske pošte",
+        "bug_report": "Prijavi napako",
+        "help_translate": "Pomagaj nam prevesti",
+        "website": "Naša spletna stran",
+        "documentation": "Dokumentacija",
+        "versions": "Različice",
+        "open_source_licenses": "Odprtokodne licence",
+        "links": "Povezave"
+    },
+    "application_settings": {
+        "title": "Nastavitve aplikacije",
+        "system_theme_mode_title": "Privzeta tema sistema",
+        "system_theme_mode_description": "Uporaba svetle ali temne teme glede na sistemske nastavitve",
+        "dark_theme_title": "Temna tema",
+        "change_application_theme": "Spreminjanje barvne teme",
+        "dangerous_settings": "Nevarne nastavitve",
+        "reset_config_title": "Ponastavitev konfiguracije aplikacije",
+        "language": "Jezik",
+        "click_to_change_locale": "Klikni za prikaz seznama jezikov",
+        "reset_config_description": "Ponastavi API ključe in root uporabnika."
+    },
+    "onboarding": {
+        "page1_title": "Digitalna neodvisnost je na voljo vsem",
+        "page1_text": "Pošta, VPN, messenger, družabna omrežja in še veliko več na lastnem zasebnem strežniku pod vašim popolnim nadzorom.",
+        "page2_title": "SelfPrivacy ni oblak, temveč vaš osebni podatkovni center",
+        "page2_text": "Storitev SelfPrivacy sodeluje le s ponudnikom storitev po vaši izbiri. Če nimate računov, vam jih lahko pomagamo ustvariti.",
+        "page2_server_provider_title": "Ponudnik strežnika",
+        "page2_server_provider_text": "Ponudnik strežnika bo vaš strežnik vzdrževal v svojem podatkovnem centru. SelfPrivacy se bo samodejno povezal z njim in nastavil vaš strežnik.",
+        "page2_dns_provider_title": "Ponudnik storitev DNS",
+        "page2_dns_provider_text": "To be on the Internet, you need a domain. To have a domain point to your server, you need a reliable DNS server. We will offer you to choose one of the supported DNS servers and automatically configure all entries. Want to configure them manually? You can do that too.",
+        "page2_backup_provider_title": "Ponudnik varnostnih kopij",
+        "page2_backup_provider_text": "Kaj če se kaj zgodi z vašim strežnikom? Predstavljajte si hekerski napad, nenamerno brisanje podatkov ali zavrnitev storitve? Vaši podatki bodo na varnem pri ponudniku varnostnih kopij. Te bodo varno šifrirane in kadar koli dostopne za obnovitev strežnika."
+    },
+    "resource_chart": {
+        "month": "Mesec",
+        "day": "Dan",
+        "hour": "Ura",
+        "cpu_title": "Poraba CPU",
+        "out": "Poslano",
+        "network_title": "Uporaba omrežja",
+        "in": "Pridobljeno iz"
+    },
+    "server": {
+        "card_title": "Server",
+        "description": "Vse vaše storitve so na voljo tukaj",
+        "general_information": "Splošne informacije",
+        "resource_usage": "Uporaba virov",
+        "allow_autoupgrade": "Dovolite samodejno nadgradnjo",
+        "allow_autoupgrade_hint": "Omogočite samodejne nadgradnje paketov na strežniku",
+        "reboot_after_upgrade": "Ponovni zagon po nadgradnji",
+        "core_count": {
+            "two": "{} jedra",
+            "few": "{} jedra",
+            "one": "{} jedro",
+            "many": "{} jedra",
+            "other": "{} jeder"
+        },
+        "reboot_after_upgrade_hint": "Ponovni zagon brez poziva po uporabi sprememb v strežniku",
+        "server_timezone": "Časovni pas strežnika",
+        "select_timezone": "Izberite časovni pas",
+        "timezone_search_bar": "Ime časovnega pasu ali vrednost časovnega zamika",
+        "server_id": "ID strežnika",
+        "status": "Status",
+        "cpu": "CPU",
+        "ram": "Glavni pomnilnik",
+        "disk": "Lokalni disk",
+        "monthly_cost": "Mesečni stroški",
+        "location": "Lokacija"
+    },
+    "ssh": {
+        "root_subtitle": "Lastniki tukaj navedenih ključev imajo popoln dostop do podatkov in nastavitev strežnika. Dodajte samo svoje ključe.",
+        "title": "Ključi SSH",
+        "create": "Dodajanje ključa SSH",
+        "delete": "Odstranitev ključa SSH",
+        "delete_confirm_question": "Ali ste prepričani, da želite izbrisati SSH ključ?",
+        "no_key_name": "Ključ brez imena",
+        "root_title": "To so ključi superuporabnika",
+        "input_label": "Javni ED25519, ECDSA ali RSA ključ"
+    },
+    "domain": {
+        "screen_title": "Domena in DNS",
+        "card_title": "Domena",
+        "ok": "Zapisi so v redu",
+        "error": "Ugotovljene težave",
+        "error_subtitle": "Kliknite tukaj za popravek",
+        "refreshing": "Posodobitev podatkov…",
+        "uninitialized": "Podatki še niso na voljo",
+        "services_title": "Storitve",
+        "services_subtitle": "Za vsako storitev so potrebni zapisi tipa \"A\".",
+        "email_title": "E-pošta",
+        "email_subtitle": "Zapisi, potrebni za varno izmenjavo e-pošte.",
+        "update_list": "Seznam posodobitev"
+    },
+    "backup": {
+        "restore": "Obnovitev iz varnostne kopije",
+        "no_backups": "Varnostnih kopij še ni",
+        "card_title": "Varnostna kopija",
+        "description": "V primeru incidenta: napada hekerjev, izbrisa strežnika itd.",
+        "reupload_key": "Prisilna posodobitev ključa",
+        "reuploaded_key": "Ključ v strežniku je bil posodobljen",
+        "initialize": "Inicializacija",
+        "create_new": "Ustvarite novo varnostno kopijo",
+        "restore_alert": "Obnavljate iz varnostne kopije, ustvarjene dne {}. Vsi trenutni podatki bodo izgubljeni. Ste prepričani?",
+        "refresh": "Osvežitev stanja",
+        "refetch_backups": "Ponovno pridobivanje seznama varnostnih kopij",
+        "refetching_list": "V nekaj minutah bo seznam posodobljen"
+    },
+    "mail": {
+        "login_info": "Uporabite uporabniško ime in geslo iz zavihka uporabniki. Vrata IMAP: 143, STARTTLS. Vrata SMTP: 587, STARTTLS."
+    },
+    "password_manager": {
+        "login_info": "Na spletnem mestu boste morali ustvariti račun."
+    },
+    "video": {
+        "login_info": "Račun ni potreben."
+    },
+    "storage": {
+        "extending_volume_price_info": "Cena vključuje DDV in je izračunana na podlagi podatkov o cenah, ki jih je posredoval Hetzner. Strežnik se med postopkom ponovno zažene.",
+        "data_migration_notice": "Med migracijo bodo vse storitve izklopljene.",
+        "card_title": "Shranjevanje podatkov v strežniku",
+        "status_ok": "Uporaba diska je v redu",
+        "status_error": "Malo prostora na disku",
+        "disk_usage": "{} uporablja se",
+        "disk_total": "{sizeTotal} skupaj - {displayName}",
+        "gb": "{} GB",
+        "mb": "{} MB",
+        "kb": "{} KB",
+        "bytes": "Bajti",
+        "extend_volume_button": "Podaljšanje glasnosti",
+        "extending_volume_title": "Razširitev prostora za shranjevanje",
+        "extending_volume_description": "Če spremenite velikost shrambe, lahko v strežniku shranite več podatkov, ne da bi pri tem povečali sam strežnik. Obseg je mogoče samo povečati: ni ga mogoče zmanjšati.",
+        "extending_volume_error": "Ni uspelo zagnati razširitve shrambe.",
+        "size": "Velikost",
+        "data_migration_title": "Migracija podatkov",
+        "start_migration_button": "Začetek migracije"
+    },
+    "service_page": {
+        "uses": "Uporablja {usage} na {volume}",
+        "status": {
+            "reloading": "Ponovni zagon spletne strani",
+            "active": "Vzpostavitev in delovanje",
+            "inactive": "Ustavljeno",
+            "failed": "Ni se uspelo zagnati",
+            "off": "Invalidi",
+            "activating": "Aktivacija spletne strani",
+            "deactivating": "Deaktiviranje spletne strani"
+        },
+        "open_in_browser": "Odprite v brskalniku",
+        "restart": "Ponovni zagon storitve",
+        "disable": "Onemogočite storitev",
+        "enable": "Omogočite storitev",
+        "move": "Premik na drug zvezek"
+    },
+    "social_network": {
+        "login_info": "Na spletišču morate ustvariti račun."
+    },
+    "not_ready_card": {
+        "in_menu": "Strežnik še ni bil nastavljen, uporabite čarovnika za povezavo."
+    },
+    "cloud": {
+        "login_info": "Prijava skrbnika: admin, geslo je enako geslu glavnega uporabnika. Ustvarite nove uporabnike v skrbniškem vmesniku NextCloud."
+    },
+    "git": {
+        "login_info": "Na spletnem mestu morate ustvariti račun. Prvi uporabnik bo postal administrator."
+    },
+    "initializing": {
+        "select_provider_site_button": "Obišči stran",
+        "connect_to_server_provider": "Zdaj se prijavi pri {provider}",
+        "server_provider_email_unavailable": "Elektronska pošta ne bo delovala s tem ponudnikom."
+    }
+}

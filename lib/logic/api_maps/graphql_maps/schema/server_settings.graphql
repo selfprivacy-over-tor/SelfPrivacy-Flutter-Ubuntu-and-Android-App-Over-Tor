@@ -1,0 +1,72 @@
+query SystemSettings {
+  system {
+    settings {
+      autoUpgrade {
+        allowReboot
+        enable
+      }
+      ssh {
+        enable
+      }
+      timezone
+    }
+  }
+}
+
+query SystemIsUsingBinds {
+  system {
+    info {
+      usingBinds
+    }
+  }
+}
+
+fragment fragmentDnsRecords on DnsRecord {
+  recordType
+  name
+  displayName
+  content
+  ttl
+  priority
+}
+
+query GetDnsRecords {
+  system {
+    domainInfo {
+      domain
+      hostname
+      provider
+      requiredDnsRecords {
+        ...fragmentDnsRecords
+      }
+    }
+  }
+}
+
+mutation ChangeTimezone($timezone: String!) {
+  system {
+    changeTimezone(timezone: $timezone) {
+      ...basicMutationReturnFields
+      timezone
+    }
+  }
+}
+
+mutation ChangeAutoUpgradeSettings($settings: AutoUpgradeSettingsInput!) {
+  system {
+    changeAutoUpgradeSettings(settings: $settings) {
+      ...basicMutationReturnFields
+      allowReboot
+      enableAutoUpgrade
+    }
+  }
+}
+
+mutation ChangeSshSettings($settings: SSHSettingsInput!) {
+  system {
+    changeSshSettings(settings: $settings) {
+      ...basicMutationReturnFields
+      enable
+    }
+  }
+}
