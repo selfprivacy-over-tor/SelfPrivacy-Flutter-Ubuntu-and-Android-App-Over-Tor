@@ -94,7 +94,7 @@ class SelectDomainToRecover extends StatelessWidget {
                   if (state.recoveryCapabilities ==
                       ServerRecoveryCapabilities.none) {
                     context.read<RecoveryDomainFormCubit>().setCustomError(
-                      'recovering.domain_recover_error'.tr(),
+                      'recovering.custom_tor_domain_recover_error2'.tr(),
                     );
                   }
                 }

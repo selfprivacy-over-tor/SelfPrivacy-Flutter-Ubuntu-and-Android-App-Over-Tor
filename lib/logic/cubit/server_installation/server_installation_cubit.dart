@@ -694,7 +694,7 @@ class ServerInstallationCubit extends Cubit<ServerInstallationState> {
       return;
     } on IpNotFoundException {
       getIt<NavigationService>().showSnackBar(
-        'recovering.domain_recover_error'.tr(),
+        'recovering.custom_tor_domain_recover_error1'.tr(),
       );
       return;
     }
