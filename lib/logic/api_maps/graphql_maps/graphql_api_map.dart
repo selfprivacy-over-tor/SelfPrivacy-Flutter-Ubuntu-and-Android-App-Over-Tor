@@ -20,7 +20,6 @@ class RequestLoggingLink extends Link {
   ]) async* {
     _addConsoleLog(
       GraphQlRequestConsoleLog(
-        // context: request.context,
         operationType: request.type.name,
         operation: request.operation,
         variables: request.variables,
@@ -36,7 +35,6 @@ class ResponseLoggingParser extends ResponseParser {
     final response = super.parseResponse(body);
     _addConsoleLog(
       GraphQlResponseConsoleLog(
-        // context: response.context,
         data: response.data,
         errors: response.errors,
         rawResponse: jsonEncode(response.response),
@@ -63,17 +61,23 @@ abstract class GraphQLApiMap {
       const AppLogger(name: 'graphql_map').log;
 
   Future<GraphQLClient> getClient() async {
-    IOClient? ioClient;
+    // Build a custom HttpClient to support Tor SOCKS5 for onion domains
+    final bool isOnion = (rootAddress ?? '').endsWith('.onion');
+    final HttpClient baseHttpClient = HttpClient();
     if (TlsOptions.stagingAcme || !TlsOptions.verifyCertificate) {
-      final HttpClient httpClient =
-          HttpClient()
-            ..badCertificateCallback =
-                (final cert, final host, final port) => true;
-      ioClient = IOClient(httpClient);
+      baseHttpClient.badCertificateCallback =
+          (final X509Certificate cert, final String host, final int port) =>
+              true;
     }
+    if (isOnion && Platform.isLinux) {
+      baseHttpClient.findProxy = (final Uri uri) => 'SOCKS5 127.0.0.1:9050';
+    }
+    final IOClient ioClient = IOClient(baseHttpClient);
 
+    final String httpUri =
+        isOnion ? 'http://$rootAddress/graphql' : 'https://api.$rootAddress/graphql';
     final httpLink = HttpLink(
-      'https://api.$rootAddress/graphql',
+      httpUri,
       httpClient: ioClient,
       parser: ResponseLoggingParser(),
       defaultHeaders: {'Accept-Language': _locale},
@@ -82,8 +86,8 @@ abstract class GraphQLApiMap {
     final Link graphQLLink = RequestLoggingLink().concat(
       isWithToken
           ? AuthLink(
-            getToken: () => customToken == '' ? 'Bearer $_token' : customToken,
-          ).concat(httpLink)
+              getToken: () => customToken == '' ? 'Bearer $_token' : customToken,
+            ).concat(httpLink)
           : httpLink,
     );
 
@@ -97,8 +101,12 @@ abstract class GraphQLApiMap {
   Future<GraphQLClient> getSubscriptionClient({
     final Future<Duration?>? Function(int?, String?)? onConnectionLost,
   }) async {
+    final bool isOnion = (rootAddress ?? '').endsWith('.onion');
+    // Note: WebSocket over Tor may be unreliable; higher layer may fall back to polling.
+    final String wsUri =
+        isOnion ? 'ws://$rootAddress/graphql' : 'ws://api.$rootAddress/graphql';
     final WebSocketLink webSocketLink = WebSocketLink(
-      'ws://api.$rootAddress/graphql',
+      wsUri,
       // Only [GraphQLProtocol.graphqlTransportWs] supports automatic pings, so we don't disconnect when nothing happens.
       subProtocol: GraphQLProtocol.graphqlTransportWs,
       config: SocketClientConfig(
@@ -106,13 +114,12 @@ abstract class GraphQLApiMap {
         autoReconnect: true,
         initialPayload:
             _token.isEmpty ? null : {'Authorization': 'Bearer $_token'},
-        headers:
-            _token.isEmpty
-                ? null
-                : {
-                  'Authorization': 'Bearer $_token',
-                  'Accept-Language': _locale,
-                },
+        headers: _token.isEmpty
+            ? null
+            : {
+                'Authorization': 'Bearer $_token',
+                'Accept-Language': _locale,
+              },
       ),
     );
 
@@ -136,3 +143,5 @@ abstract class GraphQLApiMap {
   abstract final bool isWithToken;
   abstract final String customToken;
 }
+
+

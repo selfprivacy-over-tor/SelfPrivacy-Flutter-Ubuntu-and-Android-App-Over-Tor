@@ -361,7 +361,10 @@ class ApiConnectionRepository {
     connectionStatus = ConnectionStatus.connected;
     _connectionStatusStream.add(connectionStatus);
 
-    if (VersionConstraint.parse(
+    final String? domain = getIt<ResourcesModel>().serverDomain?.domainName;
+    final bool isOnion = (domain ?? '').endsWith('.onion');
+
+    if (!isOnion && VersionConstraint.parse(
       wsJobsUpdatesSupportedVersion,
     ).allows(Version.parse(apiVersion))) {
       _serverJobsStreamSubscription = api
@@ -581,3 +584,5 @@ class ApiDataElement<T> {
   /// Returns the last time the data was updated
   DateTime get lastUpdated => _lastUpdated;
 }
+
+

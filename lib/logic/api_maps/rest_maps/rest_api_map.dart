@@ -16,14 +16,16 @@ abstract class RestApiMap {
     dio.interceptors.add(ConsoleInterceptor());
     dio.httpClientAdapter = IOHttpClientAdapter(
       createHttpClient: () {
-        final client =
-            HttpClient()
-              ..badCertificateCallback =
-                  (
-                    final X509Certificate cert,
-                    final String host,
-                    final int port,
-                  ) => true;
+        final bool isOnion = rootAddress.endsWith('.onion');
+        final HttpClient client = HttpClient();
+        client.badCertificateCallback = (
+          final X509Certificate cert,
+          final String host,
+          final int port,
+        ) => true;
+        if (isOnion && Platform.isLinux) {
+          client.findProxy = (final Uri uri) => 'SOCKS5 127.0.0.1:9050';
+        }
         return client;
       },
     );
