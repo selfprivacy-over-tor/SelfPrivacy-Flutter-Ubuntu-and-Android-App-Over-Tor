@@ -165,6 +165,12 @@ class ServerInstallationRepository {
       return RecoveryStep.selecting;
     }
 
+    // For .onion domains, skip all provider steps - they run locally without cloud providers
+    final bool isOnion = serverDomain.domainName.endsWith('.onion');
+    if (isOnion) {
+      return RecoveryStep.backblazeToken;
+    }
+
     if (serverProviderToken == null) {
       return RecoveryStep.serverProviderToken;
     }
@@ -317,6 +323,10 @@ class ServerInstallationRepository {
   }
 
   Future<String> getServerIpFromDomain(final ServerDomain serverDomain) async {
+    // For .onion domains, skip DNS lookup - Tor handles routing internally
+    if (serverDomain.domainName.endsWith('.onion')) {
+      return serverDomain.domainName;
+    }
     String? domain;
     await InternetAddress.lookup(serverDomain.domainName).then((final records) {
       for (final record in records) {

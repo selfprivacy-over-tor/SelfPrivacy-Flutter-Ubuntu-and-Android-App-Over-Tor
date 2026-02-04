@@ -235,7 +235,7 @@ class ServerInstallationNotFinished extends ServerInstallationState {
     providerApiToken: providerApiToken,
     serverLocation: serverLocation,
     serverTypeIdentificator: serverTypeIdentificator,
-    dnsApiToken: dnsApiToken!,
+    dnsApiToken: dnsApiToken ?? '',  // Empty string for .onion domains without DNS provider
     backblazeCredential: backblazeCredential!,
     serverDomain: serverDomain!,
     serverDetails: serverDetails!,
@@ -375,7 +375,7 @@ class ServerInstallationRecovery extends ServerInstallationState {
     providerApiToken: providerApiToken,
     serverLocation: serverLocation,
     serverTypeIdentificator: serverTypeIdentificator,
-    dnsApiToken: dnsApiToken!,
+    dnsApiToken: dnsApiToken ?? '',  // Empty string for .onion domains without DNS provider
     backblazeCredential: backblazeCredential!,
     serverDomain: serverDomain!,
     serverDetails: serverDetails!,

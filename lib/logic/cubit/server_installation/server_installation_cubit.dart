@@ -680,6 +680,24 @@ class ServerInstallationCubit extends Cubit<ServerInstallationState> {
       await repository.saveDomain(newServerDomain);
       await setServerProviderType(serverProvider);
       await setDnsProviderType(dnsProvider);
+      // For .onion domains, skip all provider/backup steps and finish recovery directly
+      final bool isOnion = serverDomain.domainName.endsWith('.onion');
+      if (isOnion) {
+        // Create a dummy "none" backup credential for .onion domains
+        final dummyBackupCredential = BackupsCredential(
+          keyId: '',
+          applicationKey: '',
+          provider: BackupsProviderType.none,
+        );
+        emit(
+          dataState.copyWith(
+            serverDetails: newServerDetails,
+            serverDomain: newServerDomain,
+          ),
+        );
+        await finishRecoveryProcess(dummyBackupCredential);
+        return;
+      }
       emit(
         dataState.copyWith(
           serverDetails: newServerDetails,

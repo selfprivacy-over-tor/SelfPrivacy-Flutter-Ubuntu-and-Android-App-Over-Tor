@@ -8,6 +8,7 @@ import 'package:selfprivacy/logic/api_maps/tls_options.dart';
 import 'package:selfprivacy/logic/get_it/resources_model.dart';
 import 'package:selfprivacy/logic/models/console_log.dart';
 import 'package:selfprivacy/utils/app_logger.dart';
+import 'package:socks5_proxy/socks_client.dart';
 
 void _addConsoleLog(final ConsoleLog message) =>
     getIt.get<ConsoleModel>().log(message);
@@ -69,8 +70,16 @@ abstract class GraphQLApiMap {
           (final X509Certificate cert, final String host, final int port) =>
               true;
     }
-    if (isOnion && Platform.isLinux) {
-      baseHttpClient.findProxy = (final Uri uri) => 'SOCKS5 127.0.0.1:9050';
+    if (isOnion) {
+      // Use SOCKS5 proxy for .onion domains
+      // Linux: Tor daemon on 9050
+      // Android: Orbot on 9050
+      baseHttpClient.badCertificateCallback =
+          (final X509Certificate cert, final String host, final int port) =>
+              true;
+      SocksTCPClient.assignToHttpClient(baseHttpClient, [
+        ProxySettings(InternetAddress.loopbackIPv4, 9050),
+      ]);
     }
     final IOClient ioClient = IOClient(baseHttpClient);
 
