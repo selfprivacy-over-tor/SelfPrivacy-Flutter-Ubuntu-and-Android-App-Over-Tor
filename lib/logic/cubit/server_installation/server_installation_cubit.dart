@@ -73,16 +73,22 @@ class ServerInstallationCubit extends Cubit<ServerInstallationState> {
     final ServerProviderType providerType,
   ) async {
     await repository.saveServerProviderType(providerType);
-    ProvidersController.initServerProvider(
-      ServerProviderSettings(provider: providerType),
-    );
+    // Skip initializing server provider for unknown type (e.g., .onion domains)
+    if (providerType != ServerProviderType.unknown) {
+      ProvidersController.initServerProvider(
+        ServerProviderSettings(provider: providerType),
+      );
+    }
   }
 
   Future<void> setDnsProviderType(final DnsProviderType providerType) async {
     await repository.saveDnsProviderType(providerType);
-    ProvidersController.initDnsProvider(
-      DnsProviderSettings(provider: providerType),
-    );
+    // Skip initializing DNS provider for unknown type (e.g., .onion domains)
+    if (providerType != DnsProviderType.unknown) {
+      ProvidersController.initDnsProvider(
+        DnsProviderSettings(provider: providerType),
+      );
+    }
   }
 
   Future<bool?> isServerProviderApiTokenValid(
@@ -650,13 +656,15 @@ class ServerInstallationCubit extends Cubit<ServerInstallationState> {
             isWithToken: true,
             overrideDomain: serverDomain.domainName,
           ).getServerProviderType();
-      final dnsProvider =
-          await ServerApi(
-            customToken: serverDetails.apiToken,
-            isWithToken: true,
-            overrideDomain: serverDomain.domainName,
-          ).getDnsProviderType();
-      if (dnsProvider == DnsProviderType.unknown) {
+      final bool isOnionDomain = serverDomain.domainName.endsWith('.onion');
+      final dnsProvider = isOnionDomain
+          ? DnsProviderType.unknown  // .onion domains don't use DNS
+          : await ServerApi(
+              customToken: serverDetails.apiToken,
+              isWithToken: true,
+              overrideDomain: serverDomain.domainName,
+            ).getDnsProviderType();
+      if (dnsProvider == DnsProviderType.unknown && !isOnionDomain) {
         getIt<NavigationService>().showSnackBar(
           'recovering.generic_error'.tr(),
         );
