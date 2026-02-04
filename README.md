@@ -1,5 +1,33 @@
 # SelfPrivacy App
 
+## Prerequisites (Ubuntu/Debian)
+
+```bash
+# Install build dependencies
+sudo apt install ninja-build clang cmake pkg-config git curl \
+  libgtk-3-dev libsecret-1-dev libjsoncpp-dev libblkid-dev \
+  liblzma-dev xdg-user-dirs gnome-keyring unzip xz-utils zip
+
+# Install Flutter to /opt (NOT snap - snap causes GLib version conflicts)
+curl -L https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.32.2-stable.tar.xz | sudo tar xJf - -C /opt
+echo 'export PATH="/opt/flutter/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
+
+# Install Tor daemon (for .onion connectivity)
+sudo apt install tor
+sudo systemctl enable --now tor
+
+# Verify Tor is running on port 9050
+ss -tlnp | grep 9050
+```
+
+Then build and run:
+```bash
+flutter pub get
+flutter run -d linux
+```
+
+---
+
 SelfPrivacy — is a platform on your cloud hosting, that allows to deploy your own private services and control them using mobile application.
 
 To use this application, you'll be required to create accounts of different service providers. Please reffer to this manual: https://selfprivacy.org/docs/getting-started/
