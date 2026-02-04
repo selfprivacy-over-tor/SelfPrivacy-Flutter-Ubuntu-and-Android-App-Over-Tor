@@ -165,10 +165,12 @@ class ServerInstallationRepository {
       return RecoveryStep.selecting;
     }
 
-    // For .onion domains, skip all provider steps - they run locally without cloud providers
+    // For .onion domains, skip all provider steps including backups - they run locally without cloud providers
     final bool isOnion = serverDomain.domainName.endsWith('.onion');
     if (isOnion) {
-      return RecoveryStep.backblazeToken;
+      // Return selecting to indicate recovery is essentially complete for .onion
+      // The cubit's setRecoveryAuth will auto-finish the recovery process
+      return RecoveryStep.selecting;
     }
 
     if (serverProviderToken == null) {

@@ -23,8 +23,29 @@ ss -tlnp | grep 9050
 Then build and run:
 ```bash
 flutter pub get
-flutter run -d linux
+flutter build linux
+./build/linux/x64/release/bundle/selfprivacy
 ```
+
+## Connecting to a .onion Backend
+
+First, deploy the backend (see `Manager-Ubuntu-SelfPrivacy-Over-Tor/backend/`):
+```bash
+cd ../Manager-Ubuntu-SelfPrivacy-Over-Tor/backend
+./build-and-run.sh
+```
+
+Then get your .onion address and recovery key:
+```bash
+cd SelfPrivacy-Flutter-Ubuntu-and-Android-App-Over-Tor
+./get-recovery-key.sh
+```
+
+In the app:
+1. Choose "I already have a server"
+2. Enter your `.onion` address (without `http://`)
+3. Select "I have a recovery key"
+4. Enter the recovery key mnemonic phrase
 
 ---
 
