@@ -38,11 +38,14 @@ class DnsRecordsCubit extends ServerConnectionDependentCubit<DnsRecordsState> {
     }
 
     final List<DnsRecord> allDnsRecords = await api.getDnsRecords();
+    if (isClosed) return;
+
     final foundRecords = await validateDnsRecords(
       domain,
       extractDkimRecord(allDnsRecords)?.content ?? '',
       allDnsRecords,
     );
+    if (isClosed) return;
 
     if (!foundRecords.success && foundRecords.message == 'link-local') {
       emit(
@@ -80,6 +83,26 @@ class DnsRecordsCubit extends ServerConnectionDependentCubit<DnsRecordsState> {
     final String dkimPublicKey,
     final List<DnsRecord> pendingDnsRecords,
   ) async {
+    if (ProvidersController.currentDnsProvider == null) {
+      return GenericResult(
+        data: pendingDnsRecords
+            .where(
+              (final r) => !(r.type == 'AAAA' &&
+                  (r.content?.startsWith('fe80::') ?? false)),
+            )
+            .map(
+              (final r) => DesiredDnsRecord(
+                name: r.name!,
+                displayName: r.displayName,
+                content: r.content!,
+                isSatisfied: true,
+                type: r.type,
+              ),
+            )
+            .toList(),
+        success: true,
+      );
+    }
     final result = await ProvidersController.currentDnsProvider!.getDnsRecords(
       domain: domain,
     );

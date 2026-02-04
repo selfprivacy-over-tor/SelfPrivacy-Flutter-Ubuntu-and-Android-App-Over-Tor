@@ -23,7 +23,9 @@ class ServicesBloc extends Bloc<ServicesEvent, ServicesState> {
     _apiDataSubscription = connectionRepository.dataStream.listen((
       final ApiData apiData,
     ) {
-      add(ServicesListUpdate([...apiData.services.data ?? []]));
+      if (!isClosed) {
+        add(ServicesListUpdate([...apiData.services.data ?? []]));
+      }
     });
 
     if (connectionRepository.connectionStatus == ConnectionStatus.connected) {

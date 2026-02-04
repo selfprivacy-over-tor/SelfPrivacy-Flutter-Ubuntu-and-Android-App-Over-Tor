@@ -76,7 +76,6 @@ class ServerApi extends GraphQLApiMap
     try {
       final GraphQLClient client = await getClient();
       response = await client.query$GetApiVersion();
-      print('GraphQL Response: ${response.toString()}');
 
       if (response.hasException) {
         logger(
