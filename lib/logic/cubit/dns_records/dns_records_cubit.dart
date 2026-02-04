@@ -37,6 +37,18 @@ class DnsRecordsCubit extends ServerConnectionDependentCubit<DnsRecordsState> {
       return;
     }
 
+    // For .onion domains, DNS records don't apply - Tor handles routing
+    if (domain.domainName.endsWith('.onion')) {
+      emit(const DnsRecordsState(dnsState: DnsRecordsStatus.good, dnsRecords: []));
+      return;
+    }
+
+    // Skip if no DNS provider is configured
+    if (ProvidersController.currentDnsProvider == null) {
+      emit(const DnsRecordsState(dnsState: DnsRecordsStatus.good, dnsRecords: []));
+      return;
+    }
+
     final List<DnsRecord> allDnsRecords = await api.getDnsRecords();
     final foundRecords = await validateDnsRecords(
       domain,
@@ -80,6 +92,12 @@ class DnsRecordsCubit extends ServerConnectionDependentCubit<DnsRecordsState> {
     final String dkimPublicKey,
     final List<DnsRecord> pendingDnsRecords,
   ) async {
+    // For .onion domains or when no DNS provider is configured, skip validation
+    if (domain.domainName.endsWith('.onion') ||
+        ProvidersController.currentDnsProvider == null) {
+      return GenericResult(success: true, data: []);
+    }
+
     final result = await ProvidersController.currentDnsProvider!.getDnsRecords(
       domain: domain,
     );
@@ -181,6 +199,16 @@ class DnsRecordsCubit extends ServerConnectionDependentCubit<DnsRecordsState> {
   }
 
   Future<void> fix() async {
+    final ServerDomain? domain = getIt<ApiConnectionRepository>().serverDomain;
+
+    // For .onion domains or when no DNS provider is configured, skip fix
+    if (domain == null ||
+        domain.domainName.endsWith('.onion') ||
+        ProvidersController.currentDnsProvider == null) {
+      await load();
+      return;
+    }
+
     emit(state.copyWith(dnsState: DnsRecordsStatus.refreshing));
     final List<DnsRecord> records = await api.getDnsRecords();
 
@@ -204,10 +232,9 @@ class DnsRecordsCubit extends ServerConnectionDependentCubit<DnsRecordsState> {
     }
 
     // TODO(NaiJi): Error handling?
-    final ServerDomain? domain = getIt<ApiConnectionRepository>().serverDomain;
     await ProvidersController.currentDnsProvider!.removeDomainRecords(
       records: records,
-      domain: domain!,
+      domain: domain,
     );
     await ProvidersController.currentDnsProvider!.createDomainRecords(
       records: records.where((final r) => r.content != null).toList(),

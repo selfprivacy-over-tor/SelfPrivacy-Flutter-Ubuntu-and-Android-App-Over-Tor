@@ -226,6 +226,23 @@ class JobsCubit extends Cubit<JobsState> {
   }
 
   Future<void> updateDnsRecords(final List<DnsRecord> oldDnsRecords) async {
+    final ServerDomain? domain =
+        getIt<ApiConnectionRepository>().serverDomain;
+
+    // For .onion domains or when no DNS provider, skip DNS updates
+    if (domain == null ||
+        domain.domainName.endsWith('.onion') ||
+        ProvidersController.currentDnsProvider == null) {
+      emit(
+        (state as JobsStateLoading).updateJobStatus(
+          UpdateDnsRecordsJob.jobId,
+          JobStatusEnum.finished,
+          message: 'jobs.dns_records_did_not_change'.tr(),
+        ),
+      );
+      return;
+    }
+
     emit(
       (state as JobsStateLoading).updateJobStatus(
         UpdateDnsRecordsJob.jobId,
@@ -260,15 +277,12 @@ class JobsCubit extends Cubit<JobsState> {
         ),
       );
     } else {
-      final ServerDomain? domain =
-          getIt<ApiConnectionRepository>().serverDomain;
-
       final dnsCreateResult = await ProvidersController.currentDnsProvider!
           .updateDnsRecords(
             newRecords:
                 newDnsRecords.where((final r) => r.content != null).toList(),
             oldRecords: oldDnsRecords,
-            domain: domain!,
+            domain: domain,
           );
 
       emit(

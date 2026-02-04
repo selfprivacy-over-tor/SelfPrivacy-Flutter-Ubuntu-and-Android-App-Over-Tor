@@ -95,13 +95,25 @@ class ServerInstallationRepository {
         );
       } else {
         // We have a server set up, so we load it
-        TlsOptions.verifyCertificate = true;
+        // For .onion domains, don't verify TLS certificates (self-signed) and allow null DNS/backups
+        final bool isOnion = serverDomain?.domainName.endsWith('.onion') ?? false;
+        TlsOptions.verifyCertificate = !isOnion;
+
+        // For .onion domains, use empty/dummy values for DNS and backups since they don't apply
+        final String effectiveDnsApiToken = dnsApiToken ?? '';
+        final BackupsCredential effectiveBackupsCredential = backblazeCredential ??
+            BackupsCredential(
+              keyId: '',
+              applicationKey: '',
+              provider: BackupsProviderType.none,
+            );
+
         return ServerInstallationFinished(
           providerApiToken: providerApiToken,
           serverTypeIdentificator: serverTypeIdentificator,
-          dnsApiToken: dnsApiToken!,
+          dnsApiToken: effectiveDnsApiToken,
           serverDomain: serverDomain!,
-          backblazeCredential: backblazeCredential!,
+          backblazeCredential: effectiveBackupsCredential,
           serverDetails: serverDetails!,
           serverLocation: location,
         );
@@ -213,6 +225,12 @@ class ServerInstallationRepository {
     final String token,
     final String domain,
   ) async {
+    // For .onion domains, DNS validation is not applicable
+    if (domain.endsWith('.onion') ||
+        ProvidersController.currentDnsProvider == null) {
+      return GenericResult(success: true, data: true);
+    }
+
     final result = await ProvidersController.currentDnsProvider!
         .tryInitApiByToken(token);
     if (!result.success) {
@@ -241,6 +259,12 @@ class ServerInstallationRepository {
   }
 
   Future<void> createDkimRecord(final ServerDomain domain) async {
+    // Skip DKIM record creation for .onion domains or when no DNS provider
+    if (domain.domainName.endsWith('.onion') ||
+        ProvidersController.currentDnsProvider == null) {
+      return;
+    }
+
     final ServerApi api = ServerApi(
       overrideDomain: domain.domainName,
       customToken:

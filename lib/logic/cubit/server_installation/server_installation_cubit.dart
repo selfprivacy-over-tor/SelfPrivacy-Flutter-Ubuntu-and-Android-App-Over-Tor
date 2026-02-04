@@ -309,23 +309,28 @@ class ServerInstallationCubit extends Cubit<ServerInstallationState> {
   ) async {
     await repository.saveServerDetails(serverDetails);
 
-    // TODO(NaiJi): Error handling?
-    await ProvidersController.currentDnsProvider!.removeDomainRecords(
-      records: getProjectDnsRecords(
-        domainName: state.serverDomain!.domainName,
-        ip4: serverDetails.ip4,
-        isCreating: false,
-      ),
-      domain: state.serverDomain!,
-    );
-    await ProvidersController.currentDnsProvider!.createDomainRecords(
-      records: getProjectDnsRecords(
-        domainName: state.serverDomain!.domainName,
-        ip4: serverDetails.ip4,
-        isCreating: true,
-      ),
-      domain: state.serverDomain!,
-    );
+    // Skip DNS operations for .onion domains or when no DNS provider is configured
+    if (ProvidersController.currentDnsProvider != null &&
+        state.serverDomain != null &&
+        !state.serverDomain!.domainName.endsWith('.onion')) {
+      // TODO(NaiJi): Error handling?
+      await ProvidersController.currentDnsProvider!.removeDomainRecords(
+        records: getProjectDnsRecords(
+          domainName: state.serverDomain!.domainName,
+          ip4: serverDetails.ip4,
+          isCreating: false,
+        ),
+        domain: state.serverDomain!,
+      );
+      await ProvidersController.currentDnsProvider!.createDomainRecords(
+        records: getProjectDnsRecords(
+          domainName: state.serverDomain!.domainName,
+          ip4: serverDetails.ip4,
+          isCreating: true,
+        ),
+        domain: state.serverDomain!,
+      );
+    }
 
     emit(
       (state as ServerInstallationNotFinished).copyWith(
