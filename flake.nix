@@ -22,7 +22,7 @@
         spFlutter = pkgs.flutter332;
 
         androidComposition = pkgs.androidenv.composeAndroidPackages {
-          platformToolsVersion = "34.0.4";
+          platformToolsVersion = "34.0.5";
           buildToolsVersions = [ "34.0.0" ];
           platformVersions = [ "34" "33" "32" "31" "30" ];
         };

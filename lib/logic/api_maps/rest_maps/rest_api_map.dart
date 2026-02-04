@@ -7,6 +7,7 @@ import 'package:dio/io.dart';
 import 'package:selfprivacy/config/get_it_config.dart';
 import 'package:selfprivacy/logic/models/console_log.dart';
 import 'package:selfprivacy/utils/app_logger.dart';
+import 'package:socks5_proxy/socks_client.dart';
 
 abstract class RestApiMap {
   static final logger = const AppLogger(name: 'rest_api_map').log;
@@ -16,14 +17,21 @@ abstract class RestApiMap {
     dio.interceptors.add(ConsoleInterceptor());
     dio.httpClientAdapter = IOHttpClientAdapter(
       createHttpClient: () {
-        final client =
-            HttpClient()
-              ..badCertificateCallback =
-                  (
-                    final X509Certificate cert,
-                    final String host,
-                    final int port,
-                  ) => true;
+        final bool isOnion = rootAddress.endsWith('.onion');
+        final HttpClient client = HttpClient();
+        client.badCertificateCallback = (
+          final X509Certificate cert,
+          final String host,
+          final int port,
+        ) => true;
+        if (isOnion) {
+          // Use SOCKS5 proxy for .onion domains
+          // Linux: Tor daemon on 9050
+          // Android: Orbot on 9050
+          SocksTCPClient.assignToHttpClient(client, [
+            ProxySettings(InternetAddress.loopbackIPv4, 9050),
+          ]);
+        }
         return client;
       },
     );

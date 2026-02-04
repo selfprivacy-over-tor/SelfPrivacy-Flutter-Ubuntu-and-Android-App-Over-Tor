@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:cubit_form/cubit_form.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:selfprivacy/config/get_it_config.dart';
 import 'package:selfprivacy/logic/api_maps/graphql_maps/server_api/server_api.dart';
 import 'package:selfprivacy/logic/cubit/forms/factories/field_cubit_factory.dart';
 import 'package:selfprivacy/logic/cubit/server_installation/server_installation_cubit.dart';
@@ -38,7 +39,12 @@ class RecoveryDomainFormCubit extends FormCubit {
 
     final bool domainValid = await api.getApiVersion() != null;
     if (!domainValid) {
-      serverDomainField.setError('recovering.domain_recover_error'.tr());
+      serverDomainField.setError(
+        'recovering.custom_tor_domain_recover_error0'.tr(),
+      );
+      getIt<NavigationService>().showSnackBar(
+        'recovering.custom_tor_domain_recover_error0'.tr(),
+      );
     }
 
     return domainValid;
