@@ -47,6 +47,13 @@ In the app:
 3. Select "I have a recovery key"
 4. Enter the recovery key mnemonic phrase
 
+## Resetting App Data (Start Fresh Connection)
+
+To clear the app's stored configuration and start a new connection:
+```bash
+rm -rf ~/.local/share/selfprivacy/*.hive ~/.local/share/selfprivacy/*.lock
+```
+
 ---
 
 SelfPrivacy — is a platform on your cloud hosting, that allows to deploy your own private services and control them using mobile application.
