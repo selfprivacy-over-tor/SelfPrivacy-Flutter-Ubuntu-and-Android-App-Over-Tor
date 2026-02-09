@@ -44,13 +44,14 @@ query AllServices {
       canBeBackedUp
       backupDescription
       status
-      storageUsage {
-        title
-        usedSpace
-        volume {
-          name
-        }
-      }
+      # storageUsage disabled - causes server timeout in VirtualBox/Tor backend
+      # storageUsage {
+      #   title
+      #   usedSpace
+      #   volume {
+      #     name
+      #   }
+      # }
       svgIcon
       url
       homepage

@@ -44,9 +44,10 @@ class Service extends Equatable {
         canBeBackedUp: service.canBeBackedUp,
         backupDescription: service.backupDescription,
         status: ServiceStatus.fromGraphQL(service.status),
+        // storageUsage query disabled (causes backend timeout in VirtualBox)
         storageUsage: ServiceStorageUsage(
-          used: DiskSize(byte: int.parse(service.storageUsage.usedSpace)),
-          volume: service.storageUsage.volume?.name,
+          used: DiskSize(byte: 0),
+          volume: '',
         ),
         // Decode the base64 encoded svg icon to text.
         svgIcon: utf8.decode(base64.decode(service.svgIcon)),

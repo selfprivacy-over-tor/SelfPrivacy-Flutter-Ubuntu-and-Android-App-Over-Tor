@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,9 +12,88 @@ import 'package:selfprivacy/config/hive_config.dart';
 import 'package:selfprivacy/config/localization.dart';
 import 'package:selfprivacy/config/preferences_repository/datasources/preferences_hive_datasource.dart';
 import 'package:selfprivacy/config/preferences_repository/inherited_preferences_repository.dart';
+import 'package:selfprivacy/logic/get_it/resources_model.dart';
+import 'package:selfprivacy/logic/models/hive/server.dart';
+import 'package:selfprivacy/logic/models/hive/server_details.dart';
+import 'package:selfprivacy/logic/models/hive/server_domain.dart';
 import 'package:selfprivacy/ui/pages/errors/failed_to_init_secure_storage.dart';
 import 'package:selfprivacy/ui/router/router.dart';
+import 'package:hive_ce/hive.dart';
 import 'package:timezone/data/latest.dart' as tz;
+
+/// Development auto-setup: pre-seed connection data for Tor .onion VM.
+/// Only runs in debug mode and only if no server is already configured.
+/// Mimics what saveHasFinalChecked() does: populates ResourcesModel
+/// and clears WizardDataModel so load() returns ServerInstallationFinished.
+Future<void> _devAutoSetup() async {
+  if (!kDebugMode) return;
+
+  const onionDomain =
+      String.fromEnvironment('ONION_DOMAIN', defaultValue: '');
+  const apiToken =
+      String.fromEnvironment('API_TOKEN', defaultValue: '');
+
+  // ignore: avoid_print
+  print('[DEV] Auto-setup: onionDomain=$onionDomain, apiToken=${apiToken.isNotEmpty ? "SET" : "EMPTY"}');
+
+  if (onionDomain.isEmpty || apiToken.isEmpty) return;
+
+  final resourcesModel = getIt<ResourcesModel>();
+
+  // Skip if already configured, but ensure onboarding is disabled
+  if (resourcesModel.servers.isNotEmpty) {
+    // ignore: avoid_print
+    print('[DEV] Auto-setup: already configured, ensuring onboarding disabled');
+    final appSettingsBox = Hive.box(BNames.appSettingsBox);
+    await appSettingsBox.put(BNames.shouldShowOnboarding, false);
+    return;
+  }
+
+  // ignore: avoid_print
+  print('[DEV] Auto-setup: connecting to $onionDomain');
+
+  final serverDomain = ServerDomain(
+    domainName: onionDomain,
+    provider: DnsProviderType.unknown,
+  );
+  final serverDetails = ServerHostingDetails(
+    apiToken: apiToken,
+    ip4: onionDomain,
+    id: 0,
+    createTime: null,
+    startTime: null,
+    provider: ServerProviderType.unknown,
+    volume: ServerProviderVolume(
+      id: 0,
+      name: 'tor-vm',
+      sizeByte: 10737418240,
+      serverId: 0,
+      linuxDevice: '',
+    ),
+  );
+
+  // Add server to ResourcesModel (same as saveHasFinalChecked)
+  await resourcesModel.addServer(Server(
+    domain: serverDomain,
+    hostingDetails: serverDetails,
+  ));
+
+  // Ensure wizard data is cleared (null) so load() takes the
+  // "wizardData == null, servers not empty" path → ServerInstallationFinished
+  await getIt<WizardDataModel>().clearServerInstallation();
+
+  // Disable onboarding screen so the app goes straight to dashboard
+  final appSettingsBox = Hive.box(BNames.appSettingsBox);
+  await appSettingsBox.put(BNames.shouldShowOnboarding, false);
+
+  // Re-initialize API connection now that server details are populated
+  // (The initial init() during getItSetup() returned early because
+  // serverDetails was null at that point)
+  await getIt<ApiConnectionRepository>().init();
+
+  // ignore: avoid_print
+  print('[DEV] Auto-setup complete. servers=${resourcesModel.servers.length}, wizardData=${getIt<WizardDataModel>().serverInstallation}');
+}
 
 void main() async {
   // await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
@@ -32,6 +112,7 @@ void main() async {
       EasyLocalization.ensureInitialized(),
     ]);
     await getItSetup();
+    await _devAutoSetup();
   } on PlatformException catch (e) {
     runApp(FailedToInitSecureStorageScreen(e: e));
   }

@@ -138,7 +138,10 @@ class Fragment$fragmentDnsRecords {
 extension UtilityExtension$Fragment$fragmentDnsRecords
     on Fragment$fragmentDnsRecords {
   CopyWith$Fragment$fragmentDnsRecords<Fragment$fragmentDnsRecords>
-  get copyWith => CopyWith$Fragment$fragmentDnsRecords(this, (i) => i);
+      get copyWith => CopyWith$Fragment$fragmentDnsRecords(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Fragment$fragmentDnsRecords<TRes> {
@@ -163,7 +166,10 @@ abstract class CopyWith$Fragment$fragmentDnsRecords<TRes> {
 
 class _CopyWithImpl$Fragment$fragmentDnsRecords<TRes>
     implements CopyWith$Fragment$fragmentDnsRecords<TRes> {
-  _CopyWithImpl$Fragment$fragmentDnsRecords(this._instance, this._then);
+  _CopyWithImpl$Fragment$fragmentDnsRecords(
+    this._instance,
+    this._then,
+  );
 
   final Fragment$fragmentDnsRecords _instance;
 
@@ -179,33 +185,27 @@ class _CopyWithImpl$Fragment$fragmentDnsRecords<TRes>
     Object? ttl = _undefined,
     Object? priority = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Fragment$fragmentDnsRecords(
-      recordType:
-          recordType == _undefined || recordType == null
-              ? _instance.recordType
-              : (recordType as String),
-      name:
-          name == _undefined || name == null
-              ? _instance.name
-              : (name as String),
-      displayName:
-          displayName == _undefined || displayName == null
-              ? _instance.displayName
-              : (displayName as String),
-      content:
-          content == _undefined || content == null
-              ? _instance.content
-              : (content as String),
-      ttl: ttl == _undefined || ttl == null ? _instance.ttl : (ttl as int),
-      priority:
-          priority == _undefined ? _instance.priority : (priority as int?),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Fragment$fragmentDnsRecords(
+        recordType: recordType == _undefined || recordType == null
+            ? _instance.recordType
+            : (recordType as String),
+        name: name == _undefined || name == null
+            ? _instance.name
+            : (name as String),
+        displayName: displayName == _undefined || displayName == null
+            ? _instance.displayName
+            : (displayName as String),
+        content: content == _undefined || content == null
+            ? _instance.content
+            : (content as String),
+        ttl: ttl == _undefined || ttl == null ? _instance.ttl : (ttl as int),
+        priority:
+            priority == _undefined ? _instance.priority : (priority as int?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Fragment$fragmentDnsRecords<TRes>
@@ -222,89 +222,91 @@ class _CopyWithStubImpl$Fragment$fragmentDnsRecords<TRes>
     int? ttl,
     int? priority,
     String? $__typename,
-  }) => _res;
+  }) =>
+      _res;
 }
 
 const fragmentDefinitionfragmentDnsRecords = FragmentDefinitionNode(
   name: NameNode(value: 'fragmentDnsRecords'),
   typeCondition: TypeConditionNode(
-    on: NamedTypeNode(name: NameNode(value: 'DnsRecord'), isNonNull: false),
-  ),
+      on: NamedTypeNode(
+    name: NameNode(value: 'DnsRecord'),
+    isNonNull: false,
+  )),
   directives: [],
-  selectionSet: SelectionSetNode(
-    selections: [
-      FieldNode(
-        name: NameNode(value: 'recordType'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-      FieldNode(
-        name: NameNode(value: 'name'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-      FieldNode(
-        name: NameNode(value: 'displayName'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-      FieldNode(
-        name: NameNode(value: 'content'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-      FieldNode(
-        name: NameNode(value: 'ttl'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-      FieldNode(
-        name: NameNode(value: 'priority'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-      FieldNode(
-        name: NameNode(value: '__typename'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-    ],
-  ),
+  selectionSet: SelectionSetNode(selections: [
+    FieldNode(
+      name: NameNode(value: 'recordType'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'name'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'displayName'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'content'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'ttl'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'priority'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: '__typename'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+  ]),
 );
-const documentNodeFragmentfragmentDnsRecords = DocumentNode(
-  definitions: [fragmentDefinitionfragmentDnsRecords],
-);
+const documentNodeFragmentfragmentDnsRecords = DocumentNode(definitions: [
+  fragmentDefinitionfragmentDnsRecords,
+]);
 
 extension ClientExtension$Fragment$fragmentDnsRecords on graphql.GraphQLClient {
   void writeFragment$fragmentDnsRecords({
     required Fragment$fragmentDnsRecords data,
     required Map<String, dynamic> idFields,
     bool broadcast = true,
-  }) => this.writeFragment(
-    graphql.FragmentRequest(
-      idFields: idFields,
-      fragment: const graphql.Fragment(
-        fragmentName: 'fragmentDnsRecords',
-        document: documentNodeFragmentfragmentDnsRecords,
-      ),
-    ),
-    data: data.toJson(),
-    broadcast: broadcast,
-  );
+  }) =>
+      this.writeFragment(
+        graphql.FragmentRequest(
+          idFields: idFields,
+          fragment: const graphql.Fragment(
+            fragmentName: 'fragmentDnsRecords',
+            document: documentNodeFragmentfragmentDnsRecords,
+          ),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
   Fragment$fragmentDnsRecords? readFragment$fragmentDnsRecords({
     required Map<String, dynamic> idFields,
     bool optimistic = true,
@@ -324,15 +326,17 @@ extension ClientExtension$Fragment$fragmentDnsRecords on graphql.GraphQLClient {
 }
 
 class Query$SystemSettings {
-  Query$SystemSettings({required this.system, this.$__typename = 'Query'});
+  Query$SystemSettings({
+    required this.system,
+    this.$__typename = 'Query',
+  });
 
   factory Query$SystemSettings.fromJson(Map<String, dynamic> json) {
     final l$system = json['system'];
     final l$$__typename = json['__typename'];
     return Query$SystemSettings(
       system: Query$SystemSettings$system.fromJson(
-        (l$system as Map<String, dynamic>),
-      ),
+          (l$system as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -354,7 +358,10 @@ class Query$SystemSettings {
   int get hashCode {
     final l$system = system;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$system, l$$__typename]);
+    return Object.hashAll([
+      l$system,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -381,7 +388,10 @@ class Query$SystemSettings {
 
 extension UtilityExtension$Query$SystemSettings on Query$SystemSettings {
   CopyWith$Query$SystemSettings<Query$SystemSettings> get copyWith =>
-      CopyWith$Query$SystemSettings(this, (i) => i);
+      CopyWith$Query$SystemSettings(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Query$SystemSettings<TRes> {
@@ -393,13 +403,19 @@ abstract class CopyWith$Query$SystemSettings<TRes> {
   factory CopyWith$Query$SystemSettings.stub(TRes res) =
       _CopyWithStubImpl$Query$SystemSettings;
 
-  TRes call({Query$SystemSettings$system? system, String? $__typename});
+  TRes call({
+    Query$SystemSettings$system? system,
+    String? $__typename,
+  });
   CopyWith$Query$SystemSettings$system<TRes> get system;
 }
 
 class _CopyWithImpl$Query$SystemSettings<TRes>
     implements CopyWith$Query$SystemSettings<TRes> {
-  _CopyWithImpl$Query$SystemSettings(this._instance, this._then);
+  _CopyWithImpl$Query$SystemSettings(
+    this._instance,
+    this._then,
+  );
 
   final Query$SystemSettings _instance;
 
@@ -407,26 +423,23 @@ class _CopyWithImpl$Query$SystemSettings<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? system = _undefined, Object? $__typename = _undefined}) =>
-      _then(
-        Query$SystemSettings(
-          system:
-              system == _undefined || system == null
-                  ? _instance.system
-                  : (system as Query$SystemSettings$system),
-          $__typename:
-              $__typename == _undefined || $__typename == null
-                  ? _instance.$__typename
-                  : ($__typename as String),
-        ),
-      );
+  TRes call({
+    Object? system = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$SystemSettings(
+        system: system == _undefined || system == null
+            ? _instance.system
+            : (system as Query$SystemSettings$system),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Query$SystemSettings$system<TRes> get system {
     final local$system = _instance.system;
     return CopyWith$Query$SystemSettings$system(
-      local$system,
-      (e) => call(system: e),
-    );
+        local$system, (e) => call(system: e));
   }
 }
 
@@ -436,116 +449,101 @@ class _CopyWithStubImpl$Query$SystemSettings<TRes>
 
   TRes _res;
 
-  call({Query$SystemSettings$system? system, String? $__typename}) => _res;
+  call({
+    Query$SystemSettings$system? system,
+    String? $__typename,
+  }) =>
+      _res;
 
   CopyWith$Query$SystemSettings$system<TRes> get system =>
       CopyWith$Query$SystemSettings$system.stub(_res);
 }
 
-const documentNodeQuerySystemSettings = DocumentNode(
-  definitions: [
-    OperationDefinitionNode(
-      type: OperationType.query,
-      name: NameNode(value: 'SystemSettings'),
-      variableDefinitions: [],
-      directives: [],
-      selectionSet: SelectionSetNode(
-        selections: [
+const documentNodeQuerySystemSettings = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'SystemSettings'),
+    variableDefinitions: [],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'system'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
           FieldNode(
-            name: NameNode(value: 'system'),
+            name: NameNode(value: 'settings'),
             alias: null,
             arguments: [],
             directives: [],
-            selectionSet: SelectionSetNode(
-              selections: [
-                FieldNode(
-                  name: NameNode(value: 'settings'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: SelectionSetNode(
-                    selections: [
-                      FieldNode(
-                        name: NameNode(value: 'autoUpgrade'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: SelectionSetNode(
-                          selections: [
-                            FieldNode(
-                              name: NameNode(value: 'allowReboot'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null,
-                            ),
-                            FieldNode(
-                              name: NameNode(value: 'enable'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null,
-                            ),
-                            FieldNode(
-                              name: NameNode(value: '__typename'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null,
-                            ),
-                          ],
-                        ),
-                      ),
-                      FieldNode(
-                        name: NameNode(value: 'ssh'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: SelectionSetNode(
-                          selections: [
-                            FieldNode(
-                              name: NameNode(value: 'enable'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null,
-                            ),
-                            FieldNode(
-                              name: NameNode(value: '__typename'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null,
-                            ),
-                          ],
-                        ),
-                      ),
-                      FieldNode(
-                        name: NameNode(value: 'timezone'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                      FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                    ],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'autoUpgrade'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'allowReboot'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
                   ),
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ],
-            ),
+                  FieldNode(
+                    name: NameNode(value: 'enable'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'ssh'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'enable'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'timezone'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
           ),
           FieldNode(
             name: NameNode(value: '__typename'),
@@ -554,16 +552,25 @@ const documentNodeQuerySystemSettings = DocumentNode(
             directives: [],
             selectionSet: null,
           ),
-        ],
+        ]),
       ),
-    ),
-  ],
-);
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+]);
 Query$SystemSettings _parserFn$Query$SystemSettings(
-  Map<String, dynamic> data,
-) => Query$SystemSettings.fromJson(data);
-typedef OnQueryComplete$Query$SystemSettings =
-    FutureOr<void> Function(Map<String, dynamic>?, Query$SystemSettings?);
+        Map<String, dynamic> data) =>
+    Query$SystemSettings.fromJson(data);
+typedef OnQueryComplete$Query$SystemSettings = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$SystemSettings?,
+);
 
 class Options$Query$SystemSettings
     extends graphql.QueryOptions<Query$SystemSettings> {
@@ -578,36 +585,35 @@ class Options$Query$SystemSettings
     graphql.Context? context,
     OnQueryComplete$Query$SystemSettings? onComplete,
     graphql.OnQueryError? onError,
-  }) : onCompleteWithParsed = onComplete,
-       super(
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         pollInterval: pollInterval,
-         context: context,
-         onComplete:
-             onComplete == null
-                 ? null
-                 : (data) => onComplete(
-                   data,
-                   data == null ? null : _parserFn$Query$SystemSettings(data),
-                 ),
-         onError: onError,
-         document: documentNodeQuerySystemSettings,
-         parserFn: _parserFn$Query$SystemSettings,
-       );
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null ? null : _parserFn$Query$SystemSettings(data),
+                  ),
+          onError: onError,
+          document: documentNodeQuerySystemSettings,
+          parserFn: _parserFn$Query$SystemSettings,
+        );
 
   final OnQueryComplete$Query$SystemSettings? onCompleteWithParsed;
 
   @override
   List<Object?> get properties => [
-    ...super.onComplete == null
-        ? super.properties
-        : super.properties.where((property) => property != onComplete),
-    onCompleteWithParsed,
-  ];
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
 }
 
 class WatchOptions$Query$SystemSettings
@@ -625,52 +631,53 @@ class WatchOptions$Query$SystemSettings
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         context: context,
-         document: documentNodeQuerySystemSettings,
-         pollInterval: pollInterval,
-         eagerlyFetchResults: eagerlyFetchResults,
-         carryForwardDataOnException: carryForwardDataOnException,
-         fetchResults: fetchResults,
-         parserFn: _parserFn$Query$SystemSettings,
-       );
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQuerySystemSettings,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$SystemSettings,
+        );
 }
 
 class FetchMoreOptions$Query$SystemSettings extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$SystemSettings({
-    required graphql.UpdateQuery updateQuery,
-  }) : super(
-         updateQuery: updateQuery,
-         document: documentNodeQuerySystemSettings,
-       );
+  FetchMoreOptions$Query$SystemSettings(
+      {required graphql.UpdateQuery updateQuery})
+      : super(
+          updateQuery: updateQuery,
+          document: documentNodeQuerySystemSettings,
+        );
 }
 
 extension ClientExtension$Query$SystemSettings on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Query$SystemSettings>> query$SystemSettings([
-    Options$Query$SystemSettings? options,
-  ]) async => await this.query(options ?? Options$Query$SystemSettings());
-  graphql.ObservableQuery<Query$SystemSettings> watchQuery$SystemSettings([
-    WatchOptions$Query$SystemSettings? options,
-  ]) => this.watchQuery(options ?? WatchOptions$Query$SystemSettings());
+  Future<graphql.QueryResult<Query$SystemSettings>> query$SystemSettings(
+          [Options$Query$SystemSettings? options]) async =>
+      await this.query(options ?? Options$Query$SystemSettings());
+  graphql.ObservableQuery<Query$SystemSettings> watchQuery$SystemSettings(
+          [WatchOptions$Query$SystemSettings? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$SystemSettings());
   void writeQuery$SystemSettings({
     required Query$SystemSettings data,
     bool broadcast = true,
-  }) => this.writeQuery(
-    graphql.Request(
-      operation: graphql.Operation(document: documentNodeQuerySystemSettings),
-    ),
-    data: data.toJson(),
-    broadcast: broadcast,
-  );
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+            operation:
+                graphql.Operation(document: documentNodeQuerySystemSettings)),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
   Query$SystemSettings? readQuery$SystemSettings({bool optimistic = true}) {
     final result = this.readQuery(
       graphql.Request(
-        operation: graphql.Operation(document: documentNodeQuerySystemSettings),
-      ),
+          operation:
+              graphql.Operation(document: documentNodeQuerySystemSettings)),
       optimistic: optimistic,
     );
     return result == null ? null : Query$SystemSettings.fromJson(result);
@@ -688,8 +695,7 @@ class Query$SystemSettings$system {
     final l$$__typename = json['__typename'];
     return Query$SystemSettings$system(
       settings: Query$SystemSettings$system$settings.fromJson(
-        (l$settings as Map<String, dynamic>),
-      ),
+          (l$settings as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -711,7 +717,10 @@ class Query$SystemSettings$system {
   int get hashCode {
     final l$settings = settings;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$settings, l$$__typename]);
+    return Object.hashAll([
+      l$settings,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -740,7 +749,10 @@ class Query$SystemSettings$system {
 extension UtilityExtension$Query$SystemSettings$system
     on Query$SystemSettings$system {
   CopyWith$Query$SystemSettings$system<Query$SystemSettings$system>
-  get copyWith => CopyWith$Query$SystemSettings$system(this, (i) => i);
+      get copyWith => CopyWith$Query$SystemSettings$system(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$SystemSettings$system<TRes> {
@@ -761,7 +773,10 @@ abstract class CopyWith$Query$SystemSettings$system<TRes> {
 
 class _CopyWithImpl$Query$SystemSettings$system<TRes>
     implements CopyWith$Query$SystemSettings$system<TRes> {
-  _CopyWithImpl$Query$SystemSettings$system(this._instance, this._then);
+  _CopyWithImpl$Query$SystemSettings$system(
+    this._instance,
+    this._then,
+  );
 
   final Query$SystemSettings$system _instance;
 
@@ -772,25 +787,20 @@ class _CopyWithImpl$Query$SystemSettings$system<TRes>
   TRes call({
     Object? settings = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Query$SystemSettings$system(
-      settings:
-          settings == _undefined || settings == null
-              ? _instance.settings
-              : (settings as Query$SystemSettings$system$settings),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Query$SystemSettings$system(
+        settings: settings == _undefined || settings == null
+            ? _instance.settings
+            : (settings as Query$SystemSettings$system$settings),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Query$SystemSettings$system$settings<TRes> get settings {
     final local$settings = _instance.settings;
     return CopyWith$Query$SystemSettings$system$settings(
-      local$settings,
-      (e) => call(settings: e),
-    );
+        local$settings, (e) => call(settings: e));
   }
 }
 
@@ -800,7 +810,10 @@ class _CopyWithStubImpl$Query$SystemSettings$system<TRes>
 
   TRes _res;
 
-  call({Query$SystemSettings$system$settings? settings, String? $__typename}) =>
+  call({
+    Query$SystemSettings$system$settings? settings,
+    String? $__typename,
+  }) =>
       _res;
 
   CopyWith$Query$SystemSettings$system$settings<TRes> get settings =>
@@ -816,19 +829,16 @@ class Query$SystemSettings$system$settings {
   });
 
   factory Query$SystemSettings$system$settings.fromJson(
-    Map<String, dynamic> json,
-  ) {
+      Map<String, dynamic> json) {
     final l$autoUpgrade = json['autoUpgrade'];
     final l$ssh = json['ssh'];
     final l$timezone = json['timezone'];
     final l$$__typename = json['__typename'];
     return Query$SystemSettings$system$settings(
       autoUpgrade: Query$SystemSettings$system$settings$autoUpgrade.fromJson(
-        (l$autoUpgrade as Map<String, dynamic>),
-      ),
+          (l$autoUpgrade as Map<String, dynamic>)),
       ssh: Query$SystemSettings$system$settings$ssh.fromJson(
-        (l$ssh as Map<String, dynamic>),
-      ),
+          (l$ssh as Map<String, dynamic>)),
       timezone: (l$timezone as String),
       $__typename: (l$$__typename as String),
     );
@@ -861,7 +871,12 @@ class Query$SystemSettings$system$settings {
     final l$ssh = ssh;
     final l$timezone = timezone;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$autoUpgrade, l$ssh, l$timezone, l$$__typename]);
+    return Object.hashAll([
+      l$autoUpgrade,
+      l$ssh,
+      l$timezone,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -900,9 +915,11 @@ class Query$SystemSettings$system$settings {
 extension UtilityExtension$Query$SystemSettings$system$settings
     on Query$SystemSettings$system$settings {
   CopyWith$Query$SystemSettings$system$settings<
-    Query$SystemSettings$system$settings
-  >
-  get copyWith => CopyWith$Query$SystemSettings$system$settings(this, (i) => i);
+          Query$SystemSettings$system$settings>
+      get copyWith => CopyWith$Query$SystemSettings$system$settings(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$SystemSettings$system$settings<TRes> {
@@ -921,7 +938,7 @@ abstract class CopyWith$Query$SystemSettings$system$settings<TRes> {
     String? $__typename,
   });
   CopyWith$Query$SystemSettings$system$settings$autoUpgrade<TRes>
-  get autoUpgrade;
+      get autoUpgrade;
   CopyWith$Query$SystemSettings$system$settings$ssh<TRes> get ssh;
 }
 
@@ -943,43 +960,33 @@ class _CopyWithImpl$Query$SystemSettings$system$settings<TRes>
     Object? ssh = _undefined,
     Object? timezone = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Query$SystemSettings$system$settings(
-      autoUpgrade:
-          autoUpgrade == _undefined || autoUpgrade == null
-              ? _instance.autoUpgrade
-              : (autoUpgrade
-                  as Query$SystemSettings$system$settings$autoUpgrade),
-      ssh:
-          ssh == _undefined || ssh == null
-              ? _instance.ssh
-              : (ssh as Query$SystemSettings$system$settings$ssh),
-      timezone:
-          timezone == _undefined || timezone == null
-              ? _instance.timezone
-              : (timezone as String),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Query$SystemSettings$system$settings(
+        autoUpgrade: autoUpgrade == _undefined || autoUpgrade == null
+            ? _instance.autoUpgrade
+            : (autoUpgrade as Query$SystemSettings$system$settings$autoUpgrade),
+        ssh: ssh == _undefined || ssh == null
+            ? _instance.ssh
+            : (ssh as Query$SystemSettings$system$settings$ssh),
+        timezone: timezone == _undefined || timezone == null
+            ? _instance.timezone
+            : (timezone as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Query$SystemSettings$system$settings$autoUpgrade<TRes>
-  get autoUpgrade {
+      get autoUpgrade {
     final local$autoUpgrade = _instance.autoUpgrade;
     return CopyWith$Query$SystemSettings$system$settings$autoUpgrade(
-      local$autoUpgrade,
-      (e) => call(autoUpgrade: e),
-    );
+        local$autoUpgrade, (e) => call(autoUpgrade: e));
   }
 
   CopyWith$Query$SystemSettings$system$settings$ssh<TRes> get ssh {
     final local$ssh = _instance.ssh;
     return CopyWith$Query$SystemSettings$system$settings$ssh(
-      local$ssh,
-      (e) => call(ssh: e),
-    );
+        local$ssh, (e) => call(ssh: e));
   }
 }
 
@@ -994,11 +1001,12 @@ class _CopyWithStubImpl$Query$SystemSettings$system$settings<TRes>
     Query$SystemSettings$system$settings$ssh? ssh,
     String? timezone,
     String? $__typename,
-  }) => _res;
+  }) =>
+      _res;
 
   CopyWith$Query$SystemSettings$system$settings$autoUpgrade<TRes>
-  get autoUpgrade =>
-      CopyWith$Query$SystemSettings$system$settings$autoUpgrade.stub(_res);
+      get autoUpgrade =>
+          CopyWith$Query$SystemSettings$system$settings$autoUpgrade.stub(_res);
 
   CopyWith$Query$SystemSettings$system$settings$ssh<TRes> get ssh =>
       CopyWith$Query$SystemSettings$system$settings$ssh.stub(_res);
@@ -1012,8 +1020,7 @@ class Query$SystemSettings$system$settings$autoUpgrade {
   });
 
   factory Query$SystemSettings$system$settings$autoUpgrade.fromJson(
-    Map<String, dynamic> json,
-  ) {
+      Map<String, dynamic> json) {
     final l$allowReboot = json['allowReboot'];
     final l$enable = json['enable'];
     final l$$__typename = json['__typename'];
@@ -1046,7 +1053,11 @@ class Query$SystemSettings$system$settings$autoUpgrade {
     final l$allowReboot = allowReboot;
     final l$enable = enable;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$allowReboot, l$enable, l$$__typename]);
+    return Object.hashAll([
+      l$allowReboot,
+      l$enable,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -1080,10 +1091,11 @@ class Query$SystemSettings$system$settings$autoUpgrade {
 extension UtilityExtension$Query$SystemSettings$system$settings$autoUpgrade
     on Query$SystemSettings$system$settings$autoUpgrade {
   CopyWith$Query$SystemSettings$system$settings$autoUpgrade<
-    Query$SystemSettings$system$settings$autoUpgrade
-  >
-  get copyWith =>
-      CopyWith$Query$SystemSettings$system$settings$autoUpgrade(this, (i) => i);
+          Query$SystemSettings$system$settings$autoUpgrade>
+      get copyWith => CopyWith$Query$SystemSettings$system$settings$autoUpgrade(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$SystemSettings$system$settings$autoUpgrade<TRes> {
@@ -1093,10 +1105,14 @@ abstract class CopyWith$Query$SystemSettings$system$settings$autoUpgrade<TRes> {
   ) = _CopyWithImpl$Query$SystemSettings$system$settings$autoUpgrade;
 
   factory CopyWith$Query$SystemSettings$system$settings$autoUpgrade.stub(
-    TRes res,
-  ) = _CopyWithStubImpl$Query$SystemSettings$system$settings$autoUpgrade;
+          TRes res) =
+      _CopyWithStubImpl$Query$SystemSettings$system$settings$autoUpgrade;
 
-  TRes call({bool? allowReboot, bool? enable, String? $__typename});
+  TRes call({
+    bool? allowReboot,
+    bool? enable,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$SystemSettings$system$settings$autoUpgrade<TRes>
@@ -1116,22 +1132,18 @@ class _CopyWithImpl$Query$SystemSettings$system$settings$autoUpgrade<TRes>
     Object? allowReboot = _undefined,
     Object? enable = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Query$SystemSettings$system$settings$autoUpgrade(
-      allowReboot:
-          allowReboot == _undefined || allowReboot == null
-              ? _instance.allowReboot
-              : (allowReboot as bool),
-      enable:
-          enable == _undefined || enable == null
-              ? _instance.enable
-              : (enable as bool),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Query$SystemSettings$system$settings$autoUpgrade(
+        allowReboot: allowReboot == _undefined || allowReboot == null
+            ? _instance.allowReboot
+            : (allowReboot as bool),
+        enable: enable == _undefined || enable == null
+            ? _instance.enable
+            : (enable as bool),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$SystemSettings$system$settings$autoUpgrade<TRes>
@@ -1140,7 +1152,12 @@ class _CopyWithStubImpl$Query$SystemSettings$system$settings$autoUpgrade<TRes>
 
   TRes _res;
 
-  call({bool? allowReboot, bool? enable, String? $__typename}) => _res;
+  call({
+    bool? allowReboot,
+    bool? enable,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Query$SystemSettings$system$settings$ssh {
@@ -1150,8 +1167,7 @@ class Query$SystemSettings$system$settings$ssh {
   });
 
   factory Query$SystemSettings$system$settings$ssh.fromJson(
-    Map<String, dynamic> json,
-  ) {
+      Map<String, dynamic> json) {
     final l$enable = json['enable'];
     final l$$__typename = json['__typename'];
     return Query$SystemSettings$system$settings$ssh(
@@ -1177,7 +1193,10 @@ class Query$SystemSettings$system$settings$ssh {
   int get hashCode {
     final l$enable = enable;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$enable, l$$__typename]);
+    return Object.hashAll([
+      l$enable,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -1206,10 +1225,11 @@ class Query$SystemSettings$system$settings$ssh {
 extension UtilityExtension$Query$SystemSettings$system$settings$ssh
     on Query$SystemSettings$system$settings$ssh {
   CopyWith$Query$SystemSettings$system$settings$ssh<
-    Query$SystemSettings$system$settings$ssh
-  >
-  get copyWith =>
-      CopyWith$Query$SystemSettings$system$settings$ssh(this, (i) => i);
+          Query$SystemSettings$system$settings$ssh>
+      get copyWith => CopyWith$Query$SystemSettings$system$settings$ssh(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$SystemSettings$system$settings$ssh<TRes> {
@@ -1221,7 +1241,10 @@ abstract class CopyWith$Query$SystemSettings$system$settings$ssh<TRes> {
   factory CopyWith$Query$SystemSettings$system$settings$ssh.stub(TRes res) =
       _CopyWithStubImpl$Query$SystemSettings$system$settings$ssh;
 
-  TRes call({bool? enable, String? $__typename});
+  TRes call({
+    bool? enable,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$SystemSettings$system$settings$ssh<TRes>
@@ -1237,19 +1260,18 @@ class _CopyWithImpl$Query$SystemSettings$system$settings$ssh<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? enable = _undefined, Object? $__typename = _undefined}) =>
-      _then(
-        Query$SystemSettings$system$settings$ssh(
-          enable:
-              enable == _undefined || enable == null
-                  ? _instance.enable
-                  : (enable as bool),
-          $__typename:
-              $__typename == _undefined || $__typename == null
-                  ? _instance.$__typename
-                  : ($__typename as String),
-        ),
-      );
+  TRes call({
+    Object? enable = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$SystemSettings$system$settings$ssh(
+        enable: enable == _undefined || enable == null
+            ? _instance.enable
+            : (enable as bool),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$SystemSettings$system$settings$ssh<TRes>
@@ -1258,19 +1280,25 @@ class _CopyWithStubImpl$Query$SystemSettings$system$settings$ssh<TRes>
 
   TRes _res;
 
-  call({bool? enable, String? $__typename}) => _res;
+  call({
+    bool? enable,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Query$SystemIsUsingBinds {
-  Query$SystemIsUsingBinds({required this.system, this.$__typename = 'Query'});
+  Query$SystemIsUsingBinds({
+    required this.system,
+    this.$__typename = 'Query',
+  });
 
   factory Query$SystemIsUsingBinds.fromJson(Map<String, dynamic> json) {
     final l$system = json['system'];
     final l$$__typename = json['__typename'];
     return Query$SystemIsUsingBinds(
       system: Query$SystemIsUsingBinds$system.fromJson(
-        (l$system as Map<String, dynamic>),
-      ),
+          (l$system as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1292,7 +1320,10 @@ class Query$SystemIsUsingBinds {
   int get hashCode {
     final l$system = system;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$system, l$$__typename]);
+    return Object.hashAll([
+      l$system,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -1321,7 +1352,10 @@ class Query$SystemIsUsingBinds {
 extension UtilityExtension$Query$SystemIsUsingBinds
     on Query$SystemIsUsingBinds {
   CopyWith$Query$SystemIsUsingBinds<Query$SystemIsUsingBinds> get copyWith =>
-      CopyWith$Query$SystemIsUsingBinds(this, (i) => i);
+      CopyWith$Query$SystemIsUsingBinds(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Query$SystemIsUsingBinds<TRes> {
@@ -1333,13 +1367,19 @@ abstract class CopyWith$Query$SystemIsUsingBinds<TRes> {
   factory CopyWith$Query$SystemIsUsingBinds.stub(TRes res) =
       _CopyWithStubImpl$Query$SystemIsUsingBinds;
 
-  TRes call({Query$SystemIsUsingBinds$system? system, String? $__typename});
+  TRes call({
+    Query$SystemIsUsingBinds$system? system,
+    String? $__typename,
+  });
   CopyWith$Query$SystemIsUsingBinds$system<TRes> get system;
 }
 
 class _CopyWithImpl$Query$SystemIsUsingBinds<TRes>
     implements CopyWith$Query$SystemIsUsingBinds<TRes> {
-  _CopyWithImpl$Query$SystemIsUsingBinds(this._instance, this._then);
+  _CopyWithImpl$Query$SystemIsUsingBinds(
+    this._instance,
+    this._then,
+  );
 
   final Query$SystemIsUsingBinds _instance;
 
@@ -1347,26 +1387,23 @@ class _CopyWithImpl$Query$SystemIsUsingBinds<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? system = _undefined, Object? $__typename = _undefined}) =>
-      _then(
-        Query$SystemIsUsingBinds(
-          system:
-              system == _undefined || system == null
-                  ? _instance.system
-                  : (system as Query$SystemIsUsingBinds$system),
-          $__typename:
-              $__typename == _undefined || $__typename == null
-                  ? _instance.$__typename
-                  : ($__typename as String),
-        ),
-      );
+  TRes call({
+    Object? system = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$SystemIsUsingBinds(
+        system: system == _undefined || system == null
+            ? _instance.system
+            : (system as Query$SystemIsUsingBinds$system),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Query$SystemIsUsingBinds$system<TRes> get system {
     final local$system = _instance.system;
     return CopyWith$Query$SystemIsUsingBinds$system(
-      local$system,
-      (e) => call(system: e),
-    );
+        local$system, (e) => call(system: e));
   }
 }
 
@@ -1376,61 +1413,50 @@ class _CopyWithStubImpl$Query$SystemIsUsingBinds<TRes>
 
   TRes _res;
 
-  call({Query$SystemIsUsingBinds$system? system, String? $__typename}) => _res;
+  call({
+    Query$SystemIsUsingBinds$system? system,
+    String? $__typename,
+  }) =>
+      _res;
 
   CopyWith$Query$SystemIsUsingBinds$system<TRes> get system =>
       CopyWith$Query$SystemIsUsingBinds$system.stub(_res);
 }
 
-const documentNodeQuerySystemIsUsingBinds = DocumentNode(
-  definitions: [
-    OperationDefinitionNode(
-      type: OperationType.query,
-      name: NameNode(value: 'SystemIsUsingBinds'),
-      variableDefinitions: [],
-      directives: [],
-      selectionSet: SelectionSetNode(
-        selections: [
+const documentNodeQuerySystemIsUsingBinds = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'SystemIsUsingBinds'),
+    variableDefinitions: [],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'system'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
           FieldNode(
-            name: NameNode(value: 'system'),
+            name: NameNode(value: 'info'),
             alias: null,
             arguments: [],
             directives: [],
-            selectionSet: SelectionSetNode(
-              selections: [
-                FieldNode(
-                  name: NameNode(value: 'info'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: SelectionSetNode(
-                    selections: [
-                      FieldNode(
-                        name: NameNode(value: 'usingBinds'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                      FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                    ],
-                  ),
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ],
-            ),
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'usingBinds'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
           ),
           FieldNode(
             name: NameNode(value: '__typename'),
@@ -1439,16 +1465,25 @@ const documentNodeQuerySystemIsUsingBinds = DocumentNode(
             directives: [],
             selectionSet: null,
           ),
-        ],
+        ]),
       ),
-    ),
-  ],
-);
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+]);
 Query$SystemIsUsingBinds _parserFn$Query$SystemIsUsingBinds(
-  Map<String, dynamic> data,
-) => Query$SystemIsUsingBinds.fromJson(data);
-typedef OnQueryComplete$Query$SystemIsUsingBinds =
-    FutureOr<void> Function(Map<String, dynamic>?, Query$SystemIsUsingBinds?);
+        Map<String, dynamic> data) =>
+    Query$SystemIsUsingBinds.fromJson(data);
+typedef OnQueryComplete$Query$SystemIsUsingBinds = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$SystemIsUsingBinds?,
+);
 
 class Options$Query$SystemIsUsingBinds
     extends graphql.QueryOptions<Query$SystemIsUsingBinds> {
@@ -1463,38 +1498,37 @@ class Options$Query$SystemIsUsingBinds
     graphql.Context? context,
     OnQueryComplete$Query$SystemIsUsingBinds? onComplete,
     graphql.OnQueryError? onError,
-  }) : onCompleteWithParsed = onComplete,
-       super(
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         pollInterval: pollInterval,
-         context: context,
-         onComplete:
-             onComplete == null
-                 ? null
-                 : (data) => onComplete(
-                   data,
-                   data == null
-                       ? null
-                       : _parserFn$Query$SystemIsUsingBinds(data),
-                 ),
-         onError: onError,
-         document: documentNodeQuerySystemIsUsingBinds,
-         parserFn: _parserFn$Query$SystemIsUsingBinds,
-       );
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Query$SystemIsUsingBinds(data),
+                  ),
+          onError: onError,
+          document: documentNodeQuerySystemIsUsingBinds,
+          parserFn: _parserFn$Query$SystemIsUsingBinds,
+        );
 
   final OnQueryComplete$Query$SystemIsUsingBinds? onCompleteWithParsed;
 
   @override
   List<Object?> get properties => [
-    ...super.onComplete == null
-        ? super.properties
-        : super.properties.where((property) => property != onComplete),
-    onCompleteWithParsed,
-  ];
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
 }
 
 class WatchOptions$Query$SystemIsUsingBinds
@@ -1512,60 +1546,57 @@ class WatchOptions$Query$SystemIsUsingBinds
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         context: context,
-         document: documentNodeQuerySystemIsUsingBinds,
-         pollInterval: pollInterval,
-         eagerlyFetchResults: eagerlyFetchResults,
-         carryForwardDataOnException: carryForwardDataOnException,
-         fetchResults: fetchResults,
-         parserFn: _parserFn$Query$SystemIsUsingBinds,
-       );
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQuerySystemIsUsingBinds,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$SystemIsUsingBinds,
+        );
 }
 
 class FetchMoreOptions$Query$SystemIsUsingBinds
     extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$SystemIsUsingBinds({
-    required graphql.UpdateQuery updateQuery,
-  }) : super(
-         updateQuery: updateQuery,
-         document: documentNodeQuerySystemIsUsingBinds,
-       );
+  FetchMoreOptions$Query$SystemIsUsingBinds(
+      {required graphql.UpdateQuery updateQuery})
+      : super(
+          updateQuery: updateQuery,
+          document: documentNodeQuerySystemIsUsingBinds,
+        );
 }
 
 extension ClientExtension$Query$SystemIsUsingBinds on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$SystemIsUsingBinds>>
-  query$SystemIsUsingBinds([Options$Query$SystemIsUsingBinds? options]) async =>
-      await this.query(options ?? Options$Query$SystemIsUsingBinds());
+      query$SystemIsUsingBinds(
+              [Options$Query$SystemIsUsingBinds? options]) async =>
+          await this.query(options ?? Options$Query$SystemIsUsingBinds());
   graphql.ObservableQuery<Query$SystemIsUsingBinds>
-  watchQuery$SystemIsUsingBinds([
-    WatchOptions$Query$SystemIsUsingBinds? options,
-  ]) => this.watchQuery(options ?? WatchOptions$Query$SystemIsUsingBinds());
+      watchQuery$SystemIsUsingBinds(
+              [WatchOptions$Query$SystemIsUsingBinds? options]) =>
+          this.watchQuery(options ?? WatchOptions$Query$SystemIsUsingBinds());
   void writeQuery$SystemIsUsingBinds({
     required Query$SystemIsUsingBinds data,
     bool broadcast = true,
-  }) => this.writeQuery(
-    graphql.Request(
-      operation: graphql.Operation(
-        document: documentNodeQuerySystemIsUsingBinds,
-      ),
-    ),
-    data: data.toJson(),
-    broadcast: broadcast,
-  );
-  Query$SystemIsUsingBinds? readQuery$SystemIsUsingBinds({
-    bool optimistic = true,
-  }) {
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+            operation: graphql.Operation(
+                document: documentNodeQuerySystemIsUsingBinds)),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
+  Query$SystemIsUsingBinds? readQuery$SystemIsUsingBinds(
+      {bool optimistic = true}) {
     final result = this.readQuery(
       graphql.Request(
-        operation: graphql.Operation(
-          document: documentNodeQuerySystemIsUsingBinds,
-        ),
-      ),
+          operation:
+              graphql.Operation(document: documentNodeQuerySystemIsUsingBinds)),
       optimistic: optimistic,
     );
     return result == null ? null : Query$SystemIsUsingBinds.fromJson(result);
@@ -1583,8 +1614,7 @@ class Query$SystemIsUsingBinds$system {
     final l$$__typename = json['__typename'];
     return Query$SystemIsUsingBinds$system(
       info: Query$SystemIsUsingBinds$system$info.fromJson(
-        (l$info as Map<String, dynamic>),
-      ),
+          (l$info as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1606,7 +1636,10 @@ class Query$SystemIsUsingBinds$system {
   int get hashCode {
     final l$info = info;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$info, l$$__typename]);
+    return Object.hashAll([
+      l$info,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -1635,7 +1668,10 @@ class Query$SystemIsUsingBinds$system {
 extension UtilityExtension$Query$SystemIsUsingBinds$system
     on Query$SystemIsUsingBinds$system {
   CopyWith$Query$SystemIsUsingBinds$system<Query$SystemIsUsingBinds$system>
-  get copyWith => CopyWith$Query$SystemIsUsingBinds$system(this, (i) => i);
+      get copyWith => CopyWith$Query$SystemIsUsingBinds$system(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$SystemIsUsingBinds$system<TRes> {
@@ -1647,13 +1683,19 @@ abstract class CopyWith$Query$SystemIsUsingBinds$system<TRes> {
   factory CopyWith$Query$SystemIsUsingBinds$system.stub(TRes res) =
       _CopyWithStubImpl$Query$SystemIsUsingBinds$system;
 
-  TRes call({Query$SystemIsUsingBinds$system$info? info, String? $__typename});
+  TRes call({
+    Query$SystemIsUsingBinds$system$info? info,
+    String? $__typename,
+  });
   CopyWith$Query$SystemIsUsingBinds$system$info<TRes> get info;
 }
 
 class _CopyWithImpl$Query$SystemIsUsingBinds$system<TRes>
     implements CopyWith$Query$SystemIsUsingBinds$system<TRes> {
-  _CopyWithImpl$Query$SystemIsUsingBinds$system(this._instance, this._then);
+  _CopyWithImpl$Query$SystemIsUsingBinds$system(
+    this._instance,
+    this._then,
+  );
 
   final Query$SystemIsUsingBinds$system _instance;
 
@@ -1661,26 +1703,23 @@ class _CopyWithImpl$Query$SystemIsUsingBinds$system<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? info = _undefined, Object? $__typename = _undefined}) =>
-      _then(
-        Query$SystemIsUsingBinds$system(
-          info:
-              info == _undefined || info == null
-                  ? _instance.info
-                  : (info as Query$SystemIsUsingBinds$system$info),
-          $__typename:
-              $__typename == _undefined || $__typename == null
-                  ? _instance.$__typename
-                  : ($__typename as String),
-        ),
-      );
+  TRes call({
+    Object? info = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$SystemIsUsingBinds$system(
+        info: info == _undefined || info == null
+            ? _instance.info
+            : (info as Query$SystemIsUsingBinds$system$info),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Query$SystemIsUsingBinds$system$info<TRes> get info {
     final local$info = _instance.info;
     return CopyWith$Query$SystemIsUsingBinds$system$info(
-      local$info,
-      (e) => call(info: e),
-    );
+        local$info, (e) => call(info: e));
   }
 }
 
@@ -1690,7 +1729,10 @@ class _CopyWithStubImpl$Query$SystemIsUsingBinds$system<TRes>
 
   TRes _res;
 
-  call({Query$SystemIsUsingBinds$system$info? info, String? $__typename}) =>
+  call({
+    Query$SystemIsUsingBinds$system$info? info,
+    String? $__typename,
+  }) =>
       _res;
 
   CopyWith$Query$SystemIsUsingBinds$system$info<TRes> get info =>
@@ -1704,8 +1746,7 @@ class Query$SystemIsUsingBinds$system$info {
   });
 
   factory Query$SystemIsUsingBinds$system$info.fromJson(
-    Map<String, dynamic> json,
-  ) {
+      Map<String, dynamic> json) {
     final l$usingBinds = json['usingBinds'];
     final l$$__typename = json['__typename'];
     return Query$SystemIsUsingBinds$system$info(
@@ -1731,7 +1772,10 @@ class Query$SystemIsUsingBinds$system$info {
   int get hashCode {
     final l$usingBinds = usingBinds;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$usingBinds, l$$__typename]);
+    return Object.hashAll([
+      l$usingBinds,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -1760,9 +1804,11 @@ class Query$SystemIsUsingBinds$system$info {
 extension UtilityExtension$Query$SystemIsUsingBinds$system$info
     on Query$SystemIsUsingBinds$system$info {
   CopyWith$Query$SystemIsUsingBinds$system$info<
-    Query$SystemIsUsingBinds$system$info
-  >
-  get copyWith => CopyWith$Query$SystemIsUsingBinds$system$info(this, (i) => i);
+          Query$SystemIsUsingBinds$system$info>
+      get copyWith => CopyWith$Query$SystemIsUsingBinds$system$info(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$SystemIsUsingBinds$system$info<TRes> {
@@ -1774,7 +1820,10 @@ abstract class CopyWith$Query$SystemIsUsingBinds$system$info<TRes> {
   factory CopyWith$Query$SystemIsUsingBinds$system$info.stub(TRes res) =
       _CopyWithStubImpl$Query$SystemIsUsingBinds$system$info;
 
-  TRes call({bool? usingBinds, String? $__typename});
+  TRes call({
+    bool? usingBinds,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$SystemIsUsingBinds$system$info<TRes>
@@ -1793,18 +1842,15 @@ class _CopyWithImpl$Query$SystemIsUsingBinds$system$info<TRes>
   TRes call({
     Object? usingBinds = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Query$SystemIsUsingBinds$system$info(
-      usingBinds:
-          usingBinds == _undefined || usingBinds == null
-              ? _instance.usingBinds
-              : (usingBinds as bool),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Query$SystemIsUsingBinds$system$info(
+        usingBinds: usingBinds == _undefined || usingBinds == null
+            ? _instance.usingBinds
+            : (usingBinds as bool),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$SystemIsUsingBinds$system$info<TRes>
@@ -1813,19 +1859,25 @@ class _CopyWithStubImpl$Query$SystemIsUsingBinds$system$info<TRes>
 
   TRes _res;
 
-  call({bool? usingBinds, String? $__typename}) => _res;
+  call({
+    bool? usingBinds,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Query$GetDnsRecords {
-  Query$GetDnsRecords({required this.system, this.$__typename = 'Query'});
+  Query$GetDnsRecords({
+    required this.system,
+    this.$__typename = 'Query',
+  });
 
   factory Query$GetDnsRecords.fromJson(Map<String, dynamic> json) {
     final l$system = json['system'];
     final l$$__typename = json['__typename'];
     return Query$GetDnsRecords(
       system: Query$GetDnsRecords$system.fromJson(
-        (l$system as Map<String, dynamic>),
-      ),
+          (l$system as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1847,7 +1899,10 @@ class Query$GetDnsRecords {
   int get hashCode {
     final l$system = system;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$system, l$$__typename]);
+    return Object.hashAll([
+      l$system,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -1874,7 +1929,10 @@ class Query$GetDnsRecords {
 
 extension UtilityExtension$Query$GetDnsRecords on Query$GetDnsRecords {
   CopyWith$Query$GetDnsRecords<Query$GetDnsRecords> get copyWith =>
-      CopyWith$Query$GetDnsRecords(this, (i) => i);
+      CopyWith$Query$GetDnsRecords(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Query$GetDnsRecords<TRes> {
@@ -1886,13 +1944,19 @@ abstract class CopyWith$Query$GetDnsRecords<TRes> {
   factory CopyWith$Query$GetDnsRecords.stub(TRes res) =
       _CopyWithStubImpl$Query$GetDnsRecords;
 
-  TRes call({Query$GetDnsRecords$system? system, String? $__typename});
+  TRes call({
+    Query$GetDnsRecords$system? system,
+    String? $__typename,
+  });
   CopyWith$Query$GetDnsRecords$system<TRes> get system;
 }
 
 class _CopyWithImpl$Query$GetDnsRecords<TRes>
     implements CopyWith$Query$GetDnsRecords<TRes> {
-  _CopyWithImpl$Query$GetDnsRecords(this._instance, this._then);
+  _CopyWithImpl$Query$GetDnsRecords(
+    this._instance,
+    this._then,
+  );
 
   final Query$GetDnsRecords _instance;
 
@@ -1900,26 +1964,23 @@ class _CopyWithImpl$Query$GetDnsRecords<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? system = _undefined, Object? $__typename = _undefined}) =>
-      _then(
-        Query$GetDnsRecords(
-          system:
-              system == _undefined || system == null
-                  ? _instance.system
-                  : (system as Query$GetDnsRecords$system),
-          $__typename:
-              $__typename == _undefined || $__typename == null
-                  ? _instance.$__typename
-                  : ($__typename as String),
-        ),
-      );
+  TRes call({
+    Object? system = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$GetDnsRecords(
+        system: system == _undefined || system == null
+            ? _instance.system
+            : (system as Query$GetDnsRecords$system),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Query$GetDnsRecords$system<TRes> get system {
     final local$system = _instance.system;
     return CopyWith$Query$GetDnsRecords$system(
-      local$system,
-      (e) => call(system: e),
-    );
+        local$system, (e) => call(system: e));
   }
 }
 
@@ -1929,96 +1990,83 @@ class _CopyWithStubImpl$Query$GetDnsRecords<TRes>
 
   TRes _res;
 
-  call({Query$GetDnsRecords$system? system, String? $__typename}) => _res;
+  call({
+    Query$GetDnsRecords$system? system,
+    String? $__typename,
+  }) =>
+      _res;
 
   CopyWith$Query$GetDnsRecords$system<TRes> get system =>
       CopyWith$Query$GetDnsRecords$system.stub(_res);
 }
 
-const documentNodeQueryGetDnsRecords = DocumentNode(
-  definitions: [
-    OperationDefinitionNode(
-      type: OperationType.query,
-      name: NameNode(value: 'GetDnsRecords'),
-      variableDefinitions: [],
-      directives: [],
-      selectionSet: SelectionSetNode(
-        selections: [
+const documentNodeQueryGetDnsRecords = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'GetDnsRecords'),
+    variableDefinitions: [],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'system'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
           FieldNode(
-            name: NameNode(value: 'system'),
+            name: NameNode(value: 'domainInfo'),
             alias: null,
             arguments: [],
             directives: [],
-            selectionSet: SelectionSetNode(
-              selections: [
-                FieldNode(
-                  name: NameNode(value: 'domainInfo'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: SelectionSetNode(
-                    selections: [
-                      FieldNode(
-                        name: NameNode(value: 'domain'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                      FieldNode(
-                        name: NameNode(value: 'hostname'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                      FieldNode(
-                        name: NameNode(value: 'provider'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                      FieldNode(
-                        name: NameNode(value: 'requiredDnsRecords'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: SelectionSetNode(
-                          selections: [
-                            FragmentSpreadNode(
-                              name: NameNode(value: 'fragmentDnsRecords'),
-                              directives: [],
-                            ),
-                            FieldNode(
-                              name: NameNode(value: '__typename'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null,
-                            ),
-                          ],
-                        ),
-                      ),
-                      FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                    ],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'domain'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'hostname'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'provider'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'requiredDnsRecords'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'fragmentDnsRecords'),
+                    directives: [],
                   ),
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ],
-            ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
           ),
           FieldNode(
             name: NameNode(value: '__typename'),
@@ -2027,16 +2075,25 @@ const documentNodeQueryGetDnsRecords = DocumentNode(
             directives: [],
             selectionSet: null,
           ),
-        ],
+        ]),
       ),
-    ),
-    fragmentDefinitionfragmentDnsRecords,
-  ],
-);
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionfragmentDnsRecords,
+]);
 Query$GetDnsRecords _parserFn$Query$GetDnsRecords(Map<String, dynamic> data) =>
     Query$GetDnsRecords.fromJson(data);
-typedef OnQueryComplete$Query$GetDnsRecords =
-    FutureOr<void> Function(Map<String, dynamic>?, Query$GetDnsRecords?);
+typedef OnQueryComplete$Query$GetDnsRecords = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$GetDnsRecords?,
+);
 
 class Options$Query$GetDnsRecords
     extends graphql.QueryOptions<Query$GetDnsRecords> {
@@ -2051,36 +2108,35 @@ class Options$Query$GetDnsRecords
     graphql.Context? context,
     OnQueryComplete$Query$GetDnsRecords? onComplete,
     graphql.OnQueryError? onError,
-  }) : onCompleteWithParsed = onComplete,
-       super(
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         pollInterval: pollInterval,
-         context: context,
-         onComplete:
-             onComplete == null
-                 ? null
-                 : (data) => onComplete(
-                   data,
-                   data == null ? null : _parserFn$Query$GetDnsRecords(data),
-                 ),
-         onError: onError,
-         document: documentNodeQueryGetDnsRecords,
-         parserFn: _parserFn$Query$GetDnsRecords,
-       );
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null ? null : _parserFn$Query$GetDnsRecords(data),
+                  ),
+          onError: onError,
+          document: documentNodeQueryGetDnsRecords,
+          parserFn: _parserFn$Query$GetDnsRecords,
+        );
 
   final OnQueryComplete$Query$GetDnsRecords? onCompleteWithParsed;
 
   @override
   List<Object?> get properties => [
-    ...super.onComplete == null
-        ? super.properties
-        : super.properties.where((property) => property != onComplete),
-    onCompleteWithParsed,
-  ];
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
 }
 
 class WatchOptions$Query$GetDnsRecords
@@ -2098,52 +2154,53 @@ class WatchOptions$Query$GetDnsRecords
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         context: context,
-         document: documentNodeQueryGetDnsRecords,
-         pollInterval: pollInterval,
-         eagerlyFetchResults: eagerlyFetchResults,
-         carryForwardDataOnException: carryForwardDataOnException,
-         fetchResults: fetchResults,
-         parserFn: _parserFn$Query$GetDnsRecords,
-       );
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQueryGetDnsRecords,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$GetDnsRecords,
+        );
 }
 
 class FetchMoreOptions$Query$GetDnsRecords extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Query$GetDnsRecords({
-    required graphql.UpdateQuery updateQuery,
-  }) : super(
-         updateQuery: updateQuery,
-         document: documentNodeQueryGetDnsRecords,
-       );
+  FetchMoreOptions$Query$GetDnsRecords(
+      {required graphql.UpdateQuery updateQuery})
+      : super(
+          updateQuery: updateQuery,
+          document: documentNodeQueryGetDnsRecords,
+        );
 }
 
 extension ClientExtension$Query$GetDnsRecords on graphql.GraphQLClient {
-  Future<graphql.QueryResult<Query$GetDnsRecords>> query$GetDnsRecords([
-    Options$Query$GetDnsRecords? options,
-  ]) async => await this.query(options ?? Options$Query$GetDnsRecords());
-  graphql.ObservableQuery<Query$GetDnsRecords> watchQuery$GetDnsRecords([
-    WatchOptions$Query$GetDnsRecords? options,
-  ]) => this.watchQuery(options ?? WatchOptions$Query$GetDnsRecords());
+  Future<graphql.QueryResult<Query$GetDnsRecords>> query$GetDnsRecords(
+          [Options$Query$GetDnsRecords? options]) async =>
+      await this.query(options ?? Options$Query$GetDnsRecords());
+  graphql.ObservableQuery<Query$GetDnsRecords> watchQuery$GetDnsRecords(
+          [WatchOptions$Query$GetDnsRecords? options]) =>
+      this.watchQuery(options ?? WatchOptions$Query$GetDnsRecords());
   void writeQuery$GetDnsRecords({
     required Query$GetDnsRecords data,
     bool broadcast = true,
-  }) => this.writeQuery(
-    graphql.Request(
-      operation: graphql.Operation(document: documentNodeQueryGetDnsRecords),
-    ),
-    data: data.toJson(),
-    broadcast: broadcast,
-  );
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+            operation:
+                graphql.Operation(document: documentNodeQueryGetDnsRecords)),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
   Query$GetDnsRecords? readQuery$GetDnsRecords({bool optimistic = true}) {
     final result = this.readQuery(
       graphql.Request(
-        operation: graphql.Operation(document: documentNodeQueryGetDnsRecords),
-      ),
+          operation:
+              graphql.Operation(document: documentNodeQueryGetDnsRecords)),
       optimistic: optimistic,
     );
     return result == null ? null : Query$GetDnsRecords.fromJson(result);
@@ -2161,8 +2218,7 @@ class Query$GetDnsRecords$system {
     final l$$__typename = json['__typename'];
     return Query$GetDnsRecords$system(
       domainInfo: Query$GetDnsRecords$system$domainInfo.fromJson(
-        (l$domainInfo as Map<String, dynamic>),
-      ),
+          (l$domainInfo as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -2184,7 +2240,10 @@ class Query$GetDnsRecords$system {
   int get hashCode {
     final l$domainInfo = domainInfo;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$domainInfo, l$$__typename]);
+    return Object.hashAll([
+      l$domainInfo,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -2213,7 +2272,10 @@ class Query$GetDnsRecords$system {
 extension UtilityExtension$Query$GetDnsRecords$system
     on Query$GetDnsRecords$system {
   CopyWith$Query$GetDnsRecords$system<Query$GetDnsRecords$system>
-  get copyWith => CopyWith$Query$GetDnsRecords$system(this, (i) => i);
+      get copyWith => CopyWith$Query$GetDnsRecords$system(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$GetDnsRecords$system<TRes> {
@@ -2234,7 +2296,10 @@ abstract class CopyWith$Query$GetDnsRecords$system<TRes> {
 
 class _CopyWithImpl$Query$GetDnsRecords$system<TRes>
     implements CopyWith$Query$GetDnsRecords$system<TRes> {
-  _CopyWithImpl$Query$GetDnsRecords$system(this._instance, this._then);
+  _CopyWithImpl$Query$GetDnsRecords$system(
+    this._instance,
+    this._then,
+  );
 
   final Query$GetDnsRecords$system _instance;
 
@@ -2245,25 +2310,20 @@ class _CopyWithImpl$Query$GetDnsRecords$system<TRes>
   TRes call({
     Object? domainInfo = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Query$GetDnsRecords$system(
-      domainInfo:
-          domainInfo == _undefined || domainInfo == null
-              ? _instance.domainInfo
-              : (domainInfo as Query$GetDnsRecords$system$domainInfo),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Query$GetDnsRecords$system(
+        domainInfo: domainInfo == _undefined || domainInfo == null
+            ? _instance.domainInfo
+            : (domainInfo as Query$GetDnsRecords$system$domainInfo),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Query$GetDnsRecords$system$domainInfo<TRes> get domainInfo {
     final local$domainInfo = _instance.domainInfo;
     return CopyWith$Query$GetDnsRecords$system$domainInfo(
-      local$domainInfo,
-      (e) => call(domainInfo: e),
-    );
+        local$domainInfo, (e) => call(domainInfo: e));
   }
 }
 
@@ -2276,7 +2336,8 @@ class _CopyWithStubImpl$Query$GetDnsRecords$system<TRes>
   call({
     Query$GetDnsRecords$system$domainInfo? domainInfo,
     String? $__typename,
-  }) => _res;
+  }) =>
+      _res;
 
   CopyWith$Query$GetDnsRecords$system$domainInfo<TRes> get domainInfo =>
       CopyWith$Query$GetDnsRecords$system$domainInfo.stub(_res);
@@ -2292,8 +2353,7 @@ class Query$GetDnsRecords$system$domainInfo {
   });
 
   factory Query$GetDnsRecords$system$domainInfo.fromJson(
-    Map<String, dynamic> json,
-  ) {
+      Map<String, dynamic> json) {
     final l$domain = json['domain'];
     final l$hostname = json['hostname'];
     final l$provider = json['provider'];
@@ -2303,14 +2363,10 @@ class Query$GetDnsRecords$system$domainInfo {
       domain: (l$domain as String),
       hostname: (l$hostname as String),
       provider: fromJson$Enum$DnsProvider((l$provider as String)),
-      requiredDnsRecords:
-          (l$requiredDnsRecords as List<dynamic>)
-              .map(
-                (e) => Fragment$fragmentDnsRecords.fromJson(
-                  (e as Map<String, dynamic>),
-                ),
-              )
-              .toList(),
+      requiredDnsRecords: (l$requiredDnsRecords as List<dynamic>)
+          .map((e) =>
+              Fragment$fragmentDnsRecords.fromJson((e as Map<String, dynamic>)))
+          .toList(),
       $__typename: (l$$__typename as String),
     );
   }
@@ -2405,10 +2461,11 @@ class Query$GetDnsRecords$system$domainInfo {
 extension UtilityExtension$Query$GetDnsRecords$system$domainInfo
     on Query$GetDnsRecords$system$domainInfo {
   CopyWith$Query$GetDnsRecords$system$domainInfo<
-    Query$GetDnsRecords$system$domainInfo
-  >
-  get copyWith =>
-      CopyWith$Query$GetDnsRecords$system$domainInfo(this, (i) => i);
+          Query$GetDnsRecords$system$domainInfo>
+      get copyWith => CopyWith$Query$GetDnsRecords$system$domainInfo(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$GetDnsRecords$system$domainInfo<TRes> {
@@ -2428,13 +2485,11 @@ abstract class CopyWith$Query$GetDnsRecords$system$domainInfo<TRes> {
     String? $__typename,
   });
   TRes requiredDnsRecords(
-    Iterable<Fragment$fragmentDnsRecords> Function(
-      Iterable<
-        CopyWith$Fragment$fragmentDnsRecords<Fragment$fragmentDnsRecords>
-      >,
-    )
-    _fn,
-  );
+      Iterable<Fragment$fragmentDnsRecords> Function(
+              Iterable<
+                  CopyWith$Fragment$fragmentDnsRecords<
+                      Fragment$fragmentDnsRecords>>)
+          _fn);
 }
 
 class _CopyWithImpl$Query$GetDnsRecords$system$domainInfo<TRes>
@@ -2456,46 +2511,38 @@ class _CopyWithImpl$Query$GetDnsRecords$system$domainInfo<TRes>
     Object? provider = _undefined,
     Object? requiredDnsRecords = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Query$GetDnsRecords$system$domainInfo(
-      domain:
-          domain == _undefined || domain == null
-              ? _instance.domain
-              : (domain as String),
-      hostname:
-          hostname == _undefined || hostname == null
-              ? _instance.hostname
-              : (hostname as String),
-      provider:
-          provider == _undefined || provider == null
-              ? _instance.provider
-              : (provider as Enum$DnsProvider),
-      requiredDnsRecords:
-          requiredDnsRecords == _undefined || requiredDnsRecords == null
-              ? _instance.requiredDnsRecords
-              : (requiredDnsRecords as List<Fragment$fragmentDnsRecords>),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Query$GetDnsRecords$system$domainInfo(
+        domain: domain == _undefined || domain == null
+            ? _instance.domain
+            : (domain as String),
+        hostname: hostname == _undefined || hostname == null
+            ? _instance.hostname
+            : (hostname as String),
+        provider: provider == _undefined || provider == null
+            ? _instance.provider
+            : (provider as Enum$DnsProvider),
+        requiredDnsRecords:
+            requiredDnsRecords == _undefined || requiredDnsRecords == null
+                ? _instance.requiredDnsRecords
+                : (requiredDnsRecords as List<Fragment$fragmentDnsRecords>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   TRes requiredDnsRecords(
-    Iterable<Fragment$fragmentDnsRecords> Function(
-      Iterable<
-        CopyWith$Fragment$fragmentDnsRecords<Fragment$fragmentDnsRecords>
-      >,
-    )
-    _fn,
-  ) => call(
-    requiredDnsRecords:
-        _fn(
-          _instance.requiredDnsRecords.map(
-            (e) => CopyWith$Fragment$fragmentDnsRecords(e, (i) => i),
-          ),
-        ).toList(),
-  );
+          Iterable<Fragment$fragmentDnsRecords> Function(
+                  Iterable<
+                      CopyWith$Fragment$fragmentDnsRecords<
+                          Fragment$fragmentDnsRecords>>)
+              _fn) =>
+      call(
+          requiredDnsRecords: _fn(_instance.requiredDnsRecords
+              .map((e) => CopyWith$Fragment$fragmentDnsRecords(
+                    e,
+                    (i) => i,
+                  ))).toList());
 }
 
 class _CopyWithStubImpl$Query$GetDnsRecords$system$domainInfo<TRes>
@@ -2510,20 +2557,22 @@ class _CopyWithStubImpl$Query$GetDnsRecords$system$domainInfo<TRes>
     Enum$DnsProvider? provider,
     List<Fragment$fragmentDnsRecords>? requiredDnsRecords,
     String? $__typename,
-  }) => _res;
+  }) =>
+      _res;
 
   requiredDnsRecords(_fn) => _res;
 }
 
 class Variables$Mutation$ChangeTimezone {
   factory Variables$Mutation$ChangeTimezone({required String timezone}) =>
-      Variables$Mutation$ChangeTimezone._({r'timezone': timezone});
+      Variables$Mutation$ChangeTimezone._({
+        r'timezone': timezone,
+      });
 
   Variables$Mutation$ChangeTimezone._(this._$data);
 
   factory Variables$Mutation$ChangeTimezone.fromJson(
-    Map<String, dynamic> data,
-  ) {
+      Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     final l$timezone = data['timezone'];
     result$data['timezone'] = (l$timezone as String);
@@ -2542,7 +2591,10 @@ class Variables$Mutation$ChangeTimezone {
   }
 
   CopyWith$Variables$Mutation$ChangeTimezone<Variables$Mutation$ChangeTimezone>
-  get copyWith => CopyWith$Variables$Mutation$ChangeTimezone(this, (i) => i);
+      get copyWith => CopyWith$Variables$Mutation$ChangeTimezone(
+            this,
+            (i) => i,
+          );
 
   @override
   bool operator ==(Object other) {
@@ -2582,7 +2634,10 @@ abstract class CopyWith$Variables$Mutation$ChangeTimezone<TRes> {
 
 class _CopyWithImpl$Variables$Mutation$ChangeTimezone<TRes>
     implements CopyWith$Variables$Mutation$ChangeTimezone<TRes> {
-  _CopyWithImpl$Variables$Mutation$ChangeTimezone(this._instance, this._then);
+  _CopyWithImpl$Variables$Mutation$ChangeTimezone(
+    this._instance,
+    this._then,
+  );
 
   final Variables$Mutation$ChangeTimezone _instance;
 
@@ -2590,13 +2645,12 @@ class _CopyWithImpl$Variables$Mutation$ChangeTimezone<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? timezone = _undefined}) => _then(
-    Variables$Mutation$ChangeTimezone._({
-      ..._instance._$data,
-      if (timezone != _undefined && timezone != null)
-        'timezone': (timezone as String),
-    }),
-  );
+  TRes call({Object? timezone = _undefined}) =>
+      _then(Variables$Mutation$ChangeTimezone._({
+        ..._instance._$data,
+        if (timezone != _undefined && timezone != null)
+          'timezone': (timezone as String),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Mutation$ChangeTimezone<TRes>
@@ -2619,8 +2673,7 @@ class Mutation$ChangeTimezone {
     final l$$__typename = json['__typename'];
     return Mutation$ChangeTimezone(
       system: Mutation$ChangeTimezone$system.fromJson(
-        (l$system as Map<String, dynamic>),
-      ),
+          (l$system as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -2642,7 +2695,10 @@ class Mutation$ChangeTimezone {
   int get hashCode {
     final l$system = system;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$system, l$$__typename]);
+    return Object.hashAll([
+      l$system,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -2669,7 +2725,10 @@ class Mutation$ChangeTimezone {
 
 extension UtilityExtension$Mutation$ChangeTimezone on Mutation$ChangeTimezone {
   CopyWith$Mutation$ChangeTimezone<Mutation$ChangeTimezone> get copyWith =>
-      CopyWith$Mutation$ChangeTimezone(this, (i) => i);
+      CopyWith$Mutation$ChangeTimezone(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Mutation$ChangeTimezone<TRes> {
@@ -2681,13 +2740,19 @@ abstract class CopyWith$Mutation$ChangeTimezone<TRes> {
   factory CopyWith$Mutation$ChangeTimezone.stub(TRes res) =
       _CopyWithStubImpl$Mutation$ChangeTimezone;
 
-  TRes call({Mutation$ChangeTimezone$system? system, String? $__typename});
+  TRes call({
+    Mutation$ChangeTimezone$system? system,
+    String? $__typename,
+  });
   CopyWith$Mutation$ChangeTimezone$system<TRes> get system;
 }
 
 class _CopyWithImpl$Mutation$ChangeTimezone<TRes>
     implements CopyWith$Mutation$ChangeTimezone<TRes> {
-  _CopyWithImpl$Mutation$ChangeTimezone(this._instance, this._then);
+  _CopyWithImpl$Mutation$ChangeTimezone(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$ChangeTimezone _instance;
 
@@ -2695,26 +2760,23 @@ class _CopyWithImpl$Mutation$ChangeTimezone<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? system = _undefined, Object? $__typename = _undefined}) =>
-      _then(
-        Mutation$ChangeTimezone(
-          system:
-              system == _undefined || system == null
-                  ? _instance.system
-                  : (system as Mutation$ChangeTimezone$system),
-          $__typename:
-              $__typename == _undefined || $__typename == null
-                  ? _instance.$__typename
-                  : ($__typename as String),
-        ),
-      );
+  TRes call({
+    Object? system = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$ChangeTimezone(
+        system: system == _undefined || system == null
+            ? _instance.system
+            : (system as Mutation$ChangeTimezone$system),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Mutation$ChangeTimezone$system<TRes> get system {
     final local$system = _instance.system;
     return CopyWith$Mutation$ChangeTimezone$system(
-      local$system,
-      (e) => call(system: e),
-    );
+        local$system, (e) => call(system: e));
   }
 }
 
@@ -2724,77 +2786,69 @@ class _CopyWithStubImpl$Mutation$ChangeTimezone<TRes>
 
   TRes _res;
 
-  call({Mutation$ChangeTimezone$system? system, String? $__typename}) => _res;
+  call({
+    Mutation$ChangeTimezone$system? system,
+    String? $__typename,
+  }) =>
+      _res;
 
   CopyWith$Mutation$ChangeTimezone$system<TRes> get system =>
       CopyWith$Mutation$ChangeTimezone$system.stub(_res);
 }
 
-const documentNodeMutationChangeTimezone = DocumentNode(
-  definitions: [
-    OperationDefinitionNode(
-      type: OperationType.mutation,
-      name: NameNode(value: 'ChangeTimezone'),
-      variableDefinitions: [
-        VariableDefinitionNode(
-          variable: VariableNode(name: NameNode(value: 'timezone')),
-          type: NamedTypeNode(name: NameNode(value: 'String'), isNonNull: true),
-          defaultValue: DefaultValueNode(value: null),
-          directives: [],
+const documentNodeMutationChangeTimezone = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'ChangeTimezone'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'timezone')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'String'),
+          isNonNull: true,
         ),
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(
-        selections: [
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'system'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
           FieldNode(
-            name: NameNode(value: 'system'),
+            name: NameNode(value: 'changeTimezone'),
             alias: null,
-            arguments: [],
+            arguments: [
+              ArgumentNode(
+                name: NameNode(value: 'timezone'),
+                value: VariableNode(name: NameNode(value: 'timezone')),
+              )
+            ],
             directives: [],
-            selectionSet: SelectionSetNode(
-              selections: [
-                FieldNode(
-                  name: NameNode(value: 'changeTimezone'),
-                  alias: null,
-                  arguments: [
-                    ArgumentNode(
-                      name: NameNode(value: 'timezone'),
-                      value: VariableNode(name: NameNode(value: 'timezone')),
-                    ),
-                  ],
-                  directives: [],
-                  selectionSet: SelectionSetNode(
-                    selections: [
-                      FragmentSpreadNode(
-                        name: NameNode(value: 'basicMutationReturnFields'),
-                        directives: [],
-                      ),
-                      FieldNode(
-                        name: NameNode(value: 'timezone'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                      FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                    ],
-                  ),
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ],
-            ),
+            selectionSet: SelectionSetNode(selections: [
+              FragmentSpreadNode(
+                name: NameNode(value: 'basicMutationReturnFields'),
+                directives: [],
+              ),
+              FieldNode(
+                name: NameNode(value: 'timezone'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
           ),
           FieldNode(
             name: NameNode(value: '__typename'),
@@ -2803,17 +2857,26 @@ const documentNodeMutationChangeTimezone = DocumentNode(
             directives: [],
             selectionSet: null,
           ),
-        ],
+        ]),
       ),
-    ),
-    fragmentDefinitionbasicMutationReturnFields,
-  ],
-);
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionbasicMutationReturnFields,
+]);
 Mutation$ChangeTimezone _parserFn$Mutation$ChangeTimezone(
-  Map<String, dynamic> data,
-) => Mutation$ChangeTimezone.fromJson(data);
-typedef OnMutationCompleted$Mutation$ChangeTimezone =
-    FutureOr<void> Function(Map<String, dynamic>?, Mutation$ChangeTimezone?);
+        Map<String, dynamic> data) =>
+    Mutation$ChangeTimezone.fromJson(data);
+typedef OnMutationCompleted$Mutation$ChangeTimezone = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Mutation$ChangeTimezone?,
+);
 
 class Options$Mutation$ChangeTimezone
     extends graphql.MutationOptions<Mutation$ChangeTimezone> {
@@ -2829,39 +2892,38 @@ class Options$Mutation$ChangeTimezone
     OnMutationCompleted$Mutation$ChangeTimezone? onCompleted,
     graphql.OnMutationUpdate<Mutation$ChangeTimezone>? update,
     graphql.OnError? onError,
-  }) : onCompletedWithParsed = onCompleted,
-       super(
-         variables: variables.toJson(),
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         context: context,
-         onCompleted:
-             onCompleted == null
-                 ? null
-                 : (data) => onCompleted(
-                   data,
-                   data == null
-                       ? null
-                       : _parserFn$Mutation$ChangeTimezone(data),
-                 ),
-         update: update,
-         onError: onError,
-         document: documentNodeMutationChangeTimezone,
-         parserFn: _parserFn$Mutation$ChangeTimezone,
-       );
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$ChangeTimezone(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationChangeTimezone,
+          parserFn: _parserFn$Mutation$ChangeTimezone,
+        );
 
   final OnMutationCompleted$Mutation$ChangeTimezone? onCompletedWithParsed;
 
   @override
   List<Object?> get properties => [
-    ...super.onCompleted == null
-        ? super.properties
-        : super.properties.where((property) => property != onCompleted),
-    onCompletedWithParsed,
-  ];
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
 }
 
 class WatchOptions$Mutation$ChangeTimezone
@@ -2880,29 +2942,29 @@ class WatchOptions$Mutation$ChangeTimezone
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-         variables: variables.toJson(),
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         context: context,
-         document: documentNodeMutationChangeTimezone,
-         pollInterval: pollInterval,
-         eagerlyFetchResults: eagerlyFetchResults,
-         carryForwardDataOnException: carryForwardDataOnException,
-         fetchResults: fetchResults,
-         parserFn: _parserFn$Mutation$ChangeTimezone,
-       );
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationChangeTimezone,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$ChangeTimezone,
+        );
 }
 
 extension ClientExtension$Mutation$ChangeTimezone on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$ChangeTimezone>> mutate$ChangeTimezone(
-    Options$Mutation$ChangeTimezone options,
-  ) async => await this.mutate(options);
+          Options$Mutation$ChangeTimezone options) async =>
+      await this.mutate(options);
   graphql.ObservableQuery<Mutation$ChangeTimezone> watchMutation$ChangeTimezone(
-    WatchOptions$Mutation$ChangeTimezone options,
-  ) => this.watchMutation(options);
+          WatchOptions$Mutation$ChangeTimezone options) =>
+      this.watchMutation(options);
 }
 
 class Mutation$ChangeTimezone$system {
@@ -2916,8 +2978,7 @@ class Mutation$ChangeTimezone$system {
     final l$$__typename = json['__typename'];
     return Mutation$ChangeTimezone$system(
       changeTimezone: Mutation$ChangeTimezone$system$changeTimezone.fromJson(
-        (l$changeTimezone as Map<String, dynamic>),
-      ),
+          (l$changeTimezone as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -2939,7 +3000,10 @@ class Mutation$ChangeTimezone$system {
   int get hashCode {
     final l$changeTimezone = changeTimezone;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$changeTimezone, l$$__typename]);
+    return Object.hashAll([
+      l$changeTimezone,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -2968,7 +3032,10 @@ class Mutation$ChangeTimezone$system {
 extension UtilityExtension$Mutation$ChangeTimezone$system
     on Mutation$ChangeTimezone$system {
   CopyWith$Mutation$ChangeTimezone$system<Mutation$ChangeTimezone$system>
-  get copyWith => CopyWith$Mutation$ChangeTimezone$system(this, (i) => i);
+      get copyWith => CopyWith$Mutation$ChangeTimezone$system(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$ChangeTimezone$system<TRes> {
@@ -2985,12 +3052,15 @@ abstract class CopyWith$Mutation$ChangeTimezone$system<TRes> {
     String? $__typename,
   });
   CopyWith$Mutation$ChangeTimezone$system$changeTimezone<TRes>
-  get changeTimezone;
+      get changeTimezone;
 }
 
 class _CopyWithImpl$Mutation$ChangeTimezone$system<TRes>
     implements CopyWith$Mutation$ChangeTimezone$system<TRes> {
-  _CopyWithImpl$Mutation$ChangeTimezone$system(this._instance, this._then);
+  _CopyWithImpl$Mutation$ChangeTimezone$system(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$ChangeTimezone$system _instance;
 
@@ -3001,27 +3071,21 @@ class _CopyWithImpl$Mutation$ChangeTimezone$system<TRes>
   TRes call({
     Object? changeTimezone = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Mutation$ChangeTimezone$system(
-      changeTimezone:
-          changeTimezone == _undefined || changeTimezone == null
-              ? _instance.changeTimezone
-              : (changeTimezone
-                  as Mutation$ChangeTimezone$system$changeTimezone),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Mutation$ChangeTimezone$system(
+        changeTimezone: changeTimezone == _undefined || changeTimezone == null
+            ? _instance.changeTimezone
+            : (changeTimezone as Mutation$ChangeTimezone$system$changeTimezone),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Mutation$ChangeTimezone$system$changeTimezone<TRes>
-  get changeTimezone {
+      get changeTimezone {
     final local$changeTimezone = _instance.changeTimezone;
     return CopyWith$Mutation$ChangeTimezone$system$changeTimezone(
-      local$changeTimezone,
-      (e) => call(changeTimezone: e),
-    );
+        local$changeTimezone, (e) => call(changeTimezone: e));
   }
 }
 
@@ -3034,11 +3098,12 @@ class _CopyWithStubImpl$Mutation$ChangeTimezone$system<TRes>
   call({
     Mutation$ChangeTimezone$system$changeTimezone? changeTimezone,
     String? $__typename,
-  }) => _res;
+  }) =>
+      _res;
 
   CopyWith$Mutation$ChangeTimezone$system$changeTimezone<TRes>
-  get changeTimezone =>
-      CopyWith$Mutation$ChangeTimezone$system$changeTimezone.stub(_res);
+      get changeTimezone =>
+          CopyWith$Mutation$ChangeTimezone$system$changeTimezone.stub(_res);
 }
 
 class Mutation$ChangeTimezone$system$changeTimezone
@@ -3052,8 +3117,7 @@ class Mutation$ChangeTimezone$system$changeTimezone
   });
 
   factory Mutation$ChangeTimezone$system$changeTimezone.fromJson(
-    Map<String, dynamic> json,
-  ) {
+      Map<String, dynamic> json) {
     final l$code = json['code'];
     final l$message = json['message'];
     final l$success = json['success'];
@@ -3150,10 +3214,11 @@ class Mutation$ChangeTimezone$system$changeTimezone
 extension UtilityExtension$Mutation$ChangeTimezone$system$changeTimezone
     on Mutation$ChangeTimezone$system$changeTimezone {
   CopyWith$Mutation$ChangeTimezone$system$changeTimezone<
-    Mutation$ChangeTimezone$system$changeTimezone
-  >
-  get copyWith =>
-      CopyWith$Mutation$ChangeTimezone$system$changeTimezone(this, (i) => i);
+          Mutation$ChangeTimezone$system$changeTimezone>
+      get copyWith => CopyWith$Mutation$ChangeTimezone$system$changeTimezone(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$ChangeTimezone$system$changeTimezone<TRes> {
@@ -3163,8 +3228,8 @@ abstract class CopyWith$Mutation$ChangeTimezone$system$changeTimezone<TRes> {
   ) = _CopyWithImpl$Mutation$ChangeTimezone$system$changeTimezone;
 
   factory CopyWith$Mutation$ChangeTimezone$system$changeTimezone.stub(
-    TRes res,
-  ) = _CopyWithStubImpl$Mutation$ChangeTimezone$system$changeTimezone;
+          TRes res) =
+      _CopyWithStubImpl$Mutation$ChangeTimezone$system$changeTimezone;
 
   TRes call({
     int? code,
@@ -3194,25 +3259,22 @@ class _CopyWithImpl$Mutation$ChangeTimezone$system$changeTimezone<TRes>
     Object? success = _undefined,
     Object? $__typename = _undefined,
     Object? timezone = _undefined,
-  }) => _then(
-    Mutation$ChangeTimezone$system$changeTimezone(
-      code: code == _undefined || code == null ? _instance.code : (code as int),
-      message:
-          message == _undefined || message == null
-              ? _instance.message
-              : (message as String),
-      success:
-          success == _undefined || success == null
-              ? _instance.success
-              : (success as bool),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-      timezone:
-          timezone == _undefined ? _instance.timezone : (timezone as String?),
-    ),
-  );
+  }) =>
+      _then(Mutation$ChangeTimezone$system$changeTimezone(
+        code:
+            code == _undefined || code == null ? _instance.code : (code as int),
+        message: message == _undefined || message == null
+            ? _instance.message
+            : (message as String),
+        success: success == _undefined || success == null
+            ? _instance.success
+            : (success as bool),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+        timezone:
+            timezone == _undefined ? _instance.timezone : (timezone as String?),
+      ));
 }
 
 class _CopyWithStubImpl$Mutation$ChangeTimezone$system$changeTimezone<TRes>
@@ -3227,24 +3289,25 @@ class _CopyWithStubImpl$Mutation$ChangeTimezone$system$changeTimezone<TRes>
     bool? success,
     String? $__typename,
     String? timezone,
-  }) => _res;
+  }) =>
+      _res;
 }
 
 class Variables$Mutation$ChangeAutoUpgradeSettings {
-  factory Variables$Mutation$ChangeAutoUpgradeSettings({
-    required Input$AutoUpgradeSettingsInput settings,
-  }) => Variables$Mutation$ChangeAutoUpgradeSettings._({r'settings': settings});
+  factory Variables$Mutation$ChangeAutoUpgradeSettings(
+          {required Input$AutoUpgradeSettingsInput settings}) =>
+      Variables$Mutation$ChangeAutoUpgradeSettings._({
+        r'settings': settings,
+      });
 
   Variables$Mutation$ChangeAutoUpgradeSettings._(this._$data);
 
   factory Variables$Mutation$ChangeAutoUpgradeSettings.fromJson(
-    Map<String, dynamic> data,
-  ) {
+      Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     final l$settings = data['settings'];
     result$data['settings'] = Input$AutoUpgradeSettingsInput.fromJson(
-      (l$settings as Map<String, dynamic>),
-    );
+        (l$settings as Map<String, dynamic>));
     return Variables$Mutation$ChangeAutoUpgradeSettings._(result$data);
   }
 
@@ -3261,10 +3324,11 @@ class Variables$Mutation$ChangeAutoUpgradeSettings {
   }
 
   CopyWith$Variables$Mutation$ChangeAutoUpgradeSettings<
-    Variables$Mutation$ChangeAutoUpgradeSettings
-  >
-  get copyWith =>
-      CopyWith$Variables$Mutation$ChangeAutoUpgradeSettings(this, (i) => i);
+          Variables$Mutation$ChangeAutoUpgradeSettings>
+      get copyWith => CopyWith$Variables$Mutation$ChangeAutoUpgradeSettings(
+            this,
+            (i) => i,
+          );
 
   @override
   bool operator ==(Object other) {
@@ -3315,13 +3379,12 @@ class _CopyWithImpl$Variables$Mutation$ChangeAutoUpgradeSettings<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? settings = _undefined}) => _then(
-    Variables$Mutation$ChangeAutoUpgradeSettings._({
-      ..._instance._$data,
-      if (settings != _undefined && settings != null)
-        'settings': (settings as Input$AutoUpgradeSettingsInput),
-    }),
-  );
+  TRes call({Object? settings = _undefined}) =>
+      _then(Variables$Mutation$ChangeAutoUpgradeSettings._({
+        ..._instance._$data,
+        if (settings != _undefined && settings != null)
+          'settings': (settings as Input$AutoUpgradeSettingsInput),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Mutation$ChangeAutoUpgradeSettings<TRes>
@@ -3340,14 +3403,12 @@ class Mutation$ChangeAutoUpgradeSettings {
   });
 
   factory Mutation$ChangeAutoUpgradeSettings.fromJson(
-    Map<String, dynamic> json,
-  ) {
+      Map<String, dynamic> json) {
     final l$system = json['system'];
     final l$$__typename = json['__typename'];
     return Mutation$ChangeAutoUpgradeSettings(
       system: Mutation$ChangeAutoUpgradeSettings$system.fromJson(
-        (l$system as Map<String, dynamic>),
-      ),
+          (l$system as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -3369,7 +3430,10 @@ class Mutation$ChangeAutoUpgradeSettings {
   int get hashCode {
     final l$system = system;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$system, l$$__typename]);
+    return Object.hashAll([
+      l$system,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -3398,9 +3462,11 @@ class Mutation$ChangeAutoUpgradeSettings {
 extension UtilityExtension$Mutation$ChangeAutoUpgradeSettings
     on Mutation$ChangeAutoUpgradeSettings {
   CopyWith$Mutation$ChangeAutoUpgradeSettings<
-    Mutation$ChangeAutoUpgradeSettings
-  >
-  get copyWith => CopyWith$Mutation$ChangeAutoUpgradeSettings(this, (i) => i);
+          Mutation$ChangeAutoUpgradeSettings>
+      get copyWith => CopyWith$Mutation$ChangeAutoUpgradeSettings(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$ChangeAutoUpgradeSettings<TRes> {
@@ -3421,7 +3487,10 @@ abstract class CopyWith$Mutation$ChangeAutoUpgradeSettings<TRes> {
 
 class _CopyWithImpl$Mutation$ChangeAutoUpgradeSettings<TRes>
     implements CopyWith$Mutation$ChangeAutoUpgradeSettings<TRes> {
-  _CopyWithImpl$Mutation$ChangeAutoUpgradeSettings(this._instance, this._then);
+  _CopyWithImpl$Mutation$ChangeAutoUpgradeSettings(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$ChangeAutoUpgradeSettings _instance;
 
@@ -3429,26 +3498,23 @@ class _CopyWithImpl$Mutation$ChangeAutoUpgradeSettings<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? system = _undefined, Object? $__typename = _undefined}) =>
-      _then(
-        Mutation$ChangeAutoUpgradeSettings(
-          system:
-              system == _undefined || system == null
-                  ? _instance.system
-                  : (system as Mutation$ChangeAutoUpgradeSettings$system),
-          $__typename:
-              $__typename == _undefined || $__typename == null
-                  ? _instance.$__typename
-                  : ($__typename as String),
-        ),
-      );
+  TRes call({
+    Object? system = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$ChangeAutoUpgradeSettings(
+        system: system == _undefined || system == null
+            ? _instance.system
+            : (system as Mutation$ChangeAutoUpgradeSettings$system),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Mutation$ChangeAutoUpgradeSettings$system<TRes> get system {
     final local$system = _instance.system;
     return CopyWith$Mutation$ChangeAutoUpgradeSettings$system(
-      local$system,
-      (e) => call(system: e),
-    );
+        local$system, (e) => call(system: e));
   }
 }
 
@@ -3461,87 +3527,74 @@ class _CopyWithStubImpl$Mutation$ChangeAutoUpgradeSettings<TRes>
   call({
     Mutation$ChangeAutoUpgradeSettings$system? system,
     String? $__typename,
-  }) => _res;
+  }) =>
+      _res;
 
   CopyWith$Mutation$ChangeAutoUpgradeSettings$system<TRes> get system =>
       CopyWith$Mutation$ChangeAutoUpgradeSettings$system.stub(_res);
 }
 
-const documentNodeMutationChangeAutoUpgradeSettings = DocumentNode(
-  definitions: [
-    OperationDefinitionNode(
-      type: OperationType.mutation,
-      name: NameNode(value: 'ChangeAutoUpgradeSettings'),
-      variableDefinitions: [
-        VariableDefinitionNode(
-          variable: VariableNode(name: NameNode(value: 'settings')),
-          type: NamedTypeNode(
-            name: NameNode(value: 'AutoUpgradeSettingsInput'),
-            isNonNull: true,
-          ),
-          defaultValue: DefaultValueNode(value: null),
-          directives: [],
+const documentNodeMutationChangeAutoUpgradeSettings =
+    DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'ChangeAutoUpgradeSettings'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'settings')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'AutoUpgradeSettingsInput'),
+          isNonNull: true,
         ),
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(
-        selections: [
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'system'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
           FieldNode(
-            name: NameNode(value: 'system'),
+            name: NameNode(value: 'changeAutoUpgradeSettings'),
             alias: null,
-            arguments: [],
+            arguments: [
+              ArgumentNode(
+                name: NameNode(value: 'settings'),
+                value: VariableNode(name: NameNode(value: 'settings')),
+              )
+            ],
             directives: [],
-            selectionSet: SelectionSetNode(
-              selections: [
-                FieldNode(
-                  name: NameNode(value: 'changeAutoUpgradeSettings'),
-                  alias: null,
-                  arguments: [
-                    ArgumentNode(
-                      name: NameNode(value: 'settings'),
-                      value: VariableNode(name: NameNode(value: 'settings')),
-                    ),
-                  ],
-                  directives: [],
-                  selectionSet: SelectionSetNode(
-                    selections: [
-                      FragmentSpreadNode(
-                        name: NameNode(value: 'basicMutationReturnFields'),
-                        directives: [],
-                      ),
-                      FieldNode(
-                        name: NameNode(value: 'allowReboot'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                      FieldNode(
-                        name: NameNode(value: 'enableAutoUpgrade'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                      FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                    ],
-                  ),
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ],
-            ),
+            selectionSet: SelectionSetNode(selections: [
+              FragmentSpreadNode(
+                name: NameNode(value: 'basicMutationReturnFields'),
+                directives: [],
+              ),
+              FieldNode(
+                name: NameNode(value: 'allowReboot'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: 'enableAutoUpgrade'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
           ),
           FieldNode(
             name: NameNode(value: '__typename'),
@@ -3550,20 +3603,27 @@ const documentNodeMutationChangeAutoUpgradeSettings = DocumentNode(
             directives: [],
             selectionSet: null,
           ),
-        ],
+        ]),
       ),
-    ),
-    fragmentDefinitionbasicMutationReturnFields,
-  ],
-);
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionbasicMutationReturnFields,
+]);
 Mutation$ChangeAutoUpgradeSettings _parserFn$Mutation$ChangeAutoUpgradeSettings(
-  Map<String, dynamic> data,
-) => Mutation$ChangeAutoUpgradeSettings.fromJson(data);
-typedef OnMutationCompleted$Mutation$ChangeAutoUpgradeSettings =
-    FutureOr<void> Function(
-      Map<String, dynamic>?,
-      Mutation$ChangeAutoUpgradeSettings?,
-    );
+        Map<String, dynamic> data) =>
+    Mutation$ChangeAutoUpgradeSettings.fromJson(data);
+typedef OnMutationCompleted$Mutation$ChangeAutoUpgradeSettings = FutureOr<void>
+    Function(
+  Map<String, dynamic>?,
+  Mutation$ChangeAutoUpgradeSettings?,
+);
 
 class Options$Mutation$ChangeAutoUpgradeSettings
     extends graphql.MutationOptions<Mutation$ChangeAutoUpgradeSettings> {
@@ -3579,40 +3639,39 @@ class Options$Mutation$ChangeAutoUpgradeSettings
     OnMutationCompleted$Mutation$ChangeAutoUpgradeSettings? onCompleted,
     graphql.OnMutationUpdate<Mutation$ChangeAutoUpgradeSettings>? update,
     graphql.OnError? onError,
-  }) : onCompletedWithParsed = onCompleted,
-       super(
-         variables: variables.toJson(),
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         context: context,
-         onCompleted:
-             onCompleted == null
-                 ? null
-                 : (data) => onCompleted(
-                   data,
-                   data == null
-                       ? null
-                       : _parserFn$Mutation$ChangeAutoUpgradeSettings(data),
-                 ),
-         update: update,
-         onError: onError,
-         document: documentNodeMutationChangeAutoUpgradeSettings,
-         parserFn: _parserFn$Mutation$ChangeAutoUpgradeSettings,
-       );
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$ChangeAutoUpgradeSettings(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationChangeAutoUpgradeSettings,
+          parserFn: _parserFn$Mutation$ChangeAutoUpgradeSettings,
+        );
 
   final OnMutationCompleted$Mutation$ChangeAutoUpgradeSettings?
-  onCompletedWithParsed;
+      onCompletedWithParsed;
 
   @override
   List<Object?> get properties => [
-    ...super.onCompleted == null
-        ? super.properties
-        : super.properties.where((property) => property != onCompleted),
-    onCompletedWithParsed,
-  ];
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
 }
 
 class WatchOptions$Mutation$ChangeAutoUpgradeSettings
@@ -3631,32 +3690,32 @@ class WatchOptions$Mutation$ChangeAutoUpgradeSettings
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-         variables: variables.toJson(),
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         context: context,
-         document: documentNodeMutationChangeAutoUpgradeSettings,
-         pollInterval: pollInterval,
-         eagerlyFetchResults: eagerlyFetchResults,
-         carryForwardDataOnException: carryForwardDataOnException,
-         fetchResults: fetchResults,
-         parserFn: _parserFn$Mutation$ChangeAutoUpgradeSettings,
-       );
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationChangeAutoUpgradeSettings,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$ChangeAutoUpgradeSettings,
+        );
 }
 
 extension ClientExtension$Mutation$ChangeAutoUpgradeSettings
     on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$ChangeAutoUpgradeSettings>>
-  mutate$ChangeAutoUpgradeSettings(
-    Options$Mutation$ChangeAutoUpgradeSettings options,
-  ) async => await this.mutate(options);
+      mutate$ChangeAutoUpgradeSettings(
+              Options$Mutation$ChangeAutoUpgradeSettings options) async =>
+          await this.mutate(options);
   graphql.ObservableQuery<Mutation$ChangeAutoUpgradeSettings>
-  watchMutation$ChangeAutoUpgradeSettings(
-    WatchOptions$Mutation$ChangeAutoUpgradeSettings options,
-  ) => this.watchMutation(options);
+      watchMutation$ChangeAutoUpgradeSettings(
+              WatchOptions$Mutation$ChangeAutoUpgradeSettings options) =>
+          this.watchMutation(options);
 }
 
 class Mutation$ChangeAutoUpgradeSettings$system {
@@ -3666,21 +3725,19 @@ class Mutation$ChangeAutoUpgradeSettings$system {
   });
 
   factory Mutation$ChangeAutoUpgradeSettings$system.fromJson(
-    Map<String, dynamic> json,
-  ) {
+      Map<String, dynamic> json) {
     final l$changeAutoUpgradeSettings = json['changeAutoUpgradeSettings'];
     final l$$__typename = json['__typename'];
     return Mutation$ChangeAutoUpgradeSettings$system(
       changeAutoUpgradeSettings:
-          Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings.fromJson(
-            (l$changeAutoUpgradeSettings as Map<String, dynamic>),
-          ),
+          Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings
+              .fromJson((l$changeAutoUpgradeSettings as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
 
   final Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings
-  changeAutoUpgradeSettings;
+      changeAutoUpgradeSettings;
 
   final String $__typename;
 
@@ -3698,7 +3755,10 @@ class Mutation$ChangeAutoUpgradeSettings$system {
   int get hashCode {
     final l$changeAutoUpgradeSettings = changeAutoUpgradeSettings;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$changeAutoUpgradeSettings, l$$__typename]);
+    return Object.hashAll([
+      l$changeAutoUpgradeSettings,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -3727,10 +3787,11 @@ class Mutation$ChangeAutoUpgradeSettings$system {
 extension UtilityExtension$Mutation$ChangeAutoUpgradeSettings$system
     on Mutation$ChangeAutoUpgradeSettings$system {
   CopyWith$Mutation$ChangeAutoUpgradeSettings$system<
-    Mutation$ChangeAutoUpgradeSettings$system
-  >
-  get copyWith =>
-      CopyWith$Mutation$ChangeAutoUpgradeSettings$system(this, (i) => i);
+          Mutation$ChangeAutoUpgradeSettings$system>
+      get copyWith => CopyWith$Mutation$ChangeAutoUpgradeSettings$system(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$ChangeAutoUpgradeSettings$system<TRes> {
@@ -3744,13 +3805,11 @@ abstract class CopyWith$Mutation$ChangeAutoUpgradeSettings$system<TRes> {
 
   TRes call({
     Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings?
-    changeAutoUpgradeSettings,
+        changeAutoUpgradeSettings,
     String? $__typename,
   });
   CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings<
-    TRes
-  >
-  get changeAutoUpgradeSettings;
+      TRes> get changeAutoUpgradeSettings;
 }
 
 class _CopyWithImpl$Mutation$ChangeAutoUpgradeSettings$system<TRes>
@@ -3769,30 +3828,24 @@ class _CopyWithImpl$Mutation$ChangeAutoUpgradeSettings$system<TRes>
   TRes call({
     Object? changeAutoUpgradeSettings = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Mutation$ChangeAutoUpgradeSettings$system(
-      changeAutoUpgradeSettings:
-          changeAutoUpgradeSettings == _undefined ||
-                  changeAutoUpgradeSettings == null
-              ? _instance.changeAutoUpgradeSettings
-              : (changeAutoUpgradeSettings
-                  as Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Mutation$ChangeAutoUpgradeSettings$system(
+        changeAutoUpgradeSettings: changeAutoUpgradeSettings == _undefined ||
+                changeAutoUpgradeSettings == null
+            ? _instance.changeAutoUpgradeSettings
+            : (changeAutoUpgradeSettings
+                as Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings<
-    TRes
-  >
-  get changeAutoUpgradeSettings {
+      TRes> get changeAutoUpgradeSettings {
     final local$changeAutoUpgradeSettings = _instance.changeAutoUpgradeSettings;
     return CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings(
-      local$changeAutoUpgradeSettings,
-      (e) => call(changeAutoUpgradeSettings: e),
-    );
+        local$changeAutoUpgradeSettings,
+        (e) => call(changeAutoUpgradeSettings: e));
   }
 }
 
@@ -3804,17 +3857,16 @@ class _CopyWithStubImpl$Mutation$ChangeAutoUpgradeSettings$system<TRes>
 
   call({
     Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings?
-    changeAutoUpgradeSettings,
+        changeAutoUpgradeSettings,
     String? $__typename,
-  }) => _res;
+  }) =>
+      _res;
 
   CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings<
-    TRes
-  >
-  get changeAutoUpgradeSettings =>
-      CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings.stub(
-        _res,
-      );
+          TRes>
+      get changeAutoUpgradeSettings =>
+          CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings
+              .stub(_res);
 }
 
 class Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings
@@ -3830,8 +3882,7 @@ class Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings
   });
 
   factory Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings.fromJson(
-    Map<String, dynamic> json,
-  ) {
+      Map<String, dynamic> json) {
     final l$code = json['code'];
     final l$message = json['message'];
     final l$success = json['success'];
@@ -3942,31 +3993,26 @@ class Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings
 extension UtilityExtension$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings
     on Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings {
   CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings<
-    Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings
-  >
-  get copyWith =>
-      CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings(
-        this,
-        (i) => i,
-      );
+          Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings>
+      get copyWith =>
+          CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings<
-  TRes
-> {
+    TRes> {
   factory CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings(
     Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings
-    instance,
+        instance,
     TRes Function(
-      Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings,
-    )
-    then,
-  ) =
-      _CopyWithImpl$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings;
+            Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings)
+        then,
+  ) = _CopyWithImpl$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings;
 
   factory CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings.stub(
-    TRes res,
-  ) =
+          TRes res) =
       _CopyWithStubImpl$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings;
 
   TRes call({
@@ -3980,24 +4026,21 @@ abstract class CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgr
 }
 
 class _CopyWithImpl$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings<
-  TRes
->
+        TRes>
     implements
         CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings<
-          TRes
-        > {
+            TRes> {
   _CopyWithImpl$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings(
     this._instance,
     this._then,
   );
 
   final Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings
-  _instance;
+      _instance;
 
   final TRes Function(
-    Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings,
-  )
-  _then;
+          Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings)
+      _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -4008,43 +4051,36 @@ class _CopyWithImpl$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeS
     Object? $__typename = _undefined,
     Object? allowReboot = _undefined,
     Object? enableAutoUpgrade = _undefined,
-  }) => _then(
-    Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings(
-      code: code == _undefined || code == null ? _instance.code : (code as int),
-      message:
-          message == _undefined || message == null
-              ? _instance.message
-              : (message as String),
-      success:
-          success == _undefined || success == null
-              ? _instance.success
-              : (success as bool),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-      allowReboot:
-          allowReboot == _undefined || allowReboot == null
-              ? _instance.allowReboot
-              : (allowReboot as bool),
-      enableAutoUpgrade:
-          enableAutoUpgrade == _undefined || enableAutoUpgrade == null
-              ? _instance.enableAutoUpgrade
-              : (enableAutoUpgrade as bool),
-    ),
-  );
+  }) =>
+      _then(Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings(
+        code:
+            code == _undefined || code == null ? _instance.code : (code as int),
+        message: message == _undefined || message == null
+            ? _instance.message
+            : (message as String),
+        success: success == _undefined || success == null
+            ? _instance.success
+            : (success as bool),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+        allowReboot: allowReboot == _undefined || allowReboot == null
+            ? _instance.allowReboot
+            : (allowReboot as bool),
+        enableAutoUpgrade:
+            enableAutoUpgrade == _undefined || enableAutoUpgrade == null
+                ? _instance.enableAutoUpgrade
+                : (enableAutoUpgrade as bool),
+      ));
 }
 
 class _CopyWithStubImpl$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings<
-  TRes
->
+        TRes>
     implements
         CopyWith$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings<
-          TRes
-        > {
+            TRes> {
   _CopyWithStubImpl$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgradeSettings(
-    this._res,
-  );
+      this._res);
 
   TRes _res;
 
@@ -4055,24 +4091,25 @@ class _CopyWithStubImpl$Mutation$ChangeAutoUpgradeSettings$system$changeAutoUpgr
     String? $__typename,
     bool? allowReboot,
     bool? enableAutoUpgrade,
-  }) => _res;
+  }) =>
+      _res;
 }
 
 class Variables$Mutation$ChangeSshSettings {
-  factory Variables$Mutation$ChangeSshSettings({
-    required Input$SSHSettingsInput settings,
-  }) => Variables$Mutation$ChangeSshSettings._({r'settings': settings});
+  factory Variables$Mutation$ChangeSshSettings(
+          {required Input$SSHSettingsInput settings}) =>
+      Variables$Mutation$ChangeSshSettings._({
+        r'settings': settings,
+      });
 
   Variables$Mutation$ChangeSshSettings._(this._$data);
 
   factory Variables$Mutation$ChangeSshSettings.fromJson(
-    Map<String, dynamic> data,
-  ) {
+      Map<String, dynamic> data) {
     final result$data = <String, dynamic>{};
     final l$settings = data['settings'];
-    result$data['settings'] = Input$SSHSettingsInput.fromJson(
-      (l$settings as Map<String, dynamic>),
-    );
+    result$data['settings'] =
+        Input$SSHSettingsInput.fromJson((l$settings as Map<String, dynamic>));
     return Variables$Mutation$ChangeSshSettings._(result$data);
   }
 
@@ -4089,9 +4126,11 @@ class Variables$Mutation$ChangeSshSettings {
   }
 
   CopyWith$Variables$Mutation$ChangeSshSettings<
-    Variables$Mutation$ChangeSshSettings
-  >
-  get copyWith => CopyWith$Variables$Mutation$ChangeSshSettings(this, (i) => i);
+          Variables$Mutation$ChangeSshSettings>
+      get copyWith => CopyWith$Variables$Mutation$ChangeSshSettings(
+            this,
+            (i) => i,
+          );
 
   @override
   bool operator ==(Object other) {
@@ -4142,13 +4181,12 @@ class _CopyWithImpl$Variables$Mutation$ChangeSshSettings<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? settings = _undefined}) => _then(
-    Variables$Mutation$ChangeSshSettings._({
-      ..._instance._$data,
-      if (settings != _undefined && settings != null)
-        'settings': (settings as Input$SSHSettingsInput),
-    }),
-  );
+  TRes call({Object? settings = _undefined}) =>
+      _then(Variables$Mutation$ChangeSshSettings._({
+        ..._instance._$data,
+        if (settings != _undefined && settings != null)
+          'settings': (settings as Input$SSHSettingsInput),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Mutation$ChangeSshSettings<TRes>
@@ -4171,8 +4209,7 @@ class Mutation$ChangeSshSettings {
     final l$$__typename = json['__typename'];
     return Mutation$ChangeSshSettings(
       system: Mutation$ChangeSshSettings$system.fromJson(
-        (l$system as Map<String, dynamic>),
-      ),
+          (l$system as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -4194,7 +4231,10 @@ class Mutation$ChangeSshSettings {
   int get hashCode {
     final l$system = system;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$system, l$$__typename]);
+    return Object.hashAll([
+      l$system,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -4223,7 +4263,10 @@ class Mutation$ChangeSshSettings {
 extension UtilityExtension$Mutation$ChangeSshSettings
     on Mutation$ChangeSshSettings {
   CopyWith$Mutation$ChangeSshSettings<Mutation$ChangeSshSettings>
-  get copyWith => CopyWith$Mutation$ChangeSshSettings(this, (i) => i);
+      get copyWith => CopyWith$Mutation$ChangeSshSettings(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$ChangeSshSettings<TRes> {
@@ -4235,13 +4278,19 @@ abstract class CopyWith$Mutation$ChangeSshSettings<TRes> {
   factory CopyWith$Mutation$ChangeSshSettings.stub(TRes res) =
       _CopyWithStubImpl$Mutation$ChangeSshSettings;
 
-  TRes call({Mutation$ChangeSshSettings$system? system, String? $__typename});
+  TRes call({
+    Mutation$ChangeSshSettings$system? system,
+    String? $__typename,
+  });
   CopyWith$Mutation$ChangeSshSettings$system<TRes> get system;
 }
 
 class _CopyWithImpl$Mutation$ChangeSshSettings<TRes>
     implements CopyWith$Mutation$ChangeSshSettings<TRes> {
-  _CopyWithImpl$Mutation$ChangeSshSettings(this._instance, this._then);
+  _CopyWithImpl$Mutation$ChangeSshSettings(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$ChangeSshSettings _instance;
 
@@ -4249,26 +4298,23 @@ class _CopyWithImpl$Mutation$ChangeSshSettings<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? system = _undefined, Object? $__typename = _undefined}) =>
-      _then(
-        Mutation$ChangeSshSettings(
-          system:
-              system == _undefined || system == null
-                  ? _instance.system
-                  : (system as Mutation$ChangeSshSettings$system),
-          $__typename:
-              $__typename == _undefined || $__typename == null
-                  ? _instance.$__typename
-                  : ($__typename as String),
-        ),
-      );
+  TRes call({
+    Object? system = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Mutation$ChangeSshSettings(
+        system: system == _undefined || system == null
+            ? _instance.system
+            : (system as Mutation$ChangeSshSettings$system),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Mutation$ChangeSshSettings$system<TRes> get system {
     final local$system = _instance.system;
     return CopyWith$Mutation$ChangeSshSettings$system(
-      local$system,
-      (e) => call(system: e),
-    );
+        local$system, (e) => call(system: e));
   }
 }
 
@@ -4278,81 +4324,69 @@ class _CopyWithStubImpl$Mutation$ChangeSshSettings<TRes>
 
   TRes _res;
 
-  call({Mutation$ChangeSshSettings$system? system, String? $__typename}) =>
+  call({
+    Mutation$ChangeSshSettings$system? system,
+    String? $__typename,
+  }) =>
       _res;
 
   CopyWith$Mutation$ChangeSshSettings$system<TRes> get system =>
       CopyWith$Mutation$ChangeSshSettings$system.stub(_res);
 }
 
-const documentNodeMutationChangeSshSettings = DocumentNode(
-  definitions: [
-    OperationDefinitionNode(
-      type: OperationType.mutation,
-      name: NameNode(value: 'ChangeSshSettings'),
-      variableDefinitions: [
-        VariableDefinitionNode(
-          variable: VariableNode(name: NameNode(value: 'settings')),
-          type: NamedTypeNode(
-            name: NameNode(value: 'SSHSettingsInput'),
-            isNonNull: true,
-          ),
-          defaultValue: DefaultValueNode(value: null),
-          directives: [],
+const documentNodeMutationChangeSshSettings = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.mutation,
+    name: NameNode(value: 'ChangeSshSettings'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'settings')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'SSHSettingsInput'),
+          isNonNull: true,
         ),
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(
-        selections: [
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      )
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'system'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
           FieldNode(
-            name: NameNode(value: 'system'),
+            name: NameNode(value: 'changeSshSettings'),
             alias: null,
-            arguments: [],
+            arguments: [
+              ArgumentNode(
+                name: NameNode(value: 'settings'),
+                value: VariableNode(name: NameNode(value: 'settings')),
+              )
+            ],
             directives: [],
-            selectionSet: SelectionSetNode(
-              selections: [
-                FieldNode(
-                  name: NameNode(value: 'changeSshSettings'),
-                  alias: null,
-                  arguments: [
-                    ArgumentNode(
-                      name: NameNode(value: 'settings'),
-                      value: VariableNode(name: NameNode(value: 'settings')),
-                    ),
-                  ],
-                  directives: [],
-                  selectionSet: SelectionSetNode(
-                    selections: [
-                      FragmentSpreadNode(
-                        name: NameNode(value: 'basicMutationReturnFields'),
-                        directives: [],
-                      ),
-                      FieldNode(
-                        name: NameNode(value: 'enable'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                      FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                    ],
-                  ),
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ],
-            ),
+            selectionSet: SelectionSetNode(selections: [
+              FragmentSpreadNode(
+                name: NameNode(value: 'basicMutationReturnFields'),
+                directives: [],
+              ),
+              FieldNode(
+                name: NameNode(value: 'enable'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
           ),
           FieldNode(
             name: NameNode(value: '__typename'),
@@ -4361,17 +4395,27 @@ const documentNodeMutationChangeSshSettings = DocumentNode(
             directives: [],
             selectionSet: null,
           ),
-        ],
+        ]),
       ),
-    ),
-    fragmentDefinitionbasicMutationReturnFields,
-  ],
-);
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionbasicMutationReturnFields,
+]);
 Mutation$ChangeSshSettings _parserFn$Mutation$ChangeSshSettings(
-  Map<String, dynamic> data,
-) => Mutation$ChangeSshSettings.fromJson(data);
-typedef OnMutationCompleted$Mutation$ChangeSshSettings =
-    FutureOr<void> Function(Map<String, dynamic>?, Mutation$ChangeSshSettings?);
+        Map<String, dynamic> data) =>
+    Mutation$ChangeSshSettings.fromJson(data);
+typedef OnMutationCompleted$Mutation$ChangeSshSettings = FutureOr<void>
+    Function(
+  Map<String, dynamic>?,
+  Mutation$ChangeSshSettings?,
+);
 
 class Options$Mutation$ChangeSshSettings
     extends graphql.MutationOptions<Mutation$ChangeSshSettings> {
@@ -4387,39 +4431,38 @@ class Options$Mutation$ChangeSshSettings
     OnMutationCompleted$Mutation$ChangeSshSettings? onCompleted,
     graphql.OnMutationUpdate<Mutation$ChangeSshSettings>? update,
     graphql.OnError? onError,
-  }) : onCompletedWithParsed = onCompleted,
-       super(
-         variables: variables.toJson(),
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         context: context,
-         onCompleted:
-             onCompleted == null
-                 ? null
-                 : (data) => onCompleted(
-                   data,
-                   data == null
-                       ? null
-                       : _parserFn$Mutation$ChangeSshSettings(data),
-                 ),
-         update: update,
-         onError: onError,
-         document: documentNodeMutationChangeSshSettings,
-         parserFn: _parserFn$Mutation$ChangeSshSettings,
-       );
+  })  : onCompletedWithParsed = onCompleted,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          onCompleted: onCompleted == null
+              ? null
+              : (data) => onCompleted(
+                    data,
+                    data == null
+                        ? null
+                        : _parserFn$Mutation$ChangeSshSettings(data),
+                  ),
+          update: update,
+          onError: onError,
+          document: documentNodeMutationChangeSshSettings,
+          parserFn: _parserFn$Mutation$ChangeSshSettings,
+        );
 
   final OnMutationCompleted$Mutation$ChangeSshSettings? onCompletedWithParsed;
 
   @override
   List<Object?> get properties => [
-    ...super.onCompleted == null
-        ? super.properties
-        : super.properties.where((property) => property != onCompleted),
-    onCompletedWithParsed,
-  ];
+        ...super.onCompleted == null
+            ? super.properties
+            : super.properties.where((property) => property != onCompleted),
+        onCompletedWithParsed,
+      ];
 }
 
 class WatchOptions$Mutation$ChangeSshSettings
@@ -4438,30 +4481,31 @@ class WatchOptions$Mutation$ChangeSshSettings
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-         variables: variables.toJson(),
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         context: context,
-         document: documentNodeMutationChangeSshSettings,
-         pollInterval: pollInterval,
-         eagerlyFetchResults: eagerlyFetchResults,
-         carryForwardDataOnException: carryForwardDataOnException,
-         fetchResults: fetchResults,
-         parserFn: _parserFn$Mutation$ChangeSshSettings,
-       );
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeMutationChangeSshSettings,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Mutation$ChangeSshSettings,
+        );
 }
 
 extension ClientExtension$Mutation$ChangeSshSettings on graphql.GraphQLClient {
   Future<graphql.QueryResult<Mutation$ChangeSshSettings>>
-  mutate$ChangeSshSettings(Options$Mutation$ChangeSshSettings options) async =>
-      await this.mutate(options);
+      mutate$ChangeSshSettings(
+              Options$Mutation$ChangeSshSettings options) async =>
+          await this.mutate(options);
   graphql.ObservableQuery<Mutation$ChangeSshSettings>
-  watchMutation$ChangeSshSettings(
-    WatchOptions$Mutation$ChangeSshSettings options,
-  ) => this.watchMutation(options);
+      watchMutation$ChangeSshSettings(
+              WatchOptions$Mutation$ChangeSshSettings options) =>
+          this.watchMutation(options);
 }
 
 class Mutation$ChangeSshSettings$system {
@@ -4471,15 +4515,13 @@ class Mutation$ChangeSshSettings$system {
   });
 
   factory Mutation$ChangeSshSettings$system.fromJson(
-    Map<String, dynamic> json,
-  ) {
+      Map<String, dynamic> json) {
     final l$changeSshSettings = json['changeSshSettings'];
     final l$$__typename = json['__typename'];
     return Mutation$ChangeSshSettings$system(
       changeSshSettings:
           Mutation$ChangeSshSettings$system$changeSshSettings.fromJson(
-            (l$changeSshSettings as Map<String, dynamic>),
-          ),
+              (l$changeSshSettings as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -4501,7 +4543,10 @@ class Mutation$ChangeSshSettings$system {
   int get hashCode {
     final l$changeSshSettings = changeSshSettings;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$changeSshSettings, l$$__typename]);
+    return Object.hashAll([
+      l$changeSshSettings,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -4530,7 +4575,10 @@ class Mutation$ChangeSshSettings$system {
 extension UtilityExtension$Mutation$ChangeSshSettings$system
     on Mutation$ChangeSshSettings$system {
   CopyWith$Mutation$ChangeSshSettings$system<Mutation$ChangeSshSettings$system>
-  get copyWith => CopyWith$Mutation$ChangeSshSettings$system(this, (i) => i);
+      get copyWith => CopyWith$Mutation$ChangeSshSettings$system(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$ChangeSshSettings$system<TRes> {
@@ -4547,12 +4595,15 @@ abstract class CopyWith$Mutation$ChangeSshSettings$system<TRes> {
     String? $__typename,
   });
   CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings<TRes>
-  get changeSshSettings;
+      get changeSshSettings;
 }
 
 class _CopyWithImpl$Mutation$ChangeSshSettings$system<TRes>
     implements CopyWith$Mutation$ChangeSshSettings$system<TRes> {
-  _CopyWithImpl$Mutation$ChangeSshSettings$system(this._instance, this._then);
+  _CopyWithImpl$Mutation$ChangeSshSettings$system(
+    this._instance,
+    this._then,
+  );
 
   final Mutation$ChangeSshSettings$system _instance;
 
@@ -4563,27 +4614,23 @@ class _CopyWithImpl$Mutation$ChangeSshSettings$system<TRes>
   TRes call({
     Object? changeSshSettings = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Mutation$ChangeSshSettings$system(
-      changeSshSettings:
-          changeSshSettings == _undefined || changeSshSettings == null
-              ? _instance.changeSshSettings
-              : (changeSshSettings
-                  as Mutation$ChangeSshSettings$system$changeSshSettings),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Mutation$ChangeSshSettings$system(
+        changeSshSettings:
+            changeSshSettings == _undefined || changeSshSettings == null
+                ? _instance.changeSshSettings
+                : (changeSshSettings
+                    as Mutation$ChangeSshSettings$system$changeSshSettings),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings<TRes>
-  get changeSshSettings {
+      get changeSshSettings {
     final local$changeSshSettings = _instance.changeSshSettings;
     return CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings(
-      local$changeSshSettings,
-      (e) => call(changeSshSettings: e),
-    );
+        local$changeSshSettings, (e) => call(changeSshSettings: e));
   }
 }
 
@@ -4596,11 +4643,13 @@ class _CopyWithStubImpl$Mutation$ChangeSshSettings$system<TRes>
   call({
     Mutation$ChangeSshSettings$system$changeSshSettings? changeSshSettings,
     String? $__typename,
-  }) => _res;
+  }) =>
+      _res;
 
   CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings<TRes>
-  get changeSshSettings =>
-      CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings.stub(_res);
+      get changeSshSettings =>
+          CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings.stub(
+              _res);
 }
 
 class Mutation$ChangeSshSettings$system$changeSshSettings
@@ -4614,8 +4663,7 @@ class Mutation$ChangeSshSettings$system$changeSshSettings
   });
 
   factory Mutation$ChangeSshSettings$system$changeSshSettings.fromJson(
-    Map<String, dynamic> json,
-  ) {
+      Map<String, dynamic> json) {
     final l$code = json['code'];
     final l$message = json['message'];
     final l$success = json['success'];
@@ -4712,25 +4760,24 @@ class Mutation$ChangeSshSettings$system$changeSshSettings
 extension UtilityExtension$Mutation$ChangeSshSettings$system$changeSshSettings
     on Mutation$ChangeSshSettings$system$changeSshSettings {
   CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings<
-    Mutation$ChangeSshSettings$system$changeSshSettings
-  >
-  get copyWith => CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings(
-    this,
-    (i) => i,
-  );
+          Mutation$ChangeSshSettings$system$changeSshSettings>
+      get copyWith =>
+          CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings<
-  TRes
-> {
+    TRes> {
   factory CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings(
     Mutation$ChangeSshSettings$system$changeSshSettings instance,
     TRes Function(Mutation$ChangeSshSettings$system$changeSshSettings) then,
   ) = _CopyWithImpl$Mutation$ChangeSshSettings$system$changeSshSettings;
 
   factory CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings.stub(
-    TRes res,
-  ) = _CopyWithStubImpl$Mutation$ChangeSshSettings$system$changeSshSettings;
+          TRes res) =
+      _CopyWithStubImpl$Mutation$ChangeSshSettings$system$changeSshSettings;
 
   TRes call({
     int? code,
@@ -4752,7 +4799,7 @@ class _CopyWithImpl$Mutation$ChangeSshSettings$system$changeSshSettings<TRes>
   final Mutation$ChangeSshSettings$system$changeSshSettings _instance;
 
   final TRes Function(Mutation$ChangeSshSettings$system$changeSshSettings)
-  _then;
+      _then;
 
   static const _undefined = <dynamic, dynamic>{};
 
@@ -4762,37 +4809,31 @@ class _CopyWithImpl$Mutation$ChangeSshSettings$system$changeSshSettings<TRes>
     Object? success = _undefined,
     Object? $__typename = _undefined,
     Object? enable = _undefined,
-  }) => _then(
-    Mutation$ChangeSshSettings$system$changeSshSettings(
-      code: code == _undefined || code == null ? _instance.code : (code as int),
-      message:
-          message == _undefined || message == null
-              ? _instance.message
-              : (message as String),
-      success:
-          success == _undefined || success == null
-              ? _instance.success
-              : (success as bool),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-      enable:
-          enable == _undefined || enable == null
-              ? _instance.enable
-              : (enable as bool),
-    ),
-  );
+  }) =>
+      _then(Mutation$ChangeSshSettings$system$changeSshSettings(
+        code:
+            code == _undefined || code == null ? _instance.code : (code as int),
+        message: message == _undefined || message == null
+            ? _instance.message
+            : (message as String),
+        success: success == _undefined || success == null
+            ? _instance.success
+            : (success as bool),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+        enable: enable == _undefined || enable == null
+            ? _instance.enable
+            : (enable as bool),
+      ));
 }
 
 class _CopyWithStubImpl$Mutation$ChangeSshSettings$system$changeSshSettings<
-  TRes
->
+        TRes>
     implements
         CopyWith$Mutation$ChangeSshSettings$system$changeSshSettings<TRes> {
   _CopyWithStubImpl$Mutation$ChangeSshSettings$system$changeSshSettings(
-    this._res,
-  );
+      this._res);
 
   TRes _res;
 
@@ -4802,5 +4843,6 @@ class _CopyWithStubImpl$Mutation$ChangeSshSettings$system$changeSshSettings<
     bool? success,
     String? $__typename,
     bool? enable,
-  }) => _res;
+  }) =>
+      _res;
 }

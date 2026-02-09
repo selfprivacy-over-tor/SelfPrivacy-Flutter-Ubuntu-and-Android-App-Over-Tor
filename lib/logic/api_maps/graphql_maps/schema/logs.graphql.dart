@@ -135,7 +135,10 @@ class Fragment$LogEntry {
 
 extension UtilityExtension$Fragment$LogEntry on Fragment$LogEntry {
   CopyWith$Fragment$LogEntry<Fragment$LogEntry> get copyWith =>
-      CopyWith$Fragment$LogEntry(this, (i) => i);
+      CopyWith$Fragment$LogEntry(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Fragment$LogEntry<TRes> {
@@ -160,7 +163,10 @@ abstract class CopyWith$Fragment$LogEntry<TRes> {
 
 class _CopyWithImpl$Fragment$LogEntry<TRes>
     implements CopyWith$Fragment$LogEntry<TRes> {
-  _CopyWithImpl$Fragment$LogEntry(this._instance, this._then);
+  _CopyWithImpl$Fragment$LogEntry(
+    this._instance,
+    this._then,
+  );
 
   final Fragment$LogEntry _instance;
 
@@ -176,36 +182,29 @@ class _CopyWithImpl$Fragment$LogEntry<TRes>
     Object? systemdSlice = _undefined,
     Object? cursor = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Fragment$LogEntry(
-      message:
-          message == _undefined || message == null
-              ? _instance.message
-              : (message as String),
-      timestamp:
-          timestamp == _undefined || timestamp == null
-              ? _instance.timestamp
-              : (timestamp as DateTime),
-      priority:
-          priority == _undefined ? _instance.priority : (priority as int?),
-      systemdUnit:
-          systemdUnit == _undefined
-              ? _instance.systemdUnit
-              : (systemdUnit as String?),
-      systemdSlice:
-          systemdSlice == _undefined
-              ? _instance.systemdSlice
-              : (systemdSlice as String?),
-      cursor:
-          cursor == _undefined || cursor == null
-              ? _instance.cursor
-              : (cursor as String),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Fragment$LogEntry(
+        message: message == _undefined || message == null
+            ? _instance.message
+            : (message as String),
+        timestamp: timestamp == _undefined || timestamp == null
+            ? _instance.timestamp
+            : (timestamp as DateTime),
+        priority:
+            priority == _undefined ? _instance.priority : (priority as int?),
+        systemdUnit: systemdUnit == _undefined
+            ? _instance.systemdUnit
+            : (systemdUnit as String?),
+        systemdSlice: systemdSlice == _undefined
+            ? _instance.systemdSlice
+            : (systemdSlice as String?),
+        cursor: cursor == _undefined || cursor == null
+            ? _instance.cursor
+            : (cursor as String),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Fragment$LogEntry<TRes>
@@ -222,89 +221,91 @@ class _CopyWithStubImpl$Fragment$LogEntry<TRes>
     String? systemdSlice,
     String? cursor,
     String? $__typename,
-  }) => _res;
+  }) =>
+      _res;
 }
 
 const fragmentDefinitionLogEntry = FragmentDefinitionNode(
   name: NameNode(value: 'LogEntry'),
   typeCondition: TypeConditionNode(
-    on: NamedTypeNode(name: NameNode(value: 'LogEntry'), isNonNull: false),
-  ),
+      on: NamedTypeNode(
+    name: NameNode(value: 'LogEntry'),
+    isNonNull: false,
+  )),
   directives: [],
-  selectionSet: SelectionSetNode(
-    selections: [
-      FieldNode(
-        name: NameNode(value: 'message'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-      FieldNode(
-        name: NameNode(value: 'timestamp'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-      FieldNode(
-        name: NameNode(value: 'priority'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-      FieldNode(
-        name: NameNode(value: 'systemdUnit'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-      FieldNode(
-        name: NameNode(value: 'systemdSlice'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-      FieldNode(
-        name: NameNode(value: 'cursor'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-      FieldNode(
-        name: NameNode(value: '__typename'),
-        alias: null,
-        arguments: [],
-        directives: [],
-        selectionSet: null,
-      ),
-    ],
-  ),
+  selectionSet: SelectionSetNode(selections: [
+    FieldNode(
+      name: NameNode(value: 'message'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'timestamp'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'priority'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'systemdUnit'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'systemdSlice'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: 'cursor'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+    FieldNode(
+      name: NameNode(value: '__typename'),
+      alias: null,
+      arguments: [],
+      directives: [],
+      selectionSet: null,
+    ),
+  ]),
 );
-const documentNodeFragmentLogEntry = DocumentNode(
-  definitions: [fragmentDefinitionLogEntry],
-);
+const documentNodeFragmentLogEntry = DocumentNode(definitions: [
+  fragmentDefinitionLogEntry,
+]);
 
 extension ClientExtension$Fragment$LogEntry on graphql.GraphQLClient {
   void writeFragment$LogEntry({
     required Fragment$LogEntry data,
     required Map<String, dynamic> idFields,
     bool broadcast = true,
-  }) => this.writeFragment(
-    graphql.FragmentRequest(
-      idFields: idFields,
-      fragment: const graphql.Fragment(
-        fragmentName: 'LogEntry',
-        document: documentNodeFragmentLogEntry,
-      ),
-    ),
-    data: data.toJson(),
-    broadcast: broadcast,
-  );
+  }) =>
+      this.writeFragment(
+        graphql.FragmentRequest(
+          idFields: idFields,
+          fragment: const graphql.Fragment(
+            fragmentName: 'LogEntry',
+            document: documentNodeFragmentLogEntry,
+          ),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
   Fragment$LogEntry? readFragment$LogEntry({
     required Map<String, dynamic> idFields,
     bool optimistic = true,
@@ -330,13 +331,14 @@ class Variables$Query$Logs {
     String? downCursor,
     String? filterBySlice,
     String? filterByUnit,
-  }) => Variables$Query$Logs._({
-    r'limit': limit,
-    if (upCursor != null) r'upCursor': upCursor,
-    if (downCursor != null) r'downCursor': downCursor,
-    if (filterBySlice != null) r'filterBySlice': filterBySlice,
-    if (filterByUnit != null) r'filterByUnit': filterByUnit,
-  });
+  }) =>
+      Variables$Query$Logs._({
+        r'limit': limit,
+        if (upCursor != null) r'upCursor': upCursor,
+        if (downCursor != null) r'downCursor': downCursor,
+        if (filterBySlice != null) r'filterBySlice': filterBySlice,
+        if (filterByUnit != null) r'filterByUnit': filterByUnit,
+      });
 
   Variables$Query$Logs._(this._$data);
 
@@ -399,7 +401,10 @@ class Variables$Query$Logs {
   }
 
   CopyWith$Variables$Query$Logs<Variables$Query$Logs> get copyWith =>
-      CopyWith$Variables$Query$Logs(this, (i) => i);
+      CopyWith$Variables$Query$Logs(
+        this,
+        (i) => i,
+      );
 
   @override
   bool operator ==(Object other) {
@@ -490,7 +495,10 @@ abstract class CopyWith$Variables$Query$Logs<TRes> {
 
 class _CopyWithImpl$Variables$Query$Logs<TRes>
     implements CopyWith$Variables$Query$Logs<TRes> {
-  _CopyWithImpl$Variables$Query$Logs(this._instance, this._then);
+  _CopyWithImpl$Variables$Query$Logs(
+    this._instance,
+    this._then,
+  );
 
   final Variables$Query$Logs _instance;
 
@@ -504,17 +512,17 @@ class _CopyWithImpl$Variables$Query$Logs<TRes>
     Object? downCursor = _undefined,
     Object? filterBySlice = _undefined,
     Object? filterByUnit = _undefined,
-  }) => _then(
-    Variables$Query$Logs._({
-      ..._instance._$data,
-      if (limit != _undefined && limit != null) 'limit': (limit as int),
-      if (upCursor != _undefined) 'upCursor': (upCursor as String?),
-      if (downCursor != _undefined) 'downCursor': (downCursor as String?),
-      if (filterBySlice != _undefined)
-        'filterBySlice': (filterBySlice as String?),
-      if (filterByUnit != _undefined) 'filterByUnit': (filterByUnit as String?),
-    }),
-  );
+  }) =>
+      _then(Variables$Query$Logs._({
+        ..._instance._$data,
+        if (limit != _undefined && limit != null) 'limit': (limit as int),
+        if (upCursor != _undefined) 'upCursor': (upCursor as String?),
+        if (downCursor != _undefined) 'downCursor': (downCursor as String?),
+        if (filterBySlice != _undefined)
+          'filterBySlice': (filterBySlice as String?),
+        if (filterByUnit != _undefined)
+          'filterByUnit': (filterByUnit as String?),
+      }));
 }
 
 class _CopyWithStubImpl$Variables$Query$Logs<TRes>
@@ -529,11 +537,15 @@ class _CopyWithStubImpl$Variables$Query$Logs<TRes>
     String? downCursor,
     String? filterBySlice,
     String? filterByUnit,
-  }) => _res;
+  }) =>
+      _res;
 }
 
 class Query$Logs {
-  Query$Logs({required this.logs, this.$__typename = 'Query'});
+  Query$Logs({
+    required this.logs,
+    this.$__typename = 'Query',
+  });
 
   factory Query$Logs.fromJson(Map<String, dynamic> json) {
     final l$logs = json['logs'];
@@ -561,7 +573,10 @@ class Query$Logs {
   int get hashCode {
     final l$logs = logs;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$logs, l$$__typename]);
+    return Object.hashAll([
+      l$logs,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -587,8 +602,10 @@ class Query$Logs {
 }
 
 extension UtilityExtension$Query$Logs on Query$Logs {
-  CopyWith$Query$Logs<Query$Logs> get copyWith =>
-      CopyWith$Query$Logs(this, (i) => i);
+  CopyWith$Query$Logs<Query$Logs> get copyWith => CopyWith$Query$Logs(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Query$Logs<TRes> {
@@ -599,12 +616,18 @@ abstract class CopyWith$Query$Logs<TRes> {
 
   factory CopyWith$Query$Logs.stub(TRes res) = _CopyWithStubImpl$Query$Logs;
 
-  TRes call({Query$Logs$logs? logs, String? $__typename});
+  TRes call({
+    Query$Logs$logs? logs,
+    String? $__typename,
+  });
   CopyWith$Query$Logs$logs<TRes> get logs;
 }
 
 class _CopyWithImpl$Query$Logs<TRes> implements CopyWith$Query$Logs<TRes> {
-  _CopyWithImpl$Query$Logs(this._instance, this._then);
+  _CopyWithImpl$Query$Logs(
+    this._instance,
+    this._then,
+  );
 
   final Query$Logs _instance;
 
@@ -612,19 +635,18 @@ class _CopyWithImpl$Query$Logs<TRes> implements CopyWith$Query$Logs<TRes> {
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? logs = _undefined, Object? $__typename = _undefined}) =>
-      _then(
-        Query$Logs(
-          logs:
-              logs == _undefined || logs == null
-                  ? _instance.logs
-                  : (logs as Query$Logs$logs),
-          $__typename:
-              $__typename == _undefined || $__typename == null
-                  ? _instance.$__typename
-                  : ($__typename as String),
-        ),
-      );
+  TRes call({
+    Object? logs = _undefined,
+    Object? $__typename = _undefined,
+  }) =>
+      _then(Query$Logs(
+        logs: logs == _undefined || logs == null
+            ? _instance.logs
+            : (logs as Query$Logs$logs),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Query$Logs$logs<TRes> get logs {
     final local$logs = _instance.logs;
@@ -637,174 +659,158 @@ class _CopyWithStubImpl$Query$Logs<TRes> implements CopyWith$Query$Logs<TRes> {
 
   TRes _res;
 
-  call({Query$Logs$logs? logs, String? $__typename}) => _res;
+  call({
+    Query$Logs$logs? logs,
+    String? $__typename,
+  }) =>
+      _res;
 
   CopyWith$Query$Logs$logs<TRes> get logs =>
       CopyWith$Query$Logs$logs.stub(_res);
 }
 
-const documentNodeQueryLogs = DocumentNode(
-  definitions: [
-    OperationDefinitionNode(
-      type: OperationType.query,
-      name: NameNode(value: 'Logs'),
-      variableDefinitions: [
-        VariableDefinitionNode(
-          variable: VariableNode(name: NameNode(value: 'limit')),
-          type: NamedTypeNode(name: NameNode(value: 'Int'), isNonNull: true),
-          defaultValue: DefaultValueNode(value: null),
-          directives: [],
+const documentNodeQueryLogs = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.query,
+    name: NameNode(value: 'Logs'),
+    variableDefinitions: [
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'limit')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'Int'),
+          isNonNull: true,
         ),
-        VariableDefinitionNode(
-          variable: VariableNode(name: NameNode(value: 'upCursor')),
-          type: NamedTypeNode(
-            name: NameNode(value: 'String'),
-            isNonNull: false,
-          ),
-          defaultValue: DefaultValueNode(value: null),
-          directives: [],
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'upCursor')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'String'),
+          isNonNull: false,
         ),
-        VariableDefinitionNode(
-          variable: VariableNode(name: NameNode(value: 'downCursor')),
-          type: NamedTypeNode(
-            name: NameNode(value: 'String'),
-            isNonNull: false,
-          ),
-          defaultValue: DefaultValueNode(value: null),
-          directives: [],
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'downCursor')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'String'),
+          isNonNull: false,
         ),
-        VariableDefinitionNode(
-          variable: VariableNode(name: NameNode(value: 'filterBySlice')),
-          type: NamedTypeNode(
-            name: NameNode(value: 'String'),
-            isNonNull: false,
-          ),
-          defaultValue: DefaultValueNode(value: null),
-          directives: [],
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'filterBySlice')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'String'),
+          isNonNull: false,
         ),
-        VariableDefinitionNode(
-          variable: VariableNode(name: NameNode(value: 'filterByUnit')),
-          type: NamedTypeNode(
-            name: NameNode(value: 'String'),
-            isNonNull: false,
-          ),
-          defaultValue: DefaultValueNode(value: null),
-          directives: [],
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+      VariableDefinitionNode(
+        variable: VariableNode(name: NameNode(value: 'filterByUnit')),
+        type: NamedTypeNode(
+          name: NameNode(value: 'String'),
+          isNonNull: false,
         ),
-      ],
-      directives: [],
-      selectionSet: SelectionSetNode(
-        selections: [
+        defaultValue: DefaultValueNode(value: null),
+        directives: [],
+      ),
+    ],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'logs'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
           FieldNode(
-            name: NameNode(value: 'logs'),
+            name: NameNode(value: 'paginated'),
             alias: null,
-            arguments: [],
+            arguments: [
+              ArgumentNode(
+                name: NameNode(value: 'limit'),
+                value: VariableNode(name: NameNode(value: 'limit')),
+              ),
+              ArgumentNode(
+                name: NameNode(value: 'upCursor'),
+                value: VariableNode(name: NameNode(value: 'upCursor')),
+              ),
+              ArgumentNode(
+                name: NameNode(value: 'downCursor'),
+                value: VariableNode(name: NameNode(value: 'downCursor')),
+              ),
+              ArgumentNode(
+                name: NameNode(value: 'filterBySlice'),
+                value: VariableNode(name: NameNode(value: 'filterBySlice')),
+              ),
+              ArgumentNode(
+                name: NameNode(value: 'filterByUnit'),
+                value: VariableNode(name: NameNode(value: 'filterByUnit')),
+              ),
+            ],
             directives: [],
-            selectionSet: SelectionSetNode(
-              selections: [
-                FieldNode(
-                  name: NameNode(value: 'paginated'),
-                  alias: null,
-                  arguments: [
-                    ArgumentNode(
-                      name: NameNode(value: 'limit'),
-                      value: VariableNode(name: NameNode(value: 'limit')),
-                    ),
-                    ArgumentNode(
-                      name: NameNode(value: 'upCursor'),
-                      value: VariableNode(name: NameNode(value: 'upCursor')),
-                    ),
-                    ArgumentNode(
-                      name: NameNode(value: 'downCursor'),
-                      value: VariableNode(name: NameNode(value: 'downCursor')),
-                    ),
-                    ArgumentNode(
-                      name: NameNode(value: 'filterBySlice'),
-                      value: VariableNode(
-                        name: NameNode(value: 'filterBySlice'),
-                      ),
-                    ),
-                    ArgumentNode(
-                      name: NameNode(value: 'filterByUnit'),
-                      value: VariableNode(
-                        name: NameNode(value: 'filterByUnit'),
-                      ),
-                    ),
-                  ],
-                  directives: [],
-                  selectionSet: SelectionSetNode(
-                    selections: [
-                      FieldNode(
-                        name: NameNode(value: 'pageMeta'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: SelectionSetNode(
-                          selections: [
-                            FieldNode(
-                              name: NameNode(value: 'upCursor'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null,
-                            ),
-                            FieldNode(
-                              name: NameNode(value: 'downCursor'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null,
-                            ),
-                            FieldNode(
-                              name: NameNode(value: '__typename'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null,
-                            ),
-                          ],
-                        ),
-                      ),
-                      FieldNode(
-                        name: NameNode(value: 'entries'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: SelectionSetNode(
-                          selections: [
-                            FragmentSpreadNode(
-                              name: NameNode(value: 'LogEntry'),
-                              directives: [],
-                            ),
-                            FieldNode(
-                              name: NameNode(value: '__typename'),
-                              alias: null,
-                              arguments: [],
-                              directives: [],
-                              selectionSet: null,
-                            ),
-                          ],
-                        ),
-                      ),
-                      FieldNode(
-                        name: NameNode(value: '__typename'),
-                        alias: null,
-                        arguments: [],
-                        directives: [],
-                        selectionSet: null,
-                      ),
-                    ],
+            selectionSet: SelectionSetNode(selections: [
+              FieldNode(
+                name: NameNode(value: 'pageMeta'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FieldNode(
+                    name: NameNode(value: 'upCursor'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
                   ),
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ],
-            ),
+                  FieldNode(
+                    name: NameNode(value: 'downCursor'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: 'entries'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: SelectionSetNode(selections: [
+                  FragmentSpreadNode(
+                    name: NameNode(value: 'LogEntry'),
+                    directives: [],
+                  ),
+                  FieldNode(
+                    name: NameNode(value: '__typename'),
+                    alias: null,
+                    arguments: [],
+                    directives: [],
+                    selectionSet: null,
+                  ),
+                ]),
+              ),
+              FieldNode(
+                name: NameNode(value: '__typename'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null,
+              ),
+            ]),
           ),
           FieldNode(
             name: NameNode(value: '__typename'),
@@ -813,16 +819,25 @@ const documentNodeQueryLogs = DocumentNode(
             directives: [],
             selectionSet: null,
           ),
-        ],
+        ]),
       ),
-    ),
-    fragmentDefinitionLogEntry,
-  ],
-);
+      FieldNode(
+        name: NameNode(value: '__typename'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: null,
+      ),
+    ]),
+  ),
+  fragmentDefinitionLogEntry,
+]);
 Query$Logs _parserFn$Query$Logs(Map<String, dynamic> data) =>
     Query$Logs.fromJson(data);
-typedef OnQueryComplete$Query$Logs =
-    FutureOr<void> Function(Map<String, dynamic>?, Query$Logs?);
+typedef OnQueryComplete$Query$Logs = FutureOr<void> Function(
+  Map<String, dynamic>?,
+  Query$Logs?,
+);
 
 class Options$Query$Logs extends graphql.QueryOptions<Query$Logs> {
   Options$Query$Logs({
@@ -837,37 +852,36 @@ class Options$Query$Logs extends graphql.QueryOptions<Query$Logs> {
     graphql.Context? context,
     OnQueryComplete$Query$Logs? onComplete,
     graphql.OnQueryError? onError,
-  }) : onCompleteWithParsed = onComplete,
-       super(
-         variables: variables.toJson(),
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         pollInterval: pollInterval,
-         context: context,
-         onComplete:
-             onComplete == null
-                 ? null
-                 : (data) => onComplete(
-                   data,
-                   data == null ? null : _parserFn$Query$Logs(data),
-                 ),
-         onError: onError,
-         document: documentNodeQueryLogs,
-         parserFn: _parserFn$Query$Logs,
-       );
+  })  : onCompleteWithParsed = onComplete,
+        super(
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          pollInterval: pollInterval,
+          context: context,
+          onComplete: onComplete == null
+              ? null
+              : (data) => onComplete(
+                    data,
+                    data == null ? null : _parserFn$Query$Logs(data),
+                  ),
+          onError: onError,
+          document: documentNodeQueryLogs,
+          parserFn: _parserFn$Query$Logs,
+        );
 
   final OnQueryComplete$Query$Logs? onCompleteWithParsed;
 
   @override
   List<Object?> get properties => [
-    ...super.onComplete == null
-        ? super.properties
-        : super.properties.where((property) => property != onComplete),
-    onCompleteWithParsed,
-  ];
+        ...super.onComplete == null
+            ? super.properties
+            : super.properties.where((property) => property != onComplete),
+        onCompleteWithParsed,
+      ];
 }
 
 class WatchOptions$Query$Logs extends graphql.WatchQueryOptions<Query$Logs> {
@@ -885,20 +899,20 @@ class WatchOptions$Query$Logs extends graphql.WatchQueryOptions<Query$Logs> {
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-         variables: variables.toJson(),
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         context: context,
-         document: documentNodeQueryLogs,
-         pollInterval: pollInterval,
-         eagerlyFetchResults: eagerlyFetchResults,
-         carryForwardDataOnException: carryForwardDataOnException,
-         fetchResults: fetchResults,
-         parserFn: _parserFn$Query$Logs,
-       );
+          variables: variables.toJson(),
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeQueryLogs,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Query$Logs,
+        );
 }
 
 class FetchMoreOptions$Query$Logs extends graphql.FetchMoreOptions {
@@ -906,31 +920,32 @@ class FetchMoreOptions$Query$Logs extends graphql.FetchMoreOptions {
     required graphql.UpdateQuery updateQuery,
     required Variables$Query$Logs variables,
   }) : super(
-         updateQuery: updateQuery,
-         variables: variables.toJson(),
-         document: documentNodeQueryLogs,
-       );
+          updateQuery: updateQuery,
+          variables: variables.toJson(),
+          document: documentNodeQueryLogs,
+        );
 }
 
 extension ClientExtension$Query$Logs on graphql.GraphQLClient {
   Future<graphql.QueryResult<Query$Logs>> query$Logs(
-    Options$Query$Logs options,
-  ) async => await this.query(options);
+          Options$Query$Logs options) async =>
+      await this.query(options);
   graphql.ObservableQuery<Query$Logs> watchQuery$Logs(
-    WatchOptions$Query$Logs options,
-  ) => this.watchQuery(options);
+          WatchOptions$Query$Logs options) =>
+      this.watchQuery(options);
   void writeQuery$Logs({
     required Query$Logs data,
     required Variables$Query$Logs variables,
     bool broadcast = true,
-  }) => this.writeQuery(
-    graphql.Request(
-      operation: graphql.Operation(document: documentNodeQueryLogs),
-      variables: variables.toJson(),
-    ),
-    data: data.toJson(),
-    broadcast: broadcast,
-  );
+  }) =>
+      this.writeQuery(
+        graphql.Request(
+          operation: graphql.Operation(document: documentNodeQueryLogs),
+          variables: variables.toJson(),
+        ),
+        data: data.toJson(),
+        broadcast: broadcast,
+      );
   Query$Logs? readQuery$Logs({
     required Variables$Query$Logs variables,
     bool optimistic = true,
@@ -947,15 +962,17 @@ extension ClientExtension$Query$Logs on graphql.GraphQLClient {
 }
 
 class Query$Logs$logs {
-  Query$Logs$logs({required this.paginated, this.$__typename = 'Logs'});
+  Query$Logs$logs({
+    required this.paginated,
+    this.$__typename = 'Logs',
+  });
 
   factory Query$Logs$logs.fromJson(Map<String, dynamic> json) {
     final l$paginated = json['paginated'];
     final l$$__typename = json['__typename'];
     return Query$Logs$logs(
       paginated: Query$Logs$logs$paginated.fromJson(
-        (l$paginated as Map<String, dynamic>),
-      ),
+          (l$paginated as Map<String, dynamic>)),
       $__typename: (l$$__typename as String),
     );
   }
@@ -977,7 +994,10 @@ class Query$Logs$logs {
   int get hashCode {
     final l$paginated = paginated;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$paginated, l$$__typename]);
+    return Object.hashAll([
+      l$paginated,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -1004,7 +1024,10 @@ class Query$Logs$logs {
 
 extension UtilityExtension$Query$Logs$logs on Query$Logs$logs {
   CopyWith$Query$Logs$logs<Query$Logs$logs> get copyWith =>
-      CopyWith$Query$Logs$logs(this, (i) => i);
+      CopyWith$Query$Logs$logs(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Query$Logs$logs<TRes> {
@@ -1016,13 +1039,19 @@ abstract class CopyWith$Query$Logs$logs<TRes> {
   factory CopyWith$Query$Logs$logs.stub(TRes res) =
       _CopyWithStubImpl$Query$Logs$logs;
 
-  TRes call({Query$Logs$logs$paginated? paginated, String? $__typename});
+  TRes call({
+    Query$Logs$logs$paginated? paginated,
+    String? $__typename,
+  });
   CopyWith$Query$Logs$logs$paginated<TRes> get paginated;
 }
 
 class _CopyWithImpl$Query$Logs$logs<TRes>
     implements CopyWith$Query$Logs$logs<TRes> {
-  _CopyWithImpl$Query$Logs$logs(this._instance, this._then);
+  _CopyWithImpl$Query$Logs$logs(
+    this._instance,
+    this._then,
+  );
 
   final Query$Logs$logs _instance;
 
@@ -1033,25 +1062,20 @@ class _CopyWithImpl$Query$Logs$logs<TRes>
   TRes call({
     Object? paginated = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Query$Logs$logs(
-      paginated:
-          paginated == _undefined || paginated == null
-              ? _instance.paginated
-              : (paginated as Query$Logs$logs$paginated),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Query$Logs$logs(
+        paginated: paginated == _undefined || paginated == null
+            ? _instance.paginated
+            : (paginated as Query$Logs$logs$paginated),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Query$Logs$logs$paginated<TRes> get paginated {
     final local$paginated = _instance.paginated;
     return CopyWith$Query$Logs$logs$paginated(
-      local$paginated,
-      (e) => call(paginated: e),
-    );
+        local$paginated, (e) => call(paginated: e));
   }
 }
 
@@ -1061,7 +1085,11 @@ class _CopyWithStubImpl$Query$Logs$logs<TRes>
 
   TRes _res;
 
-  call({Query$Logs$logs$paginated? paginated, String? $__typename}) => _res;
+  call({
+    Query$Logs$logs$paginated? paginated,
+    String? $__typename,
+  }) =>
+      _res;
 
   CopyWith$Query$Logs$logs$paginated<TRes> get paginated =>
       CopyWith$Query$Logs$logs$paginated.stub(_res);
@@ -1080,14 +1108,10 @@ class Query$Logs$logs$paginated {
     final l$$__typename = json['__typename'];
     return Query$Logs$logs$paginated(
       pageMeta: Query$Logs$logs$paginated$pageMeta.fromJson(
-        (l$pageMeta as Map<String, dynamic>),
-      ),
-      entries:
-          (l$entries as List<dynamic>)
-              .map(
-                (e) => Fragment$LogEntry.fromJson((e as Map<String, dynamic>)),
-              )
-              .toList(),
+          (l$pageMeta as Map<String, dynamic>)),
+      entries: (l$entries as List<dynamic>)
+          .map((e) => Fragment$LogEntry.fromJson((e as Map<String, dynamic>)))
+          .toList(),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1159,7 +1183,10 @@ class Query$Logs$logs$paginated {
 extension UtilityExtension$Query$Logs$logs$paginated
     on Query$Logs$logs$paginated {
   CopyWith$Query$Logs$logs$paginated<Query$Logs$logs$paginated> get copyWith =>
-      CopyWith$Query$Logs$logs$paginated(this, (i) => i);
+      CopyWith$Query$Logs$logs$paginated(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Query$Logs$logs$paginated<TRes> {
@@ -1178,16 +1205,17 @@ abstract class CopyWith$Query$Logs$logs$paginated<TRes> {
   });
   CopyWith$Query$Logs$logs$paginated$pageMeta<TRes> get pageMeta;
   TRes entries(
-    Iterable<Fragment$LogEntry> Function(
-      Iterable<CopyWith$Fragment$LogEntry<Fragment$LogEntry>>,
-    )
-    _fn,
-  );
+      Iterable<Fragment$LogEntry> Function(
+              Iterable<CopyWith$Fragment$LogEntry<Fragment$LogEntry>>)
+          _fn);
 }
 
 class _CopyWithImpl$Query$Logs$logs$paginated<TRes>
     implements CopyWith$Query$Logs$logs$paginated<TRes> {
-  _CopyWithImpl$Query$Logs$logs$paginated(this._instance, this._then);
+  _CopyWithImpl$Query$Logs$logs$paginated(
+    this._instance,
+    this._then,
+  );
 
   final Query$Logs$logs$paginated _instance;
 
@@ -1199,42 +1227,34 @@ class _CopyWithImpl$Query$Logs$logs$paginated<TRes>
     Object? pageMeta = _undefined,
     Object? entries = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Query$Logs$logs$paginated(
-      pageMeta:
-          pageMeta == _undefined || pageMeta == null
-              ? _instance.pageMeta
-              : (pageMeta as Query$Logs$logs$paginated$pageMeta),
-      entries:
-          entries == _undefined || entries == null
-              ? _instance.entries
-              : (entries as List<Fragment$LogEntry>),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Query$Logs$logs$paginated(
+        pageMeta: pageMeta == _undefined || pageMeta == null
+            ? _instance.pageMeta
+            : (pageMeta as Query$Logs$logs$paginated$pageMeta),
+        entries: entries == _undefined || entries == null
+            ? _instance.entries
+            : (entries as List<Fragment$LogEntry>),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 
   CopyWith$Query$Logs$logs$paginated$pageMeta<TRes> get pageMeta {
     final local$pageMeta = _instance.pageMeta;
     return CopyWith$Query$Logs$logs$paginated$pageMeta(
-      local$pageMeta,
-      (e) => call(pageMeta: e),
-    );
+        local$pageMeta, (e) => call(pageMeta: e));
   }
 
   TRes entries(
-    Iterable<Fragment$LogEntry> Function(
-      Iterable<CopyWith$Fragment$LogEntry<Fragment$LogEntry>>,
-    )
-    _fn,
-  ) => call(
-    entries:
-        _fn(
-          _instance.entries.map((e) => CopyWith$Fragment$LogEntry(e, (i) => i)),
-        ).toList(),
-  );
+          Iterable<Fragment$LogEntry> Function(
+                  Iterable<CopyWith$Fragment$LogEntry<Fragment$LogEntry>>)
+              _fn) =>
+      call(
+          entries: _fn(_instance.entries.map((e) => CopyWith$Fragment$LogEntry(
+                e,
+                (i) => i,
+              ))).toList());
 }
 
 class _CopyWithStubImpl$Query$Logs$logs$paginated<TRes>
@@ -1247,7 +1267,8 @@ class _CopyWithStubImpl$Query$Logs$logs$paginated<TRes>
     Query$Logs$logs$paginated$pageMeta? pageMeta,
     List<Fragment$LogEntry>? entries,
     String? $__typename,
-  }) => _res;
+  }) =>
+      _res;
 
   CopyWith$Query$Logs$logs$paginated$pageMeta<TRes> get pageMeta =>
       CopyWith$Query$Logs$logs$paginated$pageMeta.stub(_res);
@@ -1263,8 +1284,7 @@ class Query$Logs$logs$paginated$pageMeta {
   });
 
   factory Query$Logs$logs$paginated$pageMeta.fromJson(
-    Map<String, dynamic> json,
-  ) {
+      Map<String, dynamic> json) {
     final l$upCursor = json['upCursor'];
     final l$downCursor = json['downCursor'];
     final l$$__typename = json['__typename'];
@@ -1297,7 +1317,11 @@ class Query$Logs$logs$paginated$pageMeta {
     final l$upCursor = upCursor;
     final l$downCursor = downCursor;
     final l$$__typename = $__typename;
-    return Object.hashAll([l$upCursor, l$downCursor, l$$__typename]);
+    return Object.hashAll([
+      l$upCursor,
+      l$downCursor,
+      l$$__typename,
+    ]);
   }
 
   @override
@@ -1331,9 +1355,11 @@ class Query$Logs$logs$paginated$pageMeta {
 extension UtilityExtension$Query$Logs$logs$paginated$pageMeta
     on Query$Logs$logs$paginated$pageMeta {
   CopyWith$Query$Logs$logs$paginated$pageMeta<
-    Query$Logs$logs$paginated$pageMeta
-  >
-  get copyWith => CopyWith$Query$Logs$logs$paginated$pageMeta(this, (i) => i);
+          Query$Logs$logs$paginated$pageMeta>
+      get copyWith => CopyWith$Query$Logs$logs$paginated$pageMeta(
+            this,
+            (i) => i,
+          );
 }
 
 abstract class CopyWith$Query$Logs$logs$paginated$pageMeta<TRes> {
@@ -1345,12 +1371,19 @@ abstract class CopyWith$Query$Logs$logs$paginated$pageMeta<TRes> {
   factory CopyWith$Query$Logs$logs$paginated$pageMeta.stub(TRes res) =
       _CopyWithStubImpl$Query$Logs$logs$paginated$pageMeta;
 
-  TRes call({String? upCursor, String? downCursor, String? $__typename});
+  TRes call({
+    String? upCursor,
+    String? downCursor,
+    String? $__typename,
+  });
 }
 
 class _CopyWithImpl$Query$Logs$logs$paginated$pageMeta<TRes>
     implements CopyWith$Query$Logs$logs$paginated$pageMeta<TRes> {
-  _CopyWithImpl$Query$Logs$logs$paginated$pageMeta(this._instance, this._then);
+  _CopyWithImpl$Query$Logs$logs$paginated$pageMeta(
+    this._instance,
+    this._then,
+  );
 
   final Query$Logs$logs$paginated$pageMeta _instance;
 
@@ -1362,20 +1395,17 @@ class _CopyWithImpl$Query$Logs$logs$paginated$pageMeta<TRes>
     Object? upCursor = _undefined,
     Object? downCursor = _undefined,
     Object? $__typename = _undefined,
-  }) => _then(
-    Query$Logs$logs$paginated$pageMeta(
-      upCursor:
-          upCursor == _undefined ? _instance.upCursor : (upCursor as String?),
-      downCursor:
-          downCursor == _undefined
-              ? _instance.downCursor
-              : (downCursor as String?),
-      $__typename:
-          $__typename == _undefined || $__typename == null
-              ? _instance.$__typename
-              : ($__typename as String),
-    ),
-  );
+  }) =>
+      _then(Query$Logs$logs$paginated$pageMeta(
+        upCursor:
+            upCursor == _undefined ? _instance.upCursor : (upCursor as String?),
+        downCursor: downCursor == _undefined
+            ? _instance.downCursor
+            : (downCursor as String?),
+        $__typename: $__typename == _undefined || $__typename == null
+            ? _instance.$__typename
+            : ($__typename as String),
+      ));
 }
 
 class _CopyWithStubImpl$Query$Logs$logs$paginated$pageMeta<TRes>
@@ -1384,7 +1414,12 @@ class _CopyWithStubImpl$Query$Logs$logs$paginated$pageMeta<TRes>
 
   TRes _res;
 
-  call({String? upCursor, String? downCursor, String? $__typename}) => _res;
+  call({
+    String? upCursor,
+    String? downCursor,
+    String? $__typename,
+  }) =>
+      _res;
 }
 
 class Subscription$LogEntries {
@@ -1393,10 +1428,8 @@ class Subscription$LogEntries {
   factory Subscription$LogEntries.fromJson(Map<String, dynamic> json) {
     final l$logEntries = json['logEntries'];
     return Subscription$LogEntries(
-      logEntries: Fragment$LogEntry.fromJson(
-        (l$logEntries as Map<String, dynamic>),
-      ),
-    );
+        logEntries:
+            Fragment$LogEntry.fromJson((l$logEntries as Map<String, dynamic>)));
   }
 
   final Fragment$LogEntry logEntries;
@@ -1433,7 +1466,10 @@ class Subscription$LogEntries {
 
 extension UtilityExtension$Subscription$LogEntries on Subscription$LogEntries {
   CopyWith$Subscription$LogEntries<Subscription$LogEntries> get copyWith =>
-      CopyWith$Subscription$LogEntries(this, (i) => i);
+      CopyWith$Subscription$LogEntries(
+        this,
+        (i) => i,
+      );
 }
 
 abstract class CopyWith$Subscription$LogEntries<TRes> {
@@ -1451,7 +1487,10 @@ abstract class CopyWith$Subscription$LogEntries<TRes> {
 
 class _CopyWithImpl$Subscription$LogEntries<TRes>
     implements CopyWith$Subscription$LogEntries<TRes> {
-  _CopyWithImpl$Subscription$LogEntries(this._instance, this._then);
+  _CopyWithImpl$Subscription$LogEntries(
+    this._instance,
+    this._then,
+  );
 
   final Subscription$LogEntries _instance;
 
@@ -1459,21 +1498,15 @@ class _CopyWithImpl$Subscription$LogEntries<TRes>
 
   static const _undefined = <dynamic, dynamic>{};
 
-  TRes call({Object? logEntries = _undefined}) => _then(
-    Subscription$LogEntries(
-      logEntries:
-          logEntries == _undefined || logEntries == null
-              ? _instance.logEntries
-              : (logEntries as Fragment$LogEntry),
-    ),
-  );
+  TRes call({Object? logEntries = _undefined}) => _then(Subscription$LogEntries(
+      logEntries: logEntries == _undefined || logEntries == null
+          ? _instance.logEntries
+          : (logEntries as Fragment$LogEntry)));
 
   CopyWith$Fragment$LogEntry<TRes> get logEntries {
     final local$logEntries = _instance.logEntries;
     return CopyWith$Fragment$LogEntry(
-      local$logEntries,
-      (e) => call(logEntries: e),
-    );
+        local$logEntries, (e) => call(logEntries: e));
   }
 }
 
@@ -1489,45 +1522,39 @@ class _CopyWithStubImpl$Subscription$LogEntries<TRes>
       CopyWith$Fragment$LogEntry.stub(_res);
 }
 
-const documentNodeSubscriptionLogEntries = DocumentNode(
-  definitions: [
-    OperationDefinitionNode(
-      type: OperationType.subscription,
-      name: NameNode(value: 'LogEntries'),
-      variableDefinitions: [],
-      directives: [],
-      selectionSet: SelectionSetNode(
-        selections: [
+const documentNodeSubscriptionLogEntries = DocumentNode(definitions: [
+  OperationDefinitionNode(
+    type: OperationType.subscription,
+    name: NameNode(value: 'LogEntries'),
+    variableDefinitions: [],
+    directives: [],
+    selectionSet: SelectionSetNode(selections: [
+      FieldNode(
+        name: NameNode(value: 'logEntries'),
+        alias: null,
+        arguments: [],
+        directives: [],
+        selectionSet: SelectionSetNode(selections: [
+          FragmentSpreadNode(
+            name: NameNode(value: 'LogEntry'),
+            directives: [],
+          ),
           FieldNode(
-            name: NameNode(value: 'logEntries'),
+            name: NameNode(value: '__typename'),
             alias: null,
             arguments: [],
             directives: [],
-            selectionSet: SelectionSetNode(
-              selections: [
-                FragmentSpreadNode(
-                  name: NameNode(value: 'LogEntry'),
-                  directives: [],
-                ),
-                FieldNode(
-                  name: NameNode(value: '__typename'),
-                  alias: null,
-                  arguments: [],
-                  directives: [],
-                  selectionSet: null,
-                ),
-              ],
-            ),
+            selectionSet: null,
           ),
-        ],
-      ),
-    ),
-    fragmentDefinitionLogEntry,
-  ],
-);
+        ]),
+      )
+    ]),
+  ),
+  fragmentDefinitionLogEntry,
+]);
 Subscription$LogEntries _parserFn$Subscription$LogEntries(
-  Map<String, dynamic> data,
-) => Subscription$LogEntries.fromJson(data);
+        Map<String, dynamic> data) =>
+    Subscription$LogEntries.fromJson(data);
 
 class Options$Subscription$LogEntries
     extends graphql.SubscriptionOptions<Subscription$LogEntries> {
@@ -1540,15 +1567,15 @@ class Options$Subscription$LogEntries
     Subscription$LogEntries? typedOptimisticResult,
     graphql.Context? context,
   }) : super(
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         context: context,
-         document: documentNodeSubscriptionLogEntries,
-         parserFn: _parserFn$Subscription$LogEntries,
-       );
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeSubscriptionLogEntries,
+          parserFn: _parserFn$Subscription$LogEntries,
+        );
 }
 
 class WatchOptions$Subscription$LogEntries
@@ -1566,37 +1593,36 @@ class WatchOptions$Subscription$LogEntries
     bool carryForwardDataOnException = true,
     bool fetchResults = false,
   }) : super(
-         operationName: operationName,
-         fetchPolicy: fetchPolicy,
-         errorPolicy: errorPolicy,
-         cacheRereadPolicy: cacheRereadPolicy,
-         optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
-         context: context,
-         document: documentNodeSubscriptionLogEntries,
-         pollInterval: pollInterval,
-         eagerlyFetchResults: eagerlyFetchResults,
-         carryForwardDataOnException: carryForwardDataOnException,
-         fetchResults: fetchResults,
-         parserFn: _parserFn$Subscription$LogEntries,
-       );
+          operationName: operationName,
+          fetchPolicy: fetchPolicy,
+          errorPolicy: errorPolicy,
+          cacheRereadPolicy: cacheRereadPolicy,
+          optimisticResult: optimisticResult ?? typedOptimisticResult?.toJson(),
+          context: context,
+          document: documentNodeSubscriptionLogEntries,
+          pollInterval: pollInterval,
+          eagerlyFetchResults: eagerlyFetchResults,
+          carryForwardDataOnException: carryForwardDataOnException,
+          fetchResults: fetchResults,
+          parserFn: _parserFn$Subscription$LogEntries,
+        );
 }
 
 class FetchMoreOptions$Subscription$LogEntries
     extends graphql.FetchMoreOptions {
-  FetchMoreOptions$Subscription$LogEntries({
-    required graphql.UpdateQuery updateQuery,
-  }) : super(
-         updateQuery: updateQuery,
-         document: documentNodeSubscriptionLogEntries,
-       );
+  FetchMoreOptions$Subscription$LogEntries(
+      {required graphql.UpdateQuery updateQuery})
+      : super(
+          updateQuery: updateQuery,
+          document: documentNodeSubscriptionLogEntries,
+        );
 }
 
 extension ClientExtension$Subscription$LogEntries on graphql.GraphQLClient {
-  Stream<graphql.QueryResult<Subscription$LogEntries>> subscribe$LogEntries([
-    Options$Subscription$LogEntries? options,
-  ]) => this.subscribe(options ?? Options$Subscription$LogEntries());
-  graphql.ObservableQuery<Subscription$LogEntries>
-  watchSubscription$LogEntries([
-    WatchOptions$Subscription$LogEntries? options,
-  ]) => this.watchQuery(options ?? WatchOptions$Subscription$LogEntries());
+  Stream<graphql.QueryResult<Subscription$LogEntries>> subscribe$LogEntries(
+          [Options$Subscription$LogEntries? options]) =>
+      this.subscribe(options ?? Options$Subscription$LogEntries());
+  graphql.ObservableQuery<Subscription$LogEntries> watchSubscription$LogEntries(
+          [WatchOptions$Subscription$LogEntries? options]) =>
+      this.watchQuery(options ?? WatchOptions$Subscription$LogEntries());
 }

@@ -18,7 +18,11 @@ mixin ServicesApi on GraphQLApiMap {
               .map<Service>(Service.fromGraphQL)
               .toList() ??
           [];
+      // ignore: avoid_print
+      print('[DEV] Services fetched: ${services.length} services: ${services.map((s) => '${s.id}(${s.status})').join(', ')}');
     } catch (e) {
+      // ignore: avoid_print
+      print('[DEV] Error in GetAllServices: $e');
       logger('Error in GraphQL GetAllServices request: $e', error: e);
     }
     return services;
