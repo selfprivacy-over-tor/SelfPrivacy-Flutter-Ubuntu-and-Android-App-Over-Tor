@@ -47,6 +47,17 @@ In the app:
 3. Select "I have a recovery key"
 4. Enter the recovery key mnemonic phrase
 
+## Getting Nextcloud access
+username=`admin`
+```sh
+sshpass -p '' ssh -p 2222 -o StrictHostKeyChecking=no root@localhost 'cat /var/lib/nextcloud/admin-pass' 
+```
+yields:
+```
+somelongpassword
+```
+You should be able to visit nextcloud at: your.onion/nextcloud to login but if you click it it goes back to the your.onion, it seems to be a synthetic front instead of the actual nextcloud app.
+
 ## Resetting App Data (Start Fresh Connection)
 
 To clear the app's stored configuration and start a new connection:
