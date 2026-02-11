@@ -51,18 +51,16 @@ class Service extends Equatable {
         ),
         // Decode the base64 encoded svg icon to text.
         svgIcon: utf8.decode(base64.decode(service.svgIcon)),
-        license: service.license.map(LicenseType.fromGraphQL).toList(),
+        // license query disabled (causes backend timeout in VirtualBox/Tor)
+        license: [],
         supportLevel: SupportLevel.fromGraphQL(service.supportLevel),
-        dnsRecords:
-            service.dnsRecords?.map(DnsRecord.fromGraphQL).toList() ?? [],
+        // dnsRecords query disabled (causes backend timeout in VirtualBox/Tor)
+        dnsRecords: [],
         url: service.url,
         homepage: service.homepage,
         sourcePage: service.sourcePage,
-        configuration:
-            service.configuration
-                ?.map(ServiceConfigItem.fromGraphQL)
-                .toList() ??
-            [],
+        // configuration query disabled (causes backend timeout in VirtualBox/Tor)
+        configuration: [],
       );
 
   // TODO(NaiJi): Turn loginInfo into dynamic data, not static!
@@ -171,15 +169,16 @@ class LicenseType extends Equatable {
     this.url,
   });
 
-  LicenseType.fromGraphQL(
-    final Query$AllServices$services$allServices$license license,
-  ) : this(
-        free: license.free,
-        redistributable: license.redistributable,
-        fullName: license.fullName,
-        shortName: license.shortName,
-        url: license.url,
-      );
+  // fromGraphQL disabled - license query commented out for VirtualBox/Tor
+  // LicenseType.fromGraphQL(
+  //   final Query$AllServices$services$allServices$license license,
+  // ) : this(
+  //       free: license.free,
+  //       redistributable: license.redistributable,
+  //       fullName: license.fullName,
+  //       shortName: license.shortName,
+  //       url: license.url,
+  //     );
 
   final bool free;
   final bool redistributable;
@@ -264,45 +263,10 @@ sealed class ServiceConfigItem extends Equatable {
     required this.type,
   });
 
-  factory ServiceConfigItem.fromGraphQL(
-    final Query$AllServices$services$allServices$configuration configItem,
-  ) => configItem.when<ServiceConfigItem>(
-    boolConfigItem:
-        (final boolConfigItem) => BoolServiceConfigItem(
-          id: boolConfigItem.fieldId,
-          description: boolConfigItem.description,
-          widget: boolConfigItem.widget,
-          type: boolConfigItem.type,
-          value: boolConfigItem.boolValue,
-          defaultValue: boolConfigItem.defaultBoolValue,
-        ),
-    enumConfigItem:
-        (final enumConfigItem) => EnumServiceConfigItem(
-          id: enumConfigItem.fieldId,
-          description: enumConfigItem.description,
-          widget: enumConfigItem.widget,
-          type: enumConfigItem.type,
-          value: enumConfigItem.stringValue,
-          defaultValue: enumConfigItem.defaultStringValue,
-          options: enumConfigItem.options,
-        ),
-    stringConfigItem:
-        (final stringConfigItem) => StringServiceConfigItem(
-          id: stringConfigItem.fieldId,
-          description: stringConfigItem.description,
-          widget: stringConfigItem.widget,
-          type: stringConfigItem.type,
-          value: stringConfigItem.stringValue,
-          defaultValue: stringConfigItem.defaultStringValue,
-          regex: stringConfigItem.regex,
-        ),
-    orElse:
-        () => FallbackServiceConfigItem(
-          id: configItem.fieldId,
-          description: configItem.description,
-          type: configItem.type,
-        ),
-  );
+  // fromGraphQL disabled - configuration query commented out for VirtualBox/Tor
+  // factory ServiceConfigItem.fromGraphQL(
+  //   final Query$AllServices$services$allServices$configuration configItem,
+  // ) => configItem.when<ServiceConfigItem>( ... );
 
   final String id;
   final String description;

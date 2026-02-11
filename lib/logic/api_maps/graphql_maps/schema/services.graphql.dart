@@ -3,7 +3,6 @@ import 'package:gql/ast.dart';
 import 'package:graphql/client.dart' as graphql;
 import 'schema.graphql.dart';
 import 'server_api.graphql.dart';
-import 'server_settings.graphql.dart';
 
 class Fragment$BoolConfigItem {
   Fragment$BoolConfigItem({
@@ -1203,25 +1202,6 @@ const documentNodeQueryAllServices = DocumentNode(definitions: [
                 selectionSet: null,
               ),
               FieldNode(
-                name: NameNode(value: 'dnsRecords'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: SelectionSetNode(selections: [
-                  FragmentSpreadNode(
-                    name: NameNode(value: 'fragmentDnsRecords'),
-                    directives: [],
-                  ),
-                  FieldNode(
-                    name: NameNode(value: '__typename'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                ]),
-              ),
-              FieldNode(
                 name: NameNode(value: 'id'),
                 alias: null,
                 arguments: [],
@@ -1313,109 +1293,11 @@ const documentNodeQueryAllServices = DocumentNode(definitions: [
                 selectionSet: null,
               ),
               FieldNode(
-                name: NameNode(value: 'license'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: SelectionSetNode(selections: [
-                  FieldNode(
-                    name: NameNode(value: 'free'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                  FieldNode(
-                    name: NameNode(value: 'fullName'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                  FieldNode(
-                    name: NameNode(value: 'redistributable'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                  FieldNode(
-                    name: NameNode(value: 'shortName'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                  FieldNode(
-                    name: NameNode(value: 'url'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                  FieldNode(
-                    name: NameNode(value: '__typename'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                ]),
-              ),
-              FieldNode(
                 name: NameNode(value: 'supportLevel'),
                 alias: null,
                 arguments: [],
                 directives: [],
                 selectionSet: null,
-              ),
-              FieldNode(
-                name: NameNode(value: 'configuration'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: SelectionSetNode(selections: [
-                  FieldNode(
-                    name: NameNode(value: 'fieldId'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                  FieldNode(
-                    name: NameNode(value: 'description'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                  FieldNode(
-                    name: NameNode(value: 'type'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                  FragmentSpreadNode(
-                    name: NameNode(value: 'BoolConfigItem'),
-                    directives: [],
-                  ),
-                  FragmentSpreadNode(
-                    name: NameNode(value: 'EnumConfigItem'),
-                    directives: [],
-                  ),
-                  FragmentSpreadNode(
-                    name: NameNode(value: 'StringConfigItem'),
-                    directives: [],
-                  ),
-                  FieldNode(
-                    name: NameNode(value: '__typename'),
-                    alias: null,
-                    arguments: [],
-                    directives: [],
-                    selectionSet: null,
-                  ),
-                ]),
               ),
               FieldNode(
                 name: NameNode(value: '__typename'),
@@ -1444,10 +1326,6 @@ const documentNodeQueryAllServices = DocumentNode(definitions: [
       ),
     ]),
   ),
-  fragmentDefinitionfragmentDnsRecords,
-  fragmentDefinitionBoolConfigItem,
-  fragmentDefinitionEnumConfigItem,
-  fragmentDefinitionStringConfigItem,
 ]);
 Query$AllServices _parserFn$Query$AllServices(Map<String, dynamic> data) =>
     Query$AllServices.fromJson(data);
@@ -1726,7 +1604,6 @@ class Query$AllServices$services$allServices {
   Query$AllServices$services$allServices({
     required this.description,
     required this.displayName,
-    this.dnsRecords,
     required this.id,
     required this.isEnabled,
     required this.isInstalled,
@@ -1740,9 +1617,7 @@ class Query$AllServices$services$allServices {
     this.url,
     this.homepage,
     this.sourcePage,
-    required this.license,
     required this.supportLevel,
-    this.configuration,
     this.$__typename = 'Service',
   });
 
@@ -1750,7 +1625,6 @@ class Query$AllServices$services$allServices {
       Map<String, dynamic> json) {
     final l$description = json['description'];
     final l$displayName = json['displayName'];
-    final l$dnsRecords = json['dnsRecords'];
     final l$id = json['id'];
     final l$isEnabled = json['isEnabled'];
     final l$isInstalled = json['isInstalled'];
@@ -1764,17 +1638,11 @@ class Query$AllServices$services$allServices {
     final l$url = json['url'];
     final l$homepage = json['homepage'];
     final l$sourcePage = json['sourcePage'];
-    final l$license = json['license'];
     final l$supportLevel = json['supportLevel'];
-    final l$configuration = json['configuration'];
     final l$$__typename = json['__typename'];
     return Query$AllServices$services$allServices(
       description: (l$description as String),
       displayName: (l$displayName as String),
-      dnsRecords: (l$dnsRecords as List<dynamic>?)
-          ?.map((e) =>
-              Fragment$fragmentDnsRecords.fromJson((e as Map<String, dynamic>)))
-          .toList(),
       id: (l$id as String),
       isEnabled: (l$isEnabled as bool),
       isInstalled: (l$isInstalled as bool),
@@ -1788,16 +1656,7 @@ class Query$AllServices$services$allServices {
       url: (l$url as String?),
       homepage: (l$homepage as String?),
       sourcePage: (l$sourcePage as String?),
-      license: (l$license as List<dynamic>)
-          .map((e) => Query$AllServices$services$allServices$license.fromJson(
-              (e as Map<String, dynamic>)))
-          .toList(),
       supportLevel: fromJson$Enum$SupportLevelEnum((l$supportLevel as String)),
-      configuration: (l$configuration as List<dynamic>?)
-          ?.map((e) =>
-              Query$AllServices$services$allServices$configuration.fromJson(
-                  (e as Map<String, dynamic>)))
-          .toList(),
       $__typename: (l$$__typename as String),
     );
   }
@@ -1805,8 +1664,6 @@ class Query$AllServices$services$allServices {
   final String description;
 
   final String displayName;
-
-  final List<Fragment$fragmentDnsRecords>? dnsRecords;
 
   final String id;
 
@@ -1834,12 +1691,7 @@ class Query$AllServices$services$allServices {
 
   final String? sourcePage;
 
-  final List<Query$AllServices$services$allServices$license> license;
-
   final Enum$SupportLevelEnum supportLevel;
-
-  final List<Query$AllServices$services$allServices$configuration>?
-      configuration;
 
   final String $__typename;
 
@@ -1849,8 +1701,6 @@ class Query$AllServices$services$allServices {
     _resultData['description'] = l$description;
     final l$displayName = displayName;
     _resultData['displayName'] = l$displayName;
-    final l$dnsRecords = dnsRecords;
-    _resultData['dnsRecords'] = l$dnsRecords?.map((e) => e.toJson()).toList();
     final l$id = id;
     _resultData['id'] = l$id;
     final l$isEnabled = isEnabled;
@@ -1877,13 +1727,8 @@ class Query$AllServices$services$allServices {
     _resultData['homepage'] = l$homepage;
     final l$sourcePage = sourcePage;
     _resultData['sourcePage'] = l$sourcePage;
-    final l$license = license;
-    _resultData['license'] = l$license.map((e) => e.toJson()).toList();
     final l$supportLevel = supportLevel;
     _resultData['supportLevel'] = toJson$Enum$SupportLevelEnum(l$supportLevel);
-    final l$configuration = configuration;
-    _resultData['configuration'] =
-        l$configuration?.map((e) => e.toJson()).toList();
     final l$$__typename = $__typename;
     _resultData['__typename'] = l$$__typename;
     return _resultData;
@@ -1893,7 +1738,6 @@ class Query$AllServices$services$allServices {
   int get hashCode {
     final l$description = description;
     final l$displayName = displayName;
-    final l$dnsRecords = dnsRecords;
     final l$id = id;
     final l$isEnabled = isEnabled;
     final l$isInstalled = isInstalled;
@@ -1907,14 +1751,11 @@ class Query$AllServices$services$allServices {
     final l$url = url;
     final l$homepage = homepage;
     final l$sourcePage = sourcePage;
-    final l$license = license;
     final l$supportLevel = supportLevel;
-    final l$configuration = configuration;
     final l$$__typename = $__typename;
     return Object.hashAll([
       l$description,
       l$displayName,
-      l$dnsRecords == null ? null : Object.hashAll(l$dnsRecords.map((v) => v)),
       l$id,
       l$isEnabled,
       l$isInstalled,
@@ -1928,11 +1769,7 @@ class Query$AllServices$services$allServices {
       l$url,
       l$homepage,
       l$sourcePage,
-      Object.hashAll(l$license.map((v) => v)),
       l$supportLevel,
-      l$configuration == null
-          ? null
-          : Object.hashAll(l$configuration.map((v) => v)),
       l$$__typename,
     ]);
   }
@@ -1954,22 +1791,6 @@ class Query$AllServices$services$allServices {
     final l$displayName = displayName;
     final lOther$displayName = other.displayName;
     if (l$displayName != lOther$displayName) {
-      return false;
-    }
-    final l$dnsRecords = dnsRecords;
-    final lOther$dnsRecords = other.dnsRecords;
-    if (l$dnsRecords != null && lOther$dnsRecords != null) {
-      if (l$dnsRecords.length != lOther$dnsRecords.length) {
-        return false;
-      }
-      for (int i = 0; i < l$dnsRecords.length; i++) {
-        final l$dnsRecords$entry = l$dnsRecords[i];
-        final lOther$dnsRecords$entry = lOther$dnsRecords[i];
-        if (l$dnsRecords$entry != lOther$dnsRecords$entry) {
-          return false;
-        }
-      }
-    } else if (l$dnsRecords != lOther$dnsRecords) {
       return false;
     }
     final l$id = id;
@@ -2037,37 +1858,9 @@ class Query$AllServices$services$allServices {
     if (l$sourcePage != lOther$sourcePage) {
       return false;
     }
-    final l$license = license;
-    final lOther$license = other.license;
-    if (l$license.length != lOther$license.length) {
-      return false;
-    }
-    for (int i = 0; i < l$license.length; i++) {
-      final l$license$entry = l$license[i];
-      final lOther$license$entry = lOther$license[i];
-      if (l$license$entry != lOther$license$entry) {
-        return false;
-      }
-    }
     final l$supportLevel = supportLevel;
     final lOther$supportLevel = other.supportLevel;
     if (l$supportLevel != lOther$supportLevel) {
-      return false;
-    }
-    final l$configuration = configuration;
-    final lOther$configuration = other.configuration;
-    if (l$configuration != null && lOther$configuration != null) {
-      if (l$configuration.length != lOther$configuration.length) {
-        return false;
-      }
-      for (int i = 0; i < l$configuration.length; i++) {
-        final l$configuration$entry = l$configuration[i];
-        final lOther$configuration$entry = lOther$configuration[i];
-        if (l$configuration$entry != lOther$configuration$entry) {
-          return false;
-        }
-      }
-    } else if (l$configuration != lOther$configuration) {
       return false;
     }
     final l$$__typename = $__typename;
@@ -2101,7 +1894,6 @@ abstract class CopyWith$Query$AllServices$services$allServices<TRes> {
   TRes call({
     String? description,
     String? displayName,
-    List<Fragment$fragmentDnsRecords>? dnsRecords,
     String? id,
     bool? isEnabled,
     bool? isInstalled,
@@ -2115,29 +1907,9 @@ abstract class CopyWith$Query$AllServices$services$allServices<TRes> {
     String? url,
     String? homepage,
     String? sourcePage,
-    List<Query$AllServices$services$allServices$license>? license,
     Enum$SupportLevelEnum? supportLevel,
-    List<Query$AllServices$services$allServices$configuration>? configuration,
     String? $__typename,
   });
-  TRes dnsRecords(
-      Iterable<Fragment$fragmentDnsRecords>? Function(
-              Iterable<
-                  CopyWith$Fragment$fragmentDnsRecords<
-                      Fragment$fragmentDnsRecords>>?)
-          _fn);
-  TRes license(
-      Iterable<Query$AllServices$services$allServices$license> Function(
-              Iterable<
-                  CopyWith$Query$AllServices$services$allServices$license<
-                      Query$AllServices$services$allServices$license>>)
-          _fn);
-  TRes configuration(
-      Iterable<Query$AllServices$services$allServices$configuration>? Function(
-              Iterable<
-                  CopyWith$Query$AllServices$services$allServices$configuration<
-                      Query$AllServices$services$allServices$configuration>>?)
-          _fn);
 }
 
 class _CopyWithImpl$Query$AllServices$services$allServices<TRes>
@@ -2156,7 +1928,6 @@ class _CopyWithImpl$Query$AllServices$services$allServices<TRes>
   TRes call({
     Object? description = _undefined,
     Object? displayName = _undefined,
-    Object? dnsRecords = _undefined,
     Object? id = _undefined,
     Object? isEnabled = _undefined,
     Object? isInstalled = _undefined,
@@ -2170,9 +1941,7 @@ class _CopyWithImpl$Query$AllServices$services$allServices<TRes>
     Object? url = _undefined,
     Object? homepage = _undefined,
     Object? sourcePage = _undefined,
-    Object? license = _undefined,
     Object? supportLevel = _undefined,
-    Object? configuration = _undefined,
     Object? $__typename = _undefined,
   }) =>
       _then(Query$AllServices$services$allServices(
@@ -2182,9 +1951,6 @@ class _CopyWithImpl$Query$AllServices$services$allServices<TRes>
         displayName: displayName == _undefined || displayName == null
             ? _instance.displayName
             : (displayName as String),
-        dnsRecords: dnsRecords == _undefined
-            ? _instance.dnsRecords
-            : (dnsRecords as List<Fragment$fragmentDnsRecords>?),
         id: id == _undefined || id == null ? _instance.id : (id as String),
         isEnabled: isEnabled == _undefined || isEnabled == null
             ? _instance.isEnabled
@@ -2221,59 +1987,13 @@ class _CopyWithImpl$Query$AllServices$services$allServices<TRes>
         sourcePage: sourcePage == _undefined
             ? _instance.sourcePage
             : (sourcePage as String?),
-        license: license == _undefined || license == null
-            ? _instance.license
-            : (license as List<Query$AllServices$services$allServices$license>),
         supportLevel: supportLevel == _undefined || supportLevel == null
             ? _instance.supportLevel
             : (supportLevel as Enum$SupportLevelEnum),
-        configuration: configuration == _undefined
-            ? _instance.configuration
-            : (configuration
-                as List<Query$AllServices$services$allServices$configuration>?),
         $__typename: $__typename == _undefined || $__typename == null
             ? _instance.$__typename
             : ($__typename as String),
       ));
-
-  TRes dnsRecords(
-          Iterable<Fragment$fragmentDnsRecords>? Function(
-                  Iterable<
-                      CopyWith$Fragment$fragmentDnsRecords<
-                          Fragment$fragmentDnsRecords>>?)
-              _fn) =>
-      call(
-          dnsRecords: _fn(_instance.dnsRecords
-              ?.map((e) => CopyWith$Fragment$fragmentDnsRecords(
-                    e,
-                    (i) => i,
-                  )))?.toList());
-
-  TRes license(
-          Iterable<Query$AllServices$services$allServices$license> Function(
-                  Iterable<
-                      CopyWith$Query$AllServices$services$allServices$license<
-                          Query$AllServices$services$allServices$license>>)
-              _fn) =>
-      call(
-          license: _fn(_instance.license.map(
-              (e) => CopyWith$Query$AllServices$services$allServices$license(
-                    e,
-                    (i) => i,
-                  ))).toList());
-
-  TRes configuration(
-          Iterable<Query$AllServices$services$allServices$configuration>? Function(
-                  Iterable<
-                      CopyWith$Query$AllServices$services$allServices$configuration<
-                          Query$AllServices$services$allServices$configuration>>?)
-              _fn) =>
-      call(
-          configuration: _fn(_instance.configuration?.map((e) =>
-              CopyWith$Query$AllServices$services$allServices$configuration(
-                e,
-                (i) => i,
-              )))?.toList());
 }
 
 class _CopyWithStubImpl$Query$AllServices$services$allServices<TRes>
@@ -2285,7 +2005,6 @@ class _CopyWithStubImpl$Query$AllServices$services$allServices<TRes>
   call({
     String? description,
     String? displayName,
-    List<Fragment$fragmentDnsRecords>? dnsRecords,
     String? id,
     bool? isEnabled,
     bool? isInstalled,
@@ -2299,1275 +2018,7 @@ class _CopyWithStubImpl$Query$AllServices$services$allServices<TRes>
     String? url,
     String? homepage,
     String? sourcePage,
-    List<Query$AllServices$services$allServices$license>? license,
     Enum$SupportLevelEnum? supportLevel,
-    List<Query$AllServices$services$allServices$configuration>? configuration,
-    String? $__typename,
-  }) =>
-      _res;
-
-  dnsRecords(_fn) => _res;
-
-  license(_fn) => _res;
-
-  configuration(_fn) => _res;
-}
-
-class Query$AllServices$services$allServices$license {
-  Query$AllServices$services$allServices$license({
-    required this.free,
-    required this.fullName,
-    required this.redistributable,
-    required this.shortName,
-    this.url,
-    this.$__typename = 'LicenseType',
-  });
-
-  factory Query$AllServices$services$allServices$license.fromJson(
-      Map<String, dynamic> json) {
-    final l$free = json['free'];
-    final l$fullName = json['fullName'];
-    final l$redistributable = json['redistributable'];
-    final l$shortName = json['shortName'];
-    final l$url = json['url'];
-    final l$$__typename = json['__typename'];
-    return Query$AllServices$services$allServices$license(
-      free: (l$free as bool),
-      fullName: (l$fullName as String),
-      redistributable: (l$redistributable as bool),
-      shortName: (l$shortName as String),
-      url: (l$url as String?),
-      $__typename: (l$$__typename as String),
-    );
-  }
-
-  final bool free;
-
-  final String fullName;
-
-  final bool redistributable;
-
-  final String shortName;
-
-  final String? url;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$free = free;
-    _resultData['free'] = l$free;
-    final l$fullName = fullName;
-    _resultData['fullName'] = l$fullName;
-    final l$redistributable = redistributable;
-    _resultData['redistributable'] = l$redistributable;
-    final l$shortName = shortName;
-    _resultData['shortName'] = l$shortName;
-    final l$url = url;
-    _resultData['url'] = l$url;
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$free = free;
-    final l$fullName = fullName;
-    final l$redistributable = redistributable;
-    final l$shortName = shortName;
-    final l$url = url;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$free,
-      l$fullName,
-      l$redistributable,
-      l$shortName,
-      l$url,
-      l$$__typename,
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Query$AllServices$services$allServices$license ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$free = free;
-    final lOther$free = other.free;
-    if (l$free != lOther$free) {
-      return false;
-    }
-    final l$fullName = fullName;
-    final lOther$fullName = other.fullName;
-    if (l$fullName != lOther$fullName) {
-      return false;
-    }
-    final l$redistributable = redistributable;
-    final lOther$redistributable = other.redistributable;
-    if (l$redistributable != lOther$redistributable) {
-      return false;
-    }
-    final l$shortName = shortName;
-    final lOther$shortName = other.shortName;
-    if (l$shortName != lOther$shortName) {
-      return false;
-    }
-    final l$url = url;
-    final lOther$url = other.url;
-    if (l$url != lOther$url) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$AllServices$services$allServices$license
-    on Query$AllServices$services$allServices$license {
-  CopyWith$Query$AllServices$services$allServices$license<
-          Query$AllServices$services$allServices$license>
-      get copyWith => CopyWith$Query$AllServices$services$allServices$license(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Query$AllServices$services$allServices$license<TRes> {
-  factory CopyWith$Query$AllServices$services$allServices$license(
-    Query$AllServices$services$allServices$license instance,
-    TRes Function(Query$AllServices$services$allServices$license) then,
-  ) = _CopyWithImpl$Query$AllServices$services$allServices$license;
-
-  factory CopyWith$Query$AllServices$services$allServices$license.stub(
-          TRes res) =
-      _CopyWithStubImpl$Query$AllServices$services$allServices$license;
-
-  TRes call({
-    bool? free,
-    String? fullName,
-    bool? redistributable,
-    String? shortName,
-    String? url,
-    String? $__typename,
-  });
-}
-
-class _CopyWithImpl$Query$AllServices$services$allServices$license<TRes>
-    implements CopyWith$Query$AllServices$services$allServices$license<TRes> {
-  _CopyWithImpl$Query$AllServices$services$allServices$license(
-    this._instance,
-    this._then,
-  );
-
-  final Query$AllServices$services$allServices$license _instance;
-
-  final TRes Function(Query$AllServices$services$allServices$license) _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? free = _undefined,
-    Object? fullName = _undefined,
-    Object? redistributable = _undefined,
-    Object? shortName = _undefined,
-    Object? url = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(Query$AllServices$services$allServices$license(
-        free: free == _undefined || free == null
-            ? _instance.free
-            : (free as bool),
-        fullName: fullName == _undefined || fullName == null
-            ? _instance.fullName
-            : (fullName as String),
-        redistributable:
-            redistributable == _undefined || redistributable == null
-                ? _instance.redistributable
-                : (redistributable as bool),
-        shortName: shortName == _undefined || shortName == null
-            ? _instance.shortName
-            : (shortName as String),
-        url: url == _undefined ? _instance.url : (url as String?),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-}
-
-class _CopyWithStubImpl$Query$AllServices$services$allServices$license<TRes>
-    implements CopyWith$Query$AllServices$services$allServices$license<TRes> {
-  _CopyWithStubImpl$Query$AllServices$services$allServices$license(this._res);
-
-  TRes _res;
-
-  call({
-    bool? free,
-    String? fullName,
-    bool? redistributable,
-    String? shortName,
-    String? url,
-    String? $__typename,
-  }) =>
-      _res;
-}
-
-class Query$AllServices$services$allServices$configuration {
-  Query$AllServices$services$allServices$configuration({
-    required this.fieldId,
-    required this.description,
-    required this.type,
-    required this.$__typename,
-  });
-
-  factory Query$AllServices$services$allServices$configuration.fromJson(
-      Map<String, dynamic> json) {
-    switch (json["__typename"] as String) {
-      case "BoolConfigItem":
-        return Query$AllServices$services$allServices$configuration$$BoolConfigItem
-            .fromJson(json);
-
-      case "EnumConfigItem":
-        return Query$AllServices$services$allServices$configuration$$EnumConfigItem
-            .fromJson(json);
-
-      case "StringConfigItem":
-        return Query$AllServices$services$allServices$configuration$$StringConfigItem
-            .fromJson(json);
-
-      default:
-        final l$fieldId = json['fieldId'];
-        final l$description = json['description'];
-        final l$type = json['type'];
-        final l$$__typename = json['__typename'];
-        return Query$AllServices$services$allServices$configuration(
-          fieldId: (l$fieldId as String),
-          description: (l$description as String),
-          type: (l$type as String),
-          $__typename: (l$$__typename as String),
-        );
-    }
-  }
-
-  final String fieldId;
-
-  final String description;
-
-  final String type;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$fieldId = fieldId;
-    _resultData['fieldId'] = l$fieldId;
-    final l$description = description;
-    _resultData['description'] = l$description;
-    final l$type = type;
-    _resultData['type'] = l$type;
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$fieldId = fieldId;
-    final l$description = description;
-    final l$type = type;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$fieldId,
-      l$description,
-      l$type,
-      l$$__typename,
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other is! Query$AllServices$services$allServices$configuration ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$fieldId = fieldId;
-    final lOther$fieldId = other.fieldId;
-    if (l$fieldId != lOther$fieldId) {
-      return false;
-    }
-    final l$description = description;
-    final lOther$description = other.description;
-    if (l$description != lOther$description) {
-      return false;
-    }
-    final l$type = type;
-    final lOther$type = other.type;
-    if (l$type != lOther$type) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$AllServices$services$allServices$configuration
-    on Query$AllServices$services$allServices$configuration {
-  CopyWith$Query$AllServices$services$allServices$configuration<
-          Query$AllServices$services$allServices$configuration>
-      get copyWith =>
-          CopyWith$Query$AllServices$services$allServices$configuration(
-            this,
-            (i) => i,
-          );
-  _T when<_T>({
-    required _T Function(
-            Query$AllServices$services$allServices$configuration$$BoolConfigItem)
-        boolConfigItem,
-    required _T Function(
-            Query$AllServices$services$allServices$configuration$$EnumConfigItem)
-        enumConfigItem,
-    required _T Function(
-            Query$AllServices$services$allServices$configuration$$StringConfigItem)
-        stringConfigItem,
-    required _T Function() orElse,
-  }) {
-    switch ($__typename) {
-      case "BoolConfigItem":
-        return boolConfigItem(this
-            as Query$AllServices$services$allServices$configuration$$BoolConfigItem);
-
-      case "EnumConfigItem":
-        return enumConfigItem(this
-            as Query$AllServices$services$allServices$configuration$$EnumConfigItem);
-
-      case "StringConfigItem":
-        return stringConfigItem(this
-            as Query$AllServices$services$allServices$configuration$$StringConfigItem);
-
-      default:
-        return orElse();
-    }
-  }
-
-  _T maybeWhen<_T>({
-    _T Function(
-            Query$AllServices$services$allServices$configuration$$BoolConfigItem)?
-        boolConfigItem,
-    _T Function(
-            Query$AllServices$services$allServices$configuration$$EnumConfigItem)?
-        enumConfigItem,
-    _T Function(
-            Query$AllServices$services$allServices$configuration$$StringConfigItem)?
-        stringConfigItem,
-    required _T Function() orElse,
-  }) {
-    switch ($__typename) {
-      case "BoolConfigItem":
-        if (boolConfigItem != null) {
-          return boolConfigItem(this
-              as Query$AllServices$services$allServices$configuration$$BoolConfigItem);
-        } else {
-          return orElse();
-        }
-
-      case "EnumConfigItem":
-        if (enumConfigItem != null) {
-          return enumConfigItem(this
-              as Query$AllServices$services$allServices$configuration$$EnumConfigItem);
-        } else {
-          return orElse();
-        }
-
-      case "StringConfigItem":
-        if (stringConfigItem != null) {
-          return stringConfigItem(this
-              as Query$AllServices$services$allServices$configuration$$StringConfigItem);
-        } else {
-          return orElse();
-        }
-
-      default:
-        return orElse();
-    }
-  }
-}
-
-abstract class CopyWith$Query$AllServices$services$allServices$configuration<
-    TRes> {
-  factory CopyWith$Query$AllServices$services$allServices$configuration(
-    Query$AllServices$services$allServices$configuration instance,
-    TRes Function(Query$AllServices$services$allServices$configuration) then,
-  ) = _CopyWithImpl$Query$AllServices$services$allServices$configuration;
-
-  factory CopyWith$Query$AllServices$services$allServices$configuration.stub(
-          TRes res) =
-      _CopyWithStubImpl$Query$AllServices$services$allServices$configuration;
-
-  TRes call({
-    String? fieldId,
-    String? description,
-    String? type,
-    String? $__typename,
-  });
-}
-
-class _CopyWithImpl$Query$AllServices$services$allServices$configuration<TRes>
-    implements
-        CopyWith$Query$AllServices$services$allServices$configuration<TRes> {
-  _CopyWithImpl$Query$AllServices$services$allServices$configuration(
-    this._instance,
-    this._then,
-  );
-
-  final Query$AllServices$services$allServices$configuration _instance;
-
-  final TRes Function(Query$AllServices$services$allServices$configuration)
-      _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? fieldId = _undefined,
-    Object? description = _undefined,
-    Object? type = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(Query$AllServices$services$allServices$configuration(
-        fieldId: fieldId == _undefined || fieldId == null
-            ? _instance.fieldId
-            : (fieldId as String),
-        description: description == _undefined || description == null
-            ? _instance.description
-            : (description as String),
-        type: type == _undefined || type == null
-            ? _instance.type
-            : (type as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-}
-
-class _CopyWithStubImpl$Query$AllServices$services$allServices$configuration<
-        TRes>
-    implements
-        CopyWith$Query$AllServices$services$allServices$configuration<TRes> {
-  _CopyWithStubImpl$Query$AllServices$services$allServices$configuration(
-      this._res);
-
-  TRes _res;
-
-  call({
-    String? fieldId,
-    String? description,
-    String? type,
-    String? $__typename,
-  }) =>
-      _res;
-}
-
-class Query$AllServices$services$allServices$configuration$$BoolConfigItem
-    implements
-        Fragment$BoolConfigItem,
-        Query$AllServices$services$allServices$configuration {
-  Query$AllServices$services$allServices$configuration$$BoolConfigItem({
-    required this.fieldId,
-    required this.description,
-    required this.type,
-    required this.boolValue,
-    required this.defaultBoolValue,
-    required this.widget,
-    this.$__typename = 'BoolConfigItem',
-  });
-
-  factory Query$AllServices$services$allServices$configuration$$BoolConfigItem.fromJson(
-      Map<String, dynamic> json) {
-    final l$fieldId = json['fieldId'];
-    final l$description = json['description'];
-    final l$type = json['type'];
-    final l$boolValue = json['boolValue'];
-    final l$defaultBoolValue = json['defaultBoolValue'];
-    final l$widget = json['widget'];
-    final l$$__typename = json['__typename'];
-    return Query$AllServices$services$allServices$configuration$$BoolConfigItem(
-      fieldId: (l$fieldId as String),
-      description: (l$description as String),
-      type: (l$type as String),
-      boolValue: (l$boolValue as bool),
-      defaultBoolValue: (l$defaultBoolValue as bool),
-      widget: (l$widget as String),
-      $__typename: (l$$__typename as String),
-    );
-  }
-
-  final String fieldId;
-
-  final String description;
-
-  final String type;
-
-  final bool boolValue;
-
-  final bool defaultBoolValue;
-
-  final String widget;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$fieldId = fieldId;
-    _resultData['fieldId'] = l$fieldId;
-    final l$description = description;
-    _resultData['description'] = l$description;
-    final l$type = type;
-    _resultData['type'] = l$type;
-    final l$boolValue = boolValue;
-    _resultData['boolValue'] = l$boolValue;
-    final l$defaultBoolValue = defaultBoolValue;
-    _resultData['defaultBoolValue'] = l$defaultBoolValue;
-    final l$widget = widget;
-    _resultData['widget'] = l$widget;
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$fieldId = fieldId;
-    final l$description = description;
-    final l$type = type;
-    final l$boolValue = boolValue;
-    final l$defaultBoolValue = defaultBoolValue;
-    final l$widget = widget;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$fieldId,
-      l$description,
-      l$type,
-      l$boolValue,
-      l$defaultBoolValue,
-      l$widget,
-      l$$__typename,
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other
-            is! Query$AllServices$services$allServices$configuration$$BoolConfigItem ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$fieldId = fieldId;
-    final lOther$fieldId = other.fieldId;
-    if (l$fieldId != lOther$fieldId) {
-      return false;
-    }
-    final l$description = description;
-    final lOther$description = other.description;
-    if (l$description != lOther$description) {
-      return false;
-    }
-    final l$type = type;
-    final lOther$type = other.type;
-    if (l$type != lOther$type) {
-      return false;
-    }
-    final l$boolValue = boolValue;
-    final lOther$boolValue = other.boolValue;
-    if (l$boolValue != lOther$boolValue) {
-      return false;
-    }
-    final l$defaultBoolValue = defaultBoolValue;
-    final lOther$defaultBoolValue = other.defaultBoolValue;
-    if (l$defaultBoolValue != lOther$defaultBoolValue) {
-      return false;
-    }
-    final l$widget = widget;
-    final lOther$widget = other.widget;
-    if (l$widget != lOther$widget) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$AllServices$services$allServices$configuration$$BoolConfigItem
-    on Query$AllServices$services$allServices$configuration$$BoolConfigItem {
-  CopyWith$Query$AllServices$services$allServices$configuration$$BoolConfigItem<
-          Query$AllServices$services$allServices$configuration$$BoolConfigItem>
-      get copyWith =>
-          CopyWith$Query$AllServices$services$allServices$configuration$$BoolConfigItem(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Query$AllServices$services$allServices$configuration$$BoolConfigItem<
-    TRes> {
-  factory CopyWith$Query$AllServices$services$allServices$configuration$$BoolConfigItem(
-    Query$AllServices$services$allServices$configuration$$BoolConfigItem
-        instance,
-    TRes Function(
-            Query$AllServices$services$allServices$configuration$$BoolConfigItem)
-        then,
-  ) = _CopyWithImpl$Query$AllServices$services$allServices$configuration$$BoolConfigItem;
-
-  factory CopyWith$Query$AllServices$services$allServices$configuration$$BoolConfigItem.stub(
-          TRes res) =
-      _CopyWithStubImpl$Query$AllServices$services$allServices$configuration$$BoolConfigItem;
-
-  TRes call({
-    String? fieldId,
-    String? description,
-    String? type,
-    bool? boolValue,
-    bool? defaultBoolValue,
-    String? widget,
-    String? $__typename,
-  });
-}
-
-class _CopyWithImpl$Query$AllServices$services$allServices$configuration$$BoolConfigItem<
-        TRes>
-    implements
-        CopyWith$Query$AllServices$services$allServices$configuration$$BoolConfigItem<
-            TRes> {
-  _CopyWithImpl$Query$AllServices$services$allServices$configuration$$BoolConfigItem(
-    this._instance,
-    this._then,
-  );
-
-  final Query$AllServices$services$allServices$configuration$$BoolConfigItem
-      _instance;
-
-  final TRes Function(
-          Query$AllServices$services$allServices$configuration$$BoolConfigItem)
-      _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? fieldId = _undefined,
-    Object? description = _undefined,
-    Object? type = _undefined,
-    Object? boolValue = _undefined,
-    Object? defaultBoolValue = _undefined,
-    Object? widget = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(
-          Query$AllServices$services$allServices$configuration$$BoolConfigItem(
-        fieldId: fieldId == _undefined || fieldId == null
-            ? _instance.fieldId
-            : (fieldId as String),
-        description: description == _undefined || description == null
-            ? _instance.description
-            : (description as String),
-        type: type == _undefined || type == null
-            ? _instance.type
-            : (type as String),
-        boolValue: boolValue == _undefined || boolValue == null
-            ? _instance.boolValue
-            : (boolValue as bool),
-        defaultBoolValue:
-            defaultBoolValue == _undefined || defaultBoolValue == null
-                ? _instance.defaultBoolValue
-                : (defaultBoolValue as bool),
-        widget: widget == _undefined || widget == null
-            ? _instance.widget
-            : (widget as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-}
-
-class _CopyWithStubImpl$Query$AllServices$services$allServices$configuration$$BoolConfigItem<
-        TRes>
-    implements
-        CopyWith$Query$AllServices$services$allServices$configuration$$BoolConfigItem<
-            TRes> {
-  _CopyWithStubImpl$Query$AllServices$services$allServices$configuration$$BoolConfigItem(
-      this._res);
-
-  TRes _res;
-
-  call({
-    String? fieldId,
-    String? description,
-    String? type,
-    bool? boolValue,
-    bool? defaultBoolValue,
-    String? widget,
-    String? $__typename,
-  }) =>
-      _res;
-}
-
-class Query$AllServices$services$allServices$configuration$$EnumConfigItem
-    implements
-        Fragment$EnumConfigItem,
-        Query$AllServices$services$allServices$configuration {
-  Query$AllServices$services$allServices$configuration$$EnumConfigItem({
-    required this.fieldId,
-    required this.description,
-    required this.type,
-    required this.stringValue,
-    required this.defaultStringValue,
-    required this.options,
-    required this.widget,
-    this.$__typename = 'EnumConfigItem',
-  });
-
-  factory Query$AllServices$services$allServices$configuration$$EnumConfigItem.fromJson(
-      Map<String, dynamic> json) {
-    final l$fieldId = json['fieldId'];
-    final l$description = json['description'];
-    final l$type = json['type'];
-    final l$stringValue = json['stringValue'];
-    final l$defaultStringValue = json['defaultStringValue'];
-    final l$options = json['options'];
-    final l$widget = json['widget'];
-    final l$$__typename = json['__typename'];
-    return Query$AllServices$services$allServices$configuration$$EnumConfigItem(
-      fieldId: (l$fieldId as String),
-      description: (l$description as String),
-      type: (l$type as String),
-      stringValue: (l$stringValue as String),
-      defaultStringValue: (l$defaultStringValue as String),
-      options: (l$options as List<dynamic>).map((e) => (e as String)).toList(),
-      widget: (l$widget as String),
-      $__typename: (l$$__typename as String),
-    );
-  }
-
-  final String fieldId;
-
-  final String description;
-
-  final String type;
-
-  final String stringValue;
-
-  final String defaultStringValue;
-
-  final List<String> options;
-
-  final String widget;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$fieldId = fieldId;
-    _resultData['fieldId'] = l$fieldId;
-    final l$description = description;
-    _resultData['description'] = l$description;
-    final l$type = type;
-    _resultData['type'] = l$type;
-    final l$stringValue = stringValue;
-    _resultData['stringValue'] = l$stringValue;
-    final l$defaultStringValue = defaultStringValue;
-    _resultData['defaultStringValue'] = l$defaultStringValue;
-    final l$options = options;
-    _resultData['options'] = l$options.map((e) => e).toList();
-    final l$widget = widget;
-    _resultData['widget'] = l$widget;
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$fieldId = fieldId;
-    final l$description = description;
-    final l$type = type;
-    final l$stringValue = stringValue;
-    final l$defaultStringValue = defaultStringValue;
-    final l$options = options;
-    final l$widget = widget;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$fieldId,
-      l$description,
-      l$type,
-      l$stringValue,
-      l$defaultStringValue,
-      Object.hashAll(l$options.map((v) => v)),
-      l$widget,
-      l$$__typename,
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other
-            is! Query$AllServices$services$allServices$configuration$$EnumConfigItem ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$fieldId = fieldId;
-    final lOther$fieldId = other.fieldId;
-    if (l$fieldId != lOther$fieldId) {
-      return false;
-    }
-    final l$description = description;
-    final lOther$description = other.description;
-    if (l$description != lOther$description) {
-      return false;
-    }
-    final l$type = type;
-    final lOther$type = other.type;
-    if (l$type != lOther$type) {
-      return false;
-    }
-    final l$stringValue = stringValue;
-    final lOther$stringValue = other.stringValue;
-    if (l$stringValue != lOther$stringValue) {
-      return false;
-    }
-    final l$defaultStringValue = defaultStringValue;
-    final lOther$defaultStringValue = other.defaultStringValue;
-    if (l$defaultStringValue != lOther$defaultStringValue) {
-      return false;
-    }
-    final l$options = options;
-    final lOther$options = other.options;
-    if (l$options.length != lOther$options.length) {
-      return false;
-    }
-    for (int i = 0; i < l$options.length; i++) {
-      final l$options$entry = l$options[i];
-      final lOther$options$entry = lOther$options[i];
-      if (l$options$entry != lOther$options$entry) {
-        return false;
-      }
-    }
-    final l$widget = widget;
-    final lOther$widget = other.widget;
-    if (l$widget != lOther$widget) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$AllServices$services$allServices$configuration$$EnumConfigItem
-    on Query$AllServices$services$allServices$configuration$$EnumConfigItem {
-  CopyWith$Query$AllServices$services$allServices$configuration$$EnumConfigItem<
-          Query$AllServices$services$allServices$configuration$$EnumConfigItem>
-      get copyWith =>
-          CopyWith$Query$AllServices$services$allServices$configuration$$EnumConfigItem(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Query$AllServices$services$allServices$configuration$$EnumConfigItem<
-    TRes> {
-  factory CopyWith$Query$AllServices$services$allServices$configuration$$EnumConfigItem(
-    Query$AllServices$services$allServices$configuration$$EnumConfigItem
-        instance,
-    TRes Function(
-            Query$AllServices$services$allServices$configuration$$EnumConfigItem)
-        then,
-  ) = _CopyWithImpl$Query$AllServices$services$allServices$configuration$$EnumConfigItem;
-
-  factory CopyWith$Query$AllServices$services$allServices$configuration$$EnumConfigItem.stub(
-          TRes res) =
-      _CopyWithStubImpl$Query$AllServices$services$allServices$configuration$$EnumConfigItem;
-
-  TRes call({
-    String? fieldId,
-    String? description,
-    String? type,
-    String? stringValue,
-    String? defaultStringValue,
-    List<String>? options,
-    String? widget,
-    String? $__typename,
-  });
-}
-
-class _CopyWithImpl$Query$AllServices$services$allServices$configuration$$EnumConfigItem<
-        TRes>
-    implements
-        CopyWith$Query$AllServices$services$allServices$configuration$$EnumConfigItem<
-            TRes> {
-  _CopyWithImpl$Query$AllServices$services$allServices$configuration$$EnumConfigItem(
-    this._instance,
-    this._then,
-  );
-
-  final Query$AllServices$services$allServices$configuration$$EnumConfigItem
-      _instance;
-
-  final TRes Function(
-          Query$AllServices$services$allServices$configuration$$EnumConfigItem)
-      _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? fieldId = _undefined,
-    Object? description = _undefined,
-    Object? type = _undefined,
-    Object? stringValue = _undefined,
-    Object? defaultStringValue = _undefined,
-    Object? options = _undefined,
-    Object? widget = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(
-          Query$AllServices$services$allServices$configuration$$EnumConfigItem(
-        fieldId: fieldId == _undefined || fieldId == null
-            ? _instance.fieldId
-            : (fieldId as String),
-        description: description == _undefined || description == null
-            ? _instance.description
-            : (description as String),
-        type: type == _undefined || type == null
-            ? _instance.type
-            : (type as String),
-        stringValue: stringValue == _undefined || stringValue == null
-            ? _instance.stringValue
-            : (stringValue as String),
-        defaultStringValue:
-            defaultStringValue == _undefined || defaultStringValue == null
-                ? _instance.defaultStringValue
-                : (defaultStringValue as String),
-        options: options == _undefined || options == null
-            ? _instance.options
-            : (options as List<String>),
-        widget: widget == _undefined || widget == null
-            ? _instance.widget
-            : (widget as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-}
-
-class _CopyWithStubImpl$Query$AllServices$services$allServices$configuration$$EnumConfigItem<
-        TRes>
-    implements
-        CopyWith$Query$AllServices$services$allServices$configuration$$EnumConfigItem<
-            TRes> {
-  _CopyWithStubImpl$Query$AllServices$services$allServices$configuration$$EnumConfigItem(
-      this._res);
-
-  TRes _res;
-
-  call({
-    String? fieldId,
-    String? description,
-    String? type,
-    String? stringValue,
-    String? defaultStringValue,
-    List<String>? options,
-    String? widget,
-    String? $__typename,
-  }) =>
-      _res;
-}
-
-class Query$AllServices$services$allServices$configuration$$StringConfigItem
-    implements
-        Fragment$StringConfigItem,
-        Query$AllServices$services$allServices$configuration {
-  Query$AllServices$services$allServices$configuration$$StringConfigItem({
-    required this.fieldId,
-    required this.description,
-    required this.type,
-    required this.stringValue,
-    required this.defaultStringValue,
-    this.regex,
-    required this.widget,
-    this.$__typename = 'StringConfigItem',
-  });
-
-  factory Query$AllServices$services$allServices$configuration$$StringConfigItem.fromJson(
-      Map<String, dynamic> json) {
-    final l$fieldId = json['fieldId'];
-    final l$description = json['description'];
-    final l$type = json['type'];
-    final l$stringValue = json['stringValue'];
-    final l$defaultStringValue = json['defaultStringValue'];
-    final l$regex = json['regex'];
-    final l$widget = json['widget'];
-    final l$$__typename = json['__typename'];
-    return Query$AllServices$services$allServices$configuration$$StringConfigItem(
-      fieldId: (l$fieldId as String),
-      description: (l$description as String),
-      type: (l$type as String),
-      stringValue: (l$stringValue as String),
-      defaultStringValue: (l$defaultStringValue as String),
-      regex: (l$regex as String?),
-      widget: (l$widget as String),
-      $__typename: (l$$__typename as String),
-    );
-  }
-
-  final String fieldId;
-
-  final String description;
-
-  final String type;
-
-  final String stringValue;
-
-  final String defaultStringValue;
-
-  final String? regex;
-
-  final String widget;
-
-  final String $__typename;
-
-  Map<String, dynamic> toJson() {
-    final _resultData = <String, dynamic>{};
-    final l$fieldId = fieldId;
-    _resultData['fieldId'] = l$fieldId;
-    final l$description = description;
-    _resultData['description'] = l$description;
-    final l$type = type;
-    _resultData['type'] = l$type;
-    final l$stringValue = stringValue;
-    _resultData['stringValue'] = l$stringValue;
-    final l$defaultStringValue = defaultStringValue;
-    _resultData['defaultStringValue'] = l$defaultStringValue;
-    final l$regex = regex;
-    _resultData['regex'] = l$regex;
-    final l$widget = widget;
-    _resultData['widget'] = l$widget;
-    final l$$__typename = $__typename;
-    _resultData['__typename'] = l$$__typename;
-    return _resultData;
-  }
-
-  @override
-  int get hashCode {
-    final l$fieldId = fieldId;
-    final l$description = description;
-    final l$type = type;
-    final l$stringValue = stringValue;
-    final l$defaultStringValue = defaultStringValue;
-    final l$regex = regex;
-    final l$widget = widget;
-    final l$$__typename = $__typename;
-    return Object.hashAll([
-      l$fieldId,
-      l$description,
-      l$type,
-      l$stringValue,
-      l$defaultStringValue,
-      l$regex,
-      l$widget,
-      l$$__typename,
-    ]);
-  }
-
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) {
-      return true;
-    }
-    if (other
-            is! Query$AllServices$services$allServices$configuration$$StringConfigItem ||
-        runtimeType != other.runtimeType) {
-      return false;
-    }
-    final l$fieldId = fieldId;
-    final lOther$fieldId = other.fieldId;
-    if (l$fieldId != lOther$fieldId) {
-      return false;
-    }
-    final l$description = description;
-    final lOther$description = other.description;
-    if (l$description != lOther$description) {
-      return false;
-    }
-    final l$type = type;
-    final lOther$type = other.type;
-    if (l$type != lOther$type) {
-      return false;
-    }
-    final l$stringValue = stringValue;
-    final lOther$stringValue = other.stringValue;
-    if (l$stringValue != lOther$stringValue) {
-      return false;
-    }
-    final l$defaultStringValue = defaultStringValue;
-    final lOther$defaultStringValue = other.defaultStringValue;
-    if (l$defaultStringValue != lOther$defaultStringValue) {
-      return false;
-    }
-    final l$regex = regex;
-    final lOther$regex = other.regex;
-    if (l$regex != lOther$regex) {
-      return false;
-    }
-    final l$widget = widget;
-    final lOther$widget = other.widget;
-    if (l$widget != lOther$widget) {
-      return false;
-    }
-    final l$$__typename = $__typename;
-    final lOther$$__typename = other.$__typename;
-    if (l$$__typename != lOther$$__typename) {
-      return false;
-    }
-    return true;
-  }
-}
-
-extension UtilityExtension$Query$AllServices$services$allServices$configuration$$StringConfigItem
-    on Query$AllServices$services$allServices$configuration$$StringConfigItem {
-  CopyWith$Query$AllServices$services$allServices$configuration$$StringConfigItem<
-          Query$AllServices$services$allServices$configuration$$StringConfigItem>
-      get copyWith =>
-          CopyWith$Query$AllServices$services$allServices$configuration$$StringConfigItem(
-            this,
-            (i) => i,
-          );
-}
-
-abstract class CopyWith$Query$AllServices$services$allServices$configuration$$StringConfigItem<
-    TRes> {
-  factory CopyWith$Query$AllServices$services$allServices$configuration$$StringConfigItem(
-    Query$AllServices$services$allServices$configuration$$StringConfigItem
-        instance,
-    TRes Function(
-            Query$AllServices$services$allServices$configuration$$StringConfigItem)
-        then,
-  ) = _CopyWithImpl$Query$AllServices$services$allServices$configuration$$StringConfigItem;
-
-  factory CopyWith$Query$AllServices$services$allServices$configuration$$StringConfigItem.stub(
-          TRes res) =
-      _CopyWithStubImpl$Query$AllServices$services$allServices$configuration$$StringConfigItem;
-
-  TRes call({
-    String? fieldId,
-    String? description,
-    String? type,
-    String? stringValue,
-    String? defaultStringValue,
-    String? regex,
-    String? widget,
-    String? $__typename,
-  });
-}
-
-class _CopyWithImpl$Query$AllServices$services$allServices$configuration$$StringConfigItem<
-        TRes>
-    implements
-        CopyWith$Query$AllServices$services$allServices$configuration$$StringConfigItem<
-            TRes> {
-  _CopyWithImpl$Query$AllServices$services$allServices$configuration$$StringConfigItem(
-    this._instance,
-    this._then,
-  );
-
-  final Query$AllServices$services$allServices$configuration$$StringConfigItem
-      _instance;
-
-  final TRes Function(
-          Query$AllServices$services$allServices$configuration$$StringConfigItem)
-      _then;
-
-  static const _undefined = <dynamic, dynamic>{};
-
-  TRes call({
-    Object? fieldId = _undefined,
-    Object? description = _undefined,
-    Object? type = _undefined,
-    Object? stringValue = _undefined,
-    Object? defaultStringValue = _undefined,
-    Object? regex = _undefined,
-    Object? widget = _undefined,
-    Object? $__typename = _undefined,
-  }) =>
-      _then(
-          Query$AllServices$services$allServices$configuration$$StringConfigItem(
-        fieldId: fieldId == _undefined || fieldId == null
-            ? _instance.fieldId
-            : (fieldId as String),
-        description: description == _undefined || description == null
-            ? _instance.description
-            : (description as String),
-        type: type == _undefined || type == null
-            ? _instance.type
-            : (type as String),
-        stringValue: stringValue == _undefined || stringValue == null
-            ? _instance.stringValue
-            : (stringValue as String),
-        defaultStringValue:
-            defaultStringValue == _undefined || defaultStringValue == null
-                ? _instance.defaultStringValue
-                : (defaultStringValue as String),
-        regex: regex == _undefined ? _instance.regex : (regex as String?),
-        widget: widget == _undefined || widget == null
-            ? _instance.widget
-            : (widget as String),
-        $__typename: $__typename == _undefined || $__typename == null
-            ? _instance.$__typename
-            : ($__typename as String),
-      ));
-}
-
-class _CopyWithStubImpl$Query$AllServices$services$allServices$configuration$$StringConfigItem<
-        TRes>
-    implements
-        CopyWith$Query$AllServices$services$allServices$configuration$$StringConfigItem<
-            TRes> {
-  _CopyWithStubImpl$Query$AllServices$services$allServices$configuration$$StringConfigItem(
-      this._res);
-
-  TRes _res;
-
-  call({
-    String? fieldId,
-    String? description,
-    String? type,
-    String? stringValue,
-    String? defaultStringValue,
-    String? regex,
-    String? widget,
     String? $__typename,
   }) =>
       _res;

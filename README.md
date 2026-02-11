@@ -104,19 +104,27 @@ The Android app is built from the same Flutter source code with the `production`
 
 ```bash
 flutter pub get
-
-# Get .onion address from your VM
-ONION=$(sshpass -p '' ssh -p 2222 root@localhost cat /var/lib/tor/hidden_service/hostname)
-
-# Build debug APK with auto-setup (skips onboarding, connects to your .onion)
-flutter build apk --flavor production --debug \
-  --dart-define=ONION_DOMAIN=$ONION \
-  --dart-define=API_TOKEN=test-token-for-tor-development
+flutter build apk --flavor production --debug
 
 # APK is at: build/app/outputs/flutter-apk/app-production-debug.apk
 ```
 
-You can also build without `--dart-define` — the app will show a setup screen at launch where you can enter the onion domain manually.
+The app will show a setup screen at launch where you enter the onion domain and API token.
+
+To bake in the domain at compile time instead (skips the setup screen):
+```bash
+ONION=$(sshpass -p '' ssh -p 2222 root@localhost cat /var/lib/tor/hidden_service/hostname)
+flutter build apk --flavor production --debug \
+  --dart-define=ONION_DOMAIN=$ONION \
+  --dart-define=API_TOKEN=test-token-for-tor-development
+```
+
+### Tor Proxy Requirement (Android)
+
+The app connects to `.onion` addresses through a SOCKS5 proxy on `127.0.0.1:9050`. On Android, **you must provide this proxy** — otherwise the app will hang on loading screens (services, server logs, etc.).
+
+- **Emulator**: Use `adb reverse` to forward port 9050 from the emulator to the host's Tor daemon (see below)
+- **Physical device**: Install [Orbot](https://play.google.com/store/apps/details?id=org.torproject.android) and enable it before opening the app
 
 ### Install on Android Emulator
 
@@ -128,19 +136,24 @@ sudo modprobe kvm && sudo modprobe kvm_intel && sudo chmod 666 /dev/kvm
 export ANDROID_HOME=~/Android/Sdk
 $ANDROID_HOME/emulator/emulator -avd Medium_Phone_API_36.1 -no-audio &
 
-# Wait for boot, then install
+# Wait for boot
 $ANDROID_HOME/platform-tools/adb wait-for-device
+
+# Forward emulator's port 9050 to host's Tor daemon
+$ANDROID_HOME/platform-tools/adb reverse tcp:9050 tcp:9050
+
+# Install the APK
 $ANDROID_HOME/platform-tools/adb install build/app/outputs/flutter-apk/app-production-debug.apk
 ```
 
 ### Install on Physical Android Device
 
 1. Install [Orbot](https://play.google.com/store/apps/details?id=org.torproject.android) (Tor proxy for Android)
-2. Enable "VPN mode" in Orbot to route all traffic through Tor
+2. Open Orbot and start Tor — it listens on port 9050 by default
 3. Transfer the APK to the device and install it
-4. Open the app — it will auto-connect to your .onion backend
+4. Open the app — it connects through Orbot's SOCKS5 proxy to your .onion backend
 
-**Note:** On Android, services opened via "Open in Browser" require a Tor-capable browser (e.g., Tor Browser for Android) or Orbot in VPN mode routing the default browser through Tor.
+**Note:** To open services (Nextcloud, Jitsi, etc.) in the browser from the app, you also need Orbot in "VPN mode" or a Tor-capable browser (e.g., Tor Browser for Android).
 
 ### Android Logs
 

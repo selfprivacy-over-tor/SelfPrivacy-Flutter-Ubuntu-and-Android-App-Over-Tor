@@ -32,9 +32,10 @@ query AllServices {
     allServices {
       description
       displayName
-      dnsRecords {
-        ...fragmentDnsRecords
-      }
+      # dnsRecords disabled - causes server timeout in VirtualBox/Tor backend
+      # dnsRecords {
+      #   ...fragmentDnsRecords
+      # }
       id
       isEnabled
       isInstalled
@@ -56,22 +57,24 @@ query AllServices {
       url
       homepage
       sourcePage
-      license {
-        free
-        fullName
-        redistributable
-        shortName
-        url
-      }
+      # license disabled - causes server timeout in VirtualBox/Tor backend (nix eval)
+      # license {
+      #   free
+      #   fullName
+      #   redistributable
+      #   shortName
+      #   url
+      # }
       supportLevel
-      configuration {
-        fieldId
-        description
-        type
-        ... BoolConfigItem
-        ... EnumConfigItem
-        ... StringConfigItem
-      }
+      # configuration disabled - causes server timeout in VirtualBox/Tor backend (nix eval)
+      # configuration {
+      #   fieldId
+      #   description
+      #   type
+      #   ... BoolConfigItem
+      #   ... EnumConfigItem
+      #   ... StringConfigItem
+      # }
     }
   }
 }
