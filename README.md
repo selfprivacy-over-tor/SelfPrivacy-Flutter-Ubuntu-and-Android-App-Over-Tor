@@ -1,18 +1,23 @@
-# SelfPrivacy App
+# SelfPrivacy App (Tor-Modified)
+
+SelfPrivacy is a platform on your cloud hosting that allows you to deploy your own private services and control them using a mobile/desktop application. This fork adds Tor hidden service (.onion) support.
 
 ## Prerequisites (Ubuntu/Debian)
+
+### For Linux Desktop
 
 ```bash
 # Install build dependencies
 sudo apt install ninja-build clang cmake pkg-config git curl \
   libgtk-3-dev libsecret-1-dev libjsoncpp-dev libblkid-dev \
-  liblzma-dev xdg-user-dirs gnome-keyring unzip xz-utils zip
+  liblzma-dev xdg-user-dirs gnome-keyring unzip xz-utils zip \
+  libstdc++-12-dev
 
 # Install Flutter to /opt (NOT snap - snap causes GLib version conflicts)
 curl -L https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.32.2-stable.tar.xz | sudo tar xJf - -C /opt
 echo 'export PATH="/opt/flutter/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
 
-# Install Tor daemon (for .onion connectivity)
+# Install and start Tor SOCKS proxy
 sudo apt install tor
 sudo systemctl enable --now tor
 
@@ -20,43 +25,139 @@ sudo systemctl enable --now tor
 ss -tlnp | grep 9050
 ```
 
-Then build and run:
+### For Android
+
+```bash
+# Install Android SDK
+# Option A: Install Android Studio from https://developer.android.com/studio
+# Option B: Command-line only:
+mkdir -p ~/Android/Sdk && cd ~/Android/Sdk
+curl -sL "https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip" -o cmdline-tools.zip
+unzip cmdline-tools.zip && mkdir -p cmdline-tools && mv cmdline-tools cmdline-tools/latest
+export ANDROID_HOME=~/Android/Sdk
+yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
+$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-35" "build-tools;36.1.0" "platform-tools"
+flutter config --android-sdk ~/Android/Sdk
+
+# For Android emulator: enable KVM (required for usable speed)
+sudo modprobe kvm && sudo modprobe kvm_intel && sudo chmod 666 /dev/kvm
+```
+
+## Running the Linux Desktop App
+
+### Step 1: Start Tor SOCKS Proxy on Host
+
+```bash
+# Option 1: Use system Tor
+sudo systemctl start tor
+
+# Option 2: Run Tor with custom config
+cat > /tmp/user-torrc << 'EOF'
+SocksPort 9050
+Log notice stdout
+EOF
+tor -f /tmp/user-torrc &
+```
+
+Verify Tor is running:
+```bash
+curl --socks5-hostname 127.0.0.1:9050 https://check.torproject.org/api/ip
+```
+
+### Step 2: Run Flutter App with Logs
+
 ```bash
 flutter pub get
-flutter build linux
-./build/linux/x64/release/bundle/selfprivacy
+flutter run -d linux --verbose 2>&1 | tee /tmp/flutter-app.log
 ```
 
-## Connecting to a .onion Backend
-
-First, deploy the backend (see `Manager-Ubuntu-SelfPrivacy-Over-Tor/backend/`):
-```bash
-cd ../Manager-Ubuntu-SelfPrivacy-Over-Tor/backend
-./build-and-run.sh
-```
-
-Then get your .onion address and recovery key:
-```bash
-cd SelfPrivacy-Flutter-Ubuntu-and-Android-App-Over-Tor
-./get-recovery-key.sh
-```
+### Step 3: Connect to Backend
 
 In the app:
-1. Choose "I already have a server"
-2. Enter your `.onion` address (without `http://`)
-3. Select "I have a recovery key"
-4. Enter the recovery key mnemonic phrase
+1. Choose "I already have a server" (recovery flow)
+2. Enter your .onion address: `YOUR_ONION_ADDRESS.onion`
+3. Enter recovery key (18-word BIP39 mnemonic)
 
-## Getting Nextcloud access
-username=`admin`
-```sh
-sshpass -p '' ssh -p 2222 -o StrictHostKeyChecking=no root@localhost 'cat /var/lib/nextcloud/admin-pass' 
+**Note:** Copy/paste may not work in Flutter Linux desktop. Type manually if needed.
+
+### Viewing Logs
+
+```bash
+# Live logs during runtime (verbose)
+# Already shown in terminal if using command above
+
+# Or tail the log file
+tail -f /tmp/flutter-app.log
+
+# Search for GraphQL responses
+grep "GraphQL Response" /tmp/flutter-app.log
+
+# Search for errors
+grep -i error /tmp/flutter-app.log
 ```
-yields:
+
+## Building and Running Android APK
+
+The Android app is built from the same Flutter source code with the `production` flavor.
+
+### Build Debug APK
+
+```bash
+flutter pub get
+
+# Get .onion address from your VM
+ONION=$(sshpass -p '' ssh -p 2222 root@localhost cat /var/lib/tor/hidden_service/hostname)
+
+# Build debug APK with auto-setup (skips onboarding, connects to your .onion)
+flutter build apk --flavor production --debug \
+  --dart-define=ONION_DOMAIN=$ONION \
+  --dart-define=API_TOKEN=test-token-for-tor-development
+
+# APK is at: build/app/outputs/flutter-apk/app-production-debug.apk
 ```
-somelongpassword
+
+You can also build without `--dart-define` — the app will show a setup screen at launch where you can enter the onion domain manually.
+
+### Install on Android Emulator
+
+```bash
+# Enable KVM first (required for usable emulator speed)
+sudo modprobe kvm && sudo modprobe kvm_intel && sudo chmod 666 /dev/kvm
+
+# Start emulator (create one in Android Studio first, or use avdmanager)
+export ANDROID_HOME=~/Android/Sdk
+$ANDROID_HOME/emulator/emulator -avd Medium_Phone_API_36.1 -no-audio &
+
+# Wait for boot, then install
+$ANDROID_HOME/platform-tools/adb wait-for-device
+$ANDROID_HOME/platform-tools/adb install build/app/outputs/flutter-apk/app-production-debug.apk
 ```
-You should be able to visit nextcloud at: your.onion/nextcloud to login but if you click it it goes back to the your.onion, it seems to be a synthetic front instead of the actual nextcloud app.
+
+### Install on Physical Android Device
+
+1. Install [Orbot](https://play.google.com/store/apps/details?id=org.torproject.android) (Tor proxy for Android)
+2. Enable "VPN mode" in Orbot to route all traffic through Tor
+3. Transfer the APK to the device and install it
+4. Open the app — it will auto-connect to your .onion backend
+
+**Note:** On Android, services opened via "Open in Browser" require a Tor-capable browser (e.g., Tor Browser for Android) or Orbot in VPN mode routing the default browser through Tor.
+
+### Android Logs
+
+```bash
+# View Flutter and SelfPrivacy logs
+adb logcat -s flutter,SelfPrivacy
+
+# View all app logs (verbose)
+adb logcat | grep -i selfprivacy
+```
+
+### Build Flavors
+
+The app has multiple build flavors:
+- `production` - Production release (recommended for Tor builds)
+- `fdroid` - F-Droid release (different application ID)
+- `nightly` - Development builds
 
 ## Resetting App Data (Start Fresh Connection)
 
@@ -65,59 +166,35 @@ To clear the app's stored configuration and start a new connection:
 rm -rf ~/.local/share/selfprivacy/*.hive ~/.local/share/selfprivacy/*.lock
 ```
 
----
+## Getting Nextcloud access
 
-SelfPrivacy — is a platform on your cloud hosting, that allows to deploy your own private services and control them using mobile application.
-
-To use this application, you'll be required to create accounts of different service providers. Please reffer to this manual: https://selfprivacy.org/docs/getting-started/
-
-Application will do the following things for you:
-
-1. Create your personal server
-2. Setup NixOS
-3. Bring all services to the ready-to-use state. Services include:
-
-* E-mail, ready to use with DeltaChat
-* NextCloud - your personal cloud storage
-* Bitwarden — secure and private password manager
-* Pleroma — your private fediverse space for blogging
-* Jitsi — awesome Zoom alternative
-* Gitea — your own Git server
-* OpenConnect — Personal VPN server
-
-**Project is currently in open beta state**. Feel free to try it. It would be much appreciated if you would provide us with some feedback. 
-
-## Building
-
-Supported platforms are Android, Linux, and Windows. We are looking forward to support iOS and macOS builds.
-
-For Linux builds, make sure you have these packages installed:
-|Arch-based|Debian-based|
-|----------|------------|
-|pacman -S ninja xdg-user-dirs gnome-keyring unzip xz-utils zip|apt install ninja-build xdg-user-dirs gnome-keyring unzip xz-utils zip|
-
-Install [Flutter](https://docs.flutter.dev/get-started/install/linux) and [Android SDK tools](https://developer.android.com/studio/command-line/sdkmanager), then try your setup:
-
+username=`admin`
+```sh
+sshpass -p '' ssh -p 2222 -o StrictHostKeyChecking=no root@localhost 'cat /var/lib/nextcloud/admin-pass'
 ```
-flutter pub get
 
-# Build .APK for Android
-flutter build apk --flavor production
-# Build nightly .APK for Android
-flutter build apk --flavor nightly
-# Build AAB bundle for Google Play
-flutter build aab --flavor production
-# Build Linux binaries
-flutter build linux
-# Build Windows binaries
-flutter build windows
+## Troubleshooting
 
-# Package AppImage
-appimage-builder --recipe appimage.yml
-# Package Flatpak
-flatpak-builder --force-clean --repo=flatpak-repo flatpak-build flatpak.yml
-flatpak build-bundle flatpak-repo org.selfprivacy.app.flatpak org.selfprivacy.app
-```
+### "Connection refused" or timeout
+- Ensure Tor SOCKS proxy is running on port 9050
+- Check: `curl --socks5-hostname 127.0.0.1:9050 http://YOUR_ONION.onion/api/version`
+
+### "Invalid recovery key"
+- The key must be a 18-word BIP39 mnemonic phrase, NOT a hex string
+- Example format: `word1 word2 word3 ... word18`
+
+### DNS lookup errors
+- Should not happen with .onion domains (they skip DNS lookup)
+- If it does, verify the modifications in `server_installation_repository.dart`
+
+### Copy/paste not working (Linux)
+- Known Flutter Linux desktop bug
+- Type the recovery key manually
+
+### GraphQL errors in logs
+- Check backend logs to see if request arrived
+- Verify .onion address is correct
+- Ensure backend API is running: `curl --socks5-hostname 127.0.0.1:9050 http://YOUR_ONION.onion/graphql`
 
 ## Translations
 
