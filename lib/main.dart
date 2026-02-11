@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -21,36 +23,16 @@ import 'package:selfprivacy/ui/router/router.dart';
 import 'package:hive_ce/hive.dart';
 import 'package:timezone/data/latest.dart' as tz;
 
-/// Development auto-setup: pre-seed connection data for Tor .onion VM.
-/// Only runs in debug mode and only if no server is already configured.
-/// Mimics what saveHasFinalChecked() does: populates ResourcesModel
-/// and clears WizardDataModel so load() returns ServerInstallationFinished.
-Future<void> _devAutoSetup() async {
-  if (!kDebugMode) return;
-
-  const onionDomain =
-      String.fromEnvironment('ONION_DOMAIN', defaultValue: '');
-  const apiToken =
-      String.fromEnvironment('API_TOKEN', defaultValue: '');
-
-  // ignore: avoid_print
-  print('[DEV] Auto-setup: onionDomain=$onionDomain, apiToken=${apiToken.isNotEmpty ? "SET" : "EMPTY"}');
-
-  if (onionDomain.isEmpty || apiToken.isEmpty) return;
-
+/// Configure a .onion server connection in ResourcesModel and skip onboarding.
+Future<void> _setupOnionServer(String onionDomain, String apiToken) async {
   final resourcesModel = getIt<ResourcesModel>();
 
   // Skip if already configured, but ensure onboarding is disabled
   if (resourcesModel.servers.isNotEmpty) {
-    // ignore: avoid_print
-    print('[DEV] Auto-setup: already configured, ensuring onboarding disabled');
     final appSettingsBox = Hive.box(BNames.appSettingsBox);
     await appSettingsBox.put(BNames.shouldShowOnboarding, false);
     return;
   }
-
-  // ignore: avoid_print
-  print('[DEV] Auto-setup: connecting to $onionDomain');
 
   final serverDomain = ServerDomain(
     domainName: onionDomain,
@@ -72,47 +54,142 @@ Future<void> _devAutoSetup() async {
     ),
   );
 
-  // Add server to ResourcesModel (same as saveHasFinalChecked)
   await resourcesModel.addServer(Server(
     domain: serverDomain,
     hostingDetails: serverDetails,
   ));
 
-  // Ensure wizard data is cleared (null) so load() takes the
-  // "wizardData == null, servers not empty" path → ServerInstallationFinished
   await getIt<WizardDataModel>().clearServerInstallation();
 
-  // Disable onboarding screen so the app goes straight to dashboard
   final appSettingsBox = Hive.box(BNames.appSettingsBox);
   await appSettingsBox.put(BNames.shouldShowOnboarding, false);
 
-  // Re-initialize API connection now that server details are populated
-  // (The initial init() during getItSetup() returned early because
-  // serverDetails was null at that point)
   await getIt<ApiConnectionRepository>().init();
+}
 
-  // ignore: avoid_print
-  print('[DEV] Auto-setup complete. servers=${resourcesModel.servers.length}, wizardData=${getIt<WizardDataModel>().serverInstallation}');
+/// Show a setup screen to collect onion domain and API token at runtime.
+/// Returns (domain, token) or null if the user skips.
+Future<({String domain, String token})?> _showOnionSetupPrompt() async {
+  final completer = Completer<({String domain, String token})?>();
+
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: _OnionSetupScreen(
+        onComplete: (domain, token) =>
+            completer.complete((domain: domain, token: token)),
+        onSkip: () => completer.complete(null),
+      ),
+    ),
+  );
+
+  return completer.future;
+}
+
+class _OnionSetupScreen extends StatefulWidget {
+  const _OnionSetupScreen({required this.onComplete, required this.onSkip});
+
+  final void Function(String domain, String token) onComplete;
+  final VoidCallback onSkip;
+
+  @override
+  State<_OnionSetupScreen> createState() => _OnionSetupScreenState();
+}
+
+class _OnionSetupScreenState extends State<_OnionSetupScreen> {
+  final _domainController = TextEditingController();
+  final _tokenController =
+      TextEditingController(text: 'test-token-for-tor-development');
+
+  @override
+  void dispose() {
+    _domainController.dispose();
+    _tokenController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(title: const Text('SelfPrivacy Tor Setup')),
+        body: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(
+                'Enter your .onion domain and API token to connect.',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 24),
+              TextField(
+                controller: _domainController,
+                decoration: const InputDecoration(
+                  labelText: 'Onion Domain',
+                  hintText: 'abc...xyz.onion',
+                  border: OutlineInputBorder(),
+                ),
+                autofocus: true,
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: _tokenController,
+                decoration: const InputDecoration(
+                  labelText: 'API Token',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 24),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  TextButton(
+                    onPressed: widget.onSkip,
+                    child: const Text('Skip'),
+                  ),
+                  const SizedBox(width: 16),
+                  FilledButton(
+                    onPressed: () {
+                      final domain = _domainController.text.trim();
+                      final token = _tokenController.text.trim();
+                      if (domain.isNotEmpty && token.isNotEmpty) {
+                        widget.onComplete(domain, token);
+                      }
+                    },
+                    child: const Text('Connect'),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
 }
 
 void main() async {
-  // await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-
-  // try {
-  //   /// Wakelock support for Linux
-  //   /// desktop is not yet implemented
-  //   await Wakelock.enable();
-  // } on PlatformException catch (e) {
-  //   print(e);
-  // }
-
   try {
     await Future.wait(<Future<void>>[
       HiveConfig.init(),
       EasyLocalization.ensureInitialized(),
     ]);
     await getItSetup();
-    await _devAutoSetup();
+
+    // Compile-time values from --dart-define (optional)
+    const compileDomain =
+        String.fromEnvironment('ONION_DOMAIN', defaultValue: '');
+    const compileToken =
+        String.fromEnvironment('API_TOKEN', defaultValue: '');
+
+    if (kDebugMode && compileDomain.isNotEmpty && compileToken.isNotEmpty) {
+      // Auto-setup from compile-time --dart-define values
+      await _setupOnionServer(compileDomain, compileToken);
+    } else if (kDebugMode && getIt<ResourcesModel>().servers.isEmpty) {
+      // No compile-time domain and no server configured: prompt at runtime
+      final result = await _showOnionSetupPrompt();
+      if (result != null) {
+        await _setupOnionServer(result.domain, result.token);
+      }
+    }
   } on PlatformException catch (e) {
     runApp(FailedToInitSecureStorageScreen(e: e));
   }
@@ -153,13 +230,13 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) => const ColoredBox(
-    color: Colors.white,
-    child: Center(
-      child: CircularProgressIndicator.adaptive(
-        valueColor: AlwaysStoppedAnimation(BrandColors.primary),
-      ),
-    ),
-  );
+        color: Colors.white,
+        child: Center(
+          child: CircularProgressIndicator.adaptive(
+            valueColor: AlwaysStoppedAnimation(BrandColors.primary),
+          ),
+        ),
+      );
 }
 
 class SelfprivacyApp extends StatefulWidget {
