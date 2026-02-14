@@ -196,6 +196,23 @@ void main() async {
 
   tz.initializeTimeZones();
 
+  // Suppress keyboard state assertion errors on Linux desktop (debug mode only).
+  // Flutter's HardwareKeyboard can desync when modifier keys are pressed during
+  // focus changes, causing "KeyDownEvent is dispatched, but physical key is
+  // already pressed" assertions. The actual key handling still works correctly.
+  // Fixed upstream in Flutter PR #181894 (master), expected in stable ~3.44.
+  if (kDebugMode) {
+    final originalOnError = FlutterError.onError;
+    FlutterError.onError = (FlutterErrorDetails details) {
+      if (details.exceptionAsString().contains(
+            'is dispatched, but the state shows that the physical key',
+          )) {
+        return;
+      }
+      originalOnError?.call(details);
+    };
+  }
+
   Bloc.observer = SimpleBlocObserver();
 
   runApp(

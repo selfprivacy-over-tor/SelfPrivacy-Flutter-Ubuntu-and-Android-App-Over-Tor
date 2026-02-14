@@ -201,8 +201,10 @@ sshpass -p '' ssh -p 2222 -o StrictHostKeyChecking=no root@localhost 'cat /var/l
 - If it does, verify the modifications in `server_installation_repository.dart`
 
 ### Copy/paste not working (Linux)
-- Known Flutter Linux desktop bug
-- Type the recovery key manually
+- Known Flutter Linux desktop bug ([flutter#125975](https://github.com/flutter/flutter/issues/125975))
+- Workaround applied in `main.dart` suppresses the assertion error in debug mode
+- Fixed upstream in Flutter PR [#181894](https://github.com/flutter/flutter/pull/181894), expected in stable ~3.44
+- If still not working, type the recovery key manually
 
 ### GraphQL errors in logs
 - Check backend logs to see if request arrived
