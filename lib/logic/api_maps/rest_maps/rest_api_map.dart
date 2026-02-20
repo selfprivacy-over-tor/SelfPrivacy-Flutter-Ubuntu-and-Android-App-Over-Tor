@@ -28,9 +28,11 @@ abstract class RestApiMap {
           // Use SOCKS5 proxy for .onion domains
           // Linux: Tor daemon on 9050
           // Android: Orbot on 9050
-          SocksTCPClient.assignToHttpClient(client, [
+          SocksTCPClient.assignToHttpClientWithSecureOptions(client, [
             ProxySettings(InternetAddress.loopbackIPv4, 9050),
-          ]);
+          ],
+            onBadCertificate: (final X509Certificate certificate) => true,
+          );
         }
         return client;
       },

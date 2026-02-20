@@ -3,7 +3,7 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-SECRETS_FILE="$SCRIPT_DIR/../Manager-Ubuntu-SelfPrivacy-Over-Tor/backend/secrets.json"
+SECRETS_FILE="$SCRIPT_DIR/../Manager-Ubuntu-SelfPrivacy-Over-Alternative-Nets/backend/secrets.json"
 SSH_OPTS="-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o PubkeyAuthentication=no -o PreferredAuthentications=password"
 SSH_PORT=2222
 
@@ -25,7 +25,7 @@ fi
 echo -e "${CYAN}Getting .onion address from VM...${NC}"
 ONION=$(sshpass -p '' ssh $SSH_OPTS -p $SSH_PORT root@localhost cat /var/lib/tor/hidden_service/hostname 2>/dev/null) || {
     echo -e "${RED}Error: Could not connect to VM. Is it running?${NC}"
-    echo "Start the backend with: cd ../Manager-Ubuntu-SelfPrivacy-Over-Tor/backend && ./build-and-run.sh"
+    echo "Start the backend with: cd ../Manager-Ubuntu-SelfPrivacy-Over-Alternative-Nets/backend && ./build-and-run.sh"
     exit 1
 }
 

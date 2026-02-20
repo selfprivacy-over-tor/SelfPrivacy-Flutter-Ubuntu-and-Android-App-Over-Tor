@@ -77,14 +77,16 @@ abstract class GraphQLApiMap {
       baseHttpClient.badCertificateCallback =
           (final X509Certificate cert, final String host, final int port) =>
               true;
-      SocksTCPClient.assignToHttpClient(baseHttpClient, [
+      SocksTCPClient.assignToHttpClientWithSecureOptions(baseHttpClient, [
         ProxySettings(InternetAddress.loopbackIPv4, 9050),
-      ]);
+      ],
+        onBadCertificate: (final X509Certificate certificate) => true,
+      );
     }
     final IOClient ioClient = IOClient(baseHttpClient);
 
     final String httpUri =
-        isOnion ? 'http://$rootAddress/graphql' : 'https://api.$rootAddress/graphql';
+        isOnion ? 'https://$rootAddress/graphql' : 'https://api.$rootAddress/graphql';
     final httpLink = HttpLink(
       httpUri,
       httpClient: ioClient,
@@ -113,7 +115,7 @@ abstract class GraphQLApiMap {
     final bool isOnion = (rootAddress ?? '').endsWith('.onion');
     // Note: WebSocket over Tor may be unreliable; higher layer may fall back to polling.
     final String wsUri =
-        isOnion ? 'ws://$rootAddress/graphql' : 'ws://api.$rootAddress/graphql';
+        isOnion ? 'wss://$rootAddress/graphql' : 'ws://api.$rootAddress/graphql';
     final WebSocketLink webSocketLink = WebSocketLink(
       wsUri,
       // Only [GraphQLProtocol.graphqlTransportWs] supports automatic pings, so we don't disconnect when nothing happens.
